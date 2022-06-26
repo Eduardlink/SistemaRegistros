@@ -14,13 +14,20 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     public  Connection getConexion(){
-        String conexionURL = "jdbc:sqlserver://mysqlregistros.database.windows.net:1433;database=SistemaRegistros;user=Edu@mysqlregistros;password=Tictactoe2001;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-        
+                
         try{
+        String conexionURL = "jdbc:sqlserver://mysqlregistros.database.windows.net:1433;"
+                + "database=SistemaRegistros;"
+                + "user=Edu@mysqlregistros;"
+                + "password=Tictactoe2001;"
+                + "encrypt=true;"
+                + "trustServerCertificate=false;"
+                + "hostNameInCertificate=*.database.windows.net;"
+                + "loginTimeout=30;";
             Connection con = DriverManager.getConnection(conexionURL);
             return con;
         }catch(Exception ex){
-            System.out.println(ex);
+            System.out.println(ex.toString());
             return null;
         }
     }
