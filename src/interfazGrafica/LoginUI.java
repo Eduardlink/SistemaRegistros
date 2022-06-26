@@ -109,6 +109,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Loguin().Validar(jtxtUsuario.getText(), String.valueOf(jtxtContraseña.getPassword()));
+        //new Loguin().verificarClave(jtxtUsuario.getText(), String.valueOf(jtxtContraseña.getPassword()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

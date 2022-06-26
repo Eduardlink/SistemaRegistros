@@ -15,7 +15,9 @@ public class Control_Ingreso {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Registro reg = new Registro();
+        String[] datos = {"mh1234","9874","Maria","Hidalgo","1803"};
+        reg.almacenarDatos(datos);
     }
     
 }

@@ -17,9 +17,11 @@ import java.sql.Connection;
  */
 public class Loguin {
 
+    private Conexion cc = new Conexion();
+    private Connection con = cc.getConexion();
+
     public void Validar(String usr, String pass) {
-        Conexion cc = new Conexion();
-        Connection con = cc.getConexion();
+
         String sql = "Select * from docentes where usuario = '" + usr + "' and clave='" + pass + "' ";
         try {
             Statement st = con.createStatement();
@@ -34,5 +36,28 @@ public class Loguin {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR!!!");
         }
+    }
+
+    public boolean[] verificarClave(String usr, String pass) {
+        boolean[] datosCorrectos = {false,false};
+        String sql = "SELECT usuario,clave FROM Docentes WHERE usuario='" + usr + "';";
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                if(rs.getString("usuario").equals(usr)){
+                    datosCorrectos[0]=true;
+                    System.out.println(datosCorrectos[0]);
+                }
+            }
+            String claveDS = new CriptPass().Desencriptar(rs.getString("clave"));
+            if(claveDS.equals(pass)){
+                datosCorrectos[1]=false;
+                System.out.println(datosCorrectos[0]);
+            }
+        } catch (Exception ex) {
+            System.out.println("Eror_Verif._pass_" + ex);
+        }
+        return datosCorrectos;
     }
 }
