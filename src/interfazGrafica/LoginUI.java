@@ -3,29 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control_ingreso;
+package interfazGrafica;
 
+import control_ingreso.Conexion;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import control_ingreso.Loguin;
 
 /**
  *
  * @author spc
  */
-public class Login extends javax.swing.JFrame {
-
-    Conexion cc = new Conexion();
-    Connection con = cc.conectar();
+public class LoginUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginUI() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
     public void Validar() {
+        Conexion cc = new Conexion();
+        Connection con = cc.conectar();
         int resultado = 0;
         String contraseña = String.valueOf(jtxtContraseña.getPassword());
         String usuario = jtxtUsuario.getText();
@@ -36,7 +37,7 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                 JOptionPane.showMessageDialog(null, "INGRESO EXITOSO");
+                    JOptionPane.showMessageDialog(null, "INGRESO EXITOSO");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado");
@@ -130,7 +131,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Validar();
+        //Validar();
+        new Loguin().Validar(jtxtUsuario.getText(), String.valueOf(jtxtContraseña.getPassword()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -150,20 +152,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginUI().setVisible(true);
             }
         });
     }

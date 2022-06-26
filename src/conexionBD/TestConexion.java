@@ -63,10 +63,11 @@ public class TestConexion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConectarActionPerformed
-         String bases="";
+        Conexion conexion = new Conexion(); 
+        String bases="";
         try{
-            Statement sql = Conexion.getConexion().createStatement();
-            String consulta = "SELECT nombre FROM tblDocentes";
+            Statement sql = conexion.getConexion().createStatement();
+            String consulta = "SELECT nombre FROM Docentes";
             ResultSet resultado = sql.executeQuery(consulta);
             while(resultado.next()){
                 bases += resultado.getString(1)+"\n";

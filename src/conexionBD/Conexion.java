@@ -13,7 +13,7 @@ import java.sql.DriverManager;
  * @author Pc
  */
 public class Conexion {
-    public static Connection getConexion(){
+    public  Connection getConexion(){
         String conexionURL = "jdbc:sqlserver://mysqlregistros.database.windows.net:1433;database=SistemaRegistros;user=Edu@mysqlregistros;password=Tictactoe2001;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
         
         try{
