@@ -24,29 +24,7 @@ public class LoginUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public void Validar() {
-        Conexion cc = new Conexion();
-        Connection con = cc.conectar();
-        int resultado = 0;
-        String contraseña = String.valueOf(jtxtContraseña.getPassword());
-        String usuario = jtxtUsuario.getText();
-        String sql = "Select * from docentes where usuario = '" + usuario + "' and contraseña='" + contraseña + "' ";
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                resultado = 1;
-                if (resultado == 1) {
-                    JOptionPane.showMessageDialog(null, "INGRESO EXITOSO");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR!!!");
-        }
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -131,7 +109,6 @@ public class LoginUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Validar();
         new Loguin().Validar(jtxtUsuario.getText(), String.valueOf(jtxtContraseña.getPassword()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
