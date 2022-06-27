@@ -19,14 +19,14 @@ import javax.swing.JLabel;
  *
  * @author spc
  */
-public class LoginUI extends javax.swing.JFrame {
+public class Informe_Docente extends javax.swing.JFrame {
     private ImageIcon imagen;
     private Icon icono;
     int xMouse, yMouse;
     /**
      * Creates new form Login
      */
-    public LoginUI() {
+    public Informe_Docente() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.pintarImagen(this.imgLogoEncab, "src/imagenesFrames/Logo_Encab.png");
