@@ -6,6 +6,7 @@
 package paneles;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +21,7 @@ public class crud extends javax.swing.JPanel {
     public crud() {
         initComponents();
         DefaultTableModel modeloTabla = new DefaultTableModel();
-        String [] titulos = {"Cédula", "Nombre", "Apellido", "Contraseña","Root"}; 
+        String[] titulos = {"Cédula", "Nombre", "Apellido", "Contraseña", "Root"};
         modeloTabla.setColumnIdentifiers(titulos);
         jtblCrud.setModel(modeloTabla);
         this.bloquearTextos();
@@ -70,7 +71,7 @@ public class crud extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jpBuscar = new javax.swing.JPanel();
         jtxtBusqueda = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jbtnBuscar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         jpCrud.setBackground(new java.awt.Color(255, 255, 255));
@@ -96,7 +97,14 @@ public class crud extends javax.swing.JPanel {
         jchkRoot.setBackground(new java.awt.Color(204, 204, 204));
         jchkRoot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jbtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/floppy-disk.png"))); // NOI18N
         jbtnGuardar.setText("Guardar");
+        jbtnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,8 +135,8 @@ public class crud extends javax.swing.JPanel {
                             .addComponent(jtxtApellido))))
                 .addGap(25, 25, 25))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jbtnGuardar)
+                .addGap(102, 102, 102)
+                .addComponent(jbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,9 +162,9 @@ public class crud extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jchkRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(jbtnGuardar)
-                .addGap(139, 139, 139))
+                .addGap(156, 156, 156))
         );
 
         jpPanelOpciones.setBackground(new java.awt.Color(204, 204, 204));
@@ -330,6 +338,9 @@ public class crud extends javax.swing.JPanel {
         jpBuscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpBuscar2.setPreferredSize(new java.awt.Dimension(105, 105));
         jpBuscar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpBuscar2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jpBuscar2MouseEntered(evt);
             }
@@ -431,29 +442,25 @@ public class crud extends javax.swing.JPanel {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
-        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/buscar.png"))); // NOI18N
-        jLabel6.setText("Buscar");
-        jLabel6.setToolTipText("");
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/buscar.png"))); // NOI18N
+        jbtnBuscar.setText("Buscar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 109, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jbtnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 109, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -462,17 +469,17 @@ public class crud extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jbtnBuscar)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jpBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -535,11 +542,11 @@ public class crud extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpAniadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMouseEntered
-      jpAniadir.setBackground(Color.white);
+        jpAniadir.setBackground(Color.white);
     }//GEN-LAST:event_jpAniadirMouseEntered
 
     private void jpAniadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMouseExited
-      jpAniadir.setBackground(new Color(204,204,204));
+        jpAniadir.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpAniadirMouseExited
 
     private void jpAniadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMousePressed
@@ -548,8 +555,8 @@ public class crud extends javax.swing.JPanel {
 
     private void jpAniadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMouseClicked
 //              jpAniadir.setBackground(Color.white);
-              this.desbloquearTextos();
-              
+        this.desbloquearTextos();
+
 
     }//GEN-LAST:event_jpAniadirMouseClicked
 
@@ -557,7 +564,7 @@ public class crud extends javax.swing.JPanel {
 jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEntered
 
     private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
-       jpEliminar.setBackground(new Color(204,204,204));
+        jpEliminar.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpEliminarMouseExited
 
     private void jpBuscar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseEntered
@@ -569,37 +576,150 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     }//GEN-LAST:event_jpActualizarMouseEntered
 
     private void jpSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseEntered
-       jpSalir.setBackground(Color.white);
+        jpSalir.setBackground(Color.white);
     }//GEN-LAST:event_jpSalirMouseEntered
 
     private void jpBuscar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseExited
-       jpBuscar2.setBackground(new Color(204,204,204));
+        jpBuscar2.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpBuscar2MouseExited
 
     private void jpActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseExited
-        jpActualizar.setBackground(new Color(204,204,204));
+        jpActualizar.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpActualizarMouseExited
 
     private void jpSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseExited
-        jpSalir.setBackground(new Color(204,204,204));
+        jpSalir.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpSalirMouseExited
- public void bloquearTextos(){
-     jtxtCedula.setEnabled(false);
-     jtxtNombre.setEnabled(false);
-     jtxtClave.setEnabled(false);
-     jtxtApellido.setEnabled(false);
-     jchkRoot.setEnabled(false);
-     jtxtBusqueda.setEnabled(false);
-     
- }
-public void desbloquearTextos(){
-     jtxtCedula.setEnabled(true);
-     jtxtNombre.setEnabled(true);
-     jtxtClave.setEnabled(true);
-     jtxtApellido.setEnabled(true);
-     jchkRoot.setEnabled(true);
-     jtxtBusqueda.setEnabled(true);
-}
+
+    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
+        this.bloquearTextos();
+    }//GEN-LAST:event_jbtnGuardarActionPerformed
+
+    private void jpBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseClicked
+        jtxtBusqueda.setEnabled(true);
+    }//GEN-LAST:event_jpBuscar2MouseClicked
+    private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {
+        this.desbloquearTextos();
+    }
+
+    private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    public void bloquearTextos() {
+        jtxtCedula.setEnabled(false);
+        jtxtNombre.setEnabled(false);
+        jtxtClave.setEnabled(false);
+        jtxtApellido.setEnabled(false);
+        jchkRoot.setEnabled(false);
+        jtxtBusqueda.setEnabled(false);
+
+    }
+
+    public void desbloquearTextos() {
+        jtxtCedula.setEnabled(true);
+        jtxtNombre.setEnabled(true);
+        jtxtClave.setEnabled(true);
+        jtxtApellido.setEnabled(true);
+        jchkRoot.setEnabled(true);
+        jtxtBusqueda.setEnabled(true);
+    }
+
+    public boolean validadorDeCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+
+        try {
+
+            if (cedula.length() == 10) // ConstantesApp.LongitudCedula
+            {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+// Coeficientes de validación cédula
+// El decimo digito se lo considera dígito verificador
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            //System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
+        }
+
+        if (!cedulaCorrecta) {
+            JOptionPane.showMessageDialog(null, "La cédula ingresada no es válida");
+        }
+        return cedulaCorrecta;
+    }
+
+    private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            evt.consume();
+        }
+    }
+
+    private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            evt.consume();
+        }
+    }
+
+    private void jtxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+
+    }
+
+    private void jtxtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+    }
+
+    private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {
+        this.validadorDeCedula(jtxtCedula.getText());
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -613,13 +733,13 @@ public void desbloquearTextos(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnBuscar;
     private javax.swing.JButton jbtnGuardar;
     private javax.swing.JCheckBox jchkRoot;
     private javax.swing.JLabel jlApellido;
