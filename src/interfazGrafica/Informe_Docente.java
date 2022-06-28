@@ -11,18 +11,24 @@ import javax.swing.JOptionPane;
 import control_ingreso.Loguin;
 import java.awt.Color;
 import java.awt.Image;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author spc
  */
 public class Informe_Docente extends javax.swing.JFrame {
+
     private ImageIcon imagen;
     private Icon icono;
     int xMouse, yMouse;
+    private DefaultTableModel modeloTabla;
+    boolean validacionCedula = false;
+
     /**
      * Creates new form Login
      */
@@ -32,8 +38,10 @@ public class Informe_Docente extends javax.swing.JFrame {
         this.pintarImagen(this.imgLogoEncab, "src/imagenesFrames/Logo_Encab.png");
         this.pintarImagen(this.imgLogoFisei, "src/imagenesFrames/Logo_FISEI.png");
         this.pintarImagen(this.imgLogoUta, "src/imagenesFrames/Logo UTA.png");
-    }
+        this.pintarImagen(this.imgUsuario, "src/imagenesFrames/usuario.png");
+        cargarTitulosTabla();
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +66,29 @@ public class Informe_Docente extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         imgLogoFisei = new javax.swing.JLabel();
         imgLogoUta = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jtxtBuscar = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtblDocentes = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jlbCedula = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jlbInasistencias = new javax.swing.JLabel();
+        jlbAsistencias = new javax.swing.JLabel();
+        jlbNombre = new javax.swing.JLabel();
+        imgLogoEncab1 = new javax.swing.JLabel();
+        imgLogoEncab2 = new javax.swing.JLabel();
+        imgUsuario = new javax.swing.JLabel();
+        jlbUsuario = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -185,6 +216,133 @@ public class Informe_Docente extends javax.swing.JFrame {
 
         jPanel2.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 760, 1230, -1));
 
+        jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel1.setText("Busqueda por Docente");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+
+        jtxtBuscar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jtxtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtBuscarFocusLost(evt);
+            }
+        });
+        jPanel2.add(jtxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 160, 30));
+
+        jtblDocentes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jtblDocentes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jtblDocentes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        jtblDocentes.setGridColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jtblDocentes);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 740, 490));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 40, 40));
+
+        jLabel15.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel15.setText("_____________________________");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 370, -1));
+
+        jlbCedula.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jPanel2.add(jlbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 210, -1));
+
+        jLabel16.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel16.setText("_____________________________");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 360, -1));
+
+        jLabel17.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel17.setText("_____________________________");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 370, -1));
+
+        jLabel18.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel18.setText("_____________________________");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 360, -1));
+
+        jPanel1.setBackground(new java.awt.Color(236, 71, 71));
+
+        jLabel13.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel13.setText("      Nombre");
+
+        jLabel11.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel11.setText("    Asistencias");
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel14.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel14.setText("           C.I.");
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel10.setText("  Inasistencias");
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 110, 200));
+
+        jlbInasistencias.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jPanel2.add(jlbInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 210, -1));
+
+        jlbAsistencias.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jPanel2.add(jlbAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 210, -1));
+
+        jlbNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jPanel2.add(jlbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 210, -1));
+
+        imgLogoEncab1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(imgLogoEncab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 13, 93, 74));
+
+        imgLogoEncab2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(imgLogoEncab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 13, 93, 74));
+        jPanel2.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 70, 60));
+
+        jlbUsuario.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jPanel2.add(jlbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 120, -1));
+
+        jLabel3.setText("Nota: Datos de prueba cargados con cedula 1802144090 y 1802144091");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,6 +363,32 @@ public class Informe_Docente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if (validacionCedula == true) {
+            buscarDocentes(jtxtBuscar.getText());
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtxtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtBuscarFocusLost
+
+        if (jtxtBuscar.getText().isEmpty()) {
+            jtxtBuscar.setBorder(BorderFactory.createLineBorder(Color.red));
+            JOptionPane.showMessageDialog(null, "Campo vacio");
+            validacionCedula = false;
+        } else {
+            jtxtBuscar.setBorder(BorderFactory.createLineBorder(Color.black));
+            if (validarCedula(jtxtBuscar.getText()) == true) {
+                validacionCedula = true;
+
+            }else{
+                validacionCedula = false;
+            }
+
+        }
+    }//GEN-LAST:event_jtxtBuscarFocusLost
+
     private void jpHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMousePressed
         this.xMouse = evt.getX();
         this.yMouse = evt.getY();
@@ -213,34 +397,60 @@ public class Informe_Docente extends javax.swing.JFrame {
     private void jpHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x- this.xMouse, y - this.yMouse);
+        this.setLocation(x - this.xMouse, y - this.yMouse);
     }//GEN-LAST:event_jpHeaderMouseDragged
 
-    private void jpCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jpCerrarMouseClicked
+    private void jpCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseExited
+        this.jpCerrar.setBackground(new Color(255, 0, 0));
+        this.X.setForeground(Color.white);
+    }//GEN-LAST:event_jpCerrarMouseExited
 
     private void jpCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseEntered
         this.jpCerrar.setBackground(Color.white);
         this.X.setForeground(Color.red);
     }//GEN-LAST:event_jpCerrarMouseEntered
 
-    private void jpCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseExited
-        this.jpCerrar.setBackground(new Color(255,0,0));
-        this.X.setForeground(Color.white);
-    }//GEN-LAST:event_jpCerrarMouseExited
-
-    private void jpMinimMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMinimMouseEntered
-        this.jpMinim.setBackground(new Color(204,204,204));
-    }//GEN-LAST:event_jpMinimMouseEntered
+    private void jpCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jpCerrarMouseClicked
 
     private void jpMinimMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMinimMouseExited
-        this.jpMinim.setBackground(new Color(114,96,96));
+        this.jpMinim.setBackground(new Color(114, 96, 96));
     }//GEN-LAST:event_jpMinimMouseExited
+
+    private void jpMinimMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMinimMouseEntered
+        this.jpMinim.setBackground(new Color(204, 204, 204));
+    }//GEN-LAST:event_jpMinimMouseEntered
 
     private void jpMinimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMinimMouseClicked
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jpMinimMouseClicked
+
+    
+    private boolean validarCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+        boolean esNumero = false;
+
+        if (cedula.length() != 10) {
+            JOptionPane.showMessageDialog(null, "La logitud de caracteres debe ser igual a 10");
+            return false;
+        } else {
+            for (int i = 0; i < cedula.length(); i++) {
+                if (!Character.isDigit(cedula.charAt(i))) {
+                    esNumero = false;
+                    JOptionPane.showMessageDialog(null, "Solo se admiten números");
+                    return false;
+                } else {
+                    esNumero = true;
+                    cedulaCorrecta = true;
+                }
+  
+                
+            }
+
+        }
+        return cedulaCorrecta;
+    }
 
     /**
      * @param args the command line arguments
@@ -273,37 +483,148 @@ public class Informe_Docente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginUI().setVisible(true);
+                new Informe_Docente().setVisible(true);
             }
         });
     }
-    
-    private void pintarImagen(JLabel lbl, String ruta){
+
+    private void pintarImagen(JLabel lbl, String ruta) {
         this.imagen = new ImageIcon(ruta);
         this.icono = new ImageIcon(this.imagen.getImage().getScaledInstance(
-                lbl.getWidth(), 
-                lbl.getHeight(), 
+                lbl.getWidth(),
+                lbl.getHeight(),
                 Image.SCALE_DEFAULT));
         lbl.setIcon(this.icono);
         this.repaint();
     }
-    
-    
+
+    private void cargarTitulosTabla() {
+        String[] titulos = {"Fecha", "Entrada Matutina", "Salida Matutina", "Entrada Vespertina", "Salida Vespertina", "Horas"};
+        this.modeloTabla = new DefaultTableModel(null, titulos);
+        jtblDocentes.setModel(modeloTabla);
+        for (int i = 0; i < titulos.length; i++) {
+            jtblDocentes.getColumnModel().getColumn(i).setResizable(false);
+        }
+    }
+
+    private void buscarDocentes(String cedula) {
+        if (cedula.equals("1802144090")) {
+            jlbUsuario.setText("LuisT90");
+            jlbCedula.setText("1802144090");
+            jlbNombre.setText("Luis Torres");
+            jlbAsistencias.setText(String.valueOf(20));
+            jlbInasistencias.setText(String.valueOf(1));
+            cargarTabla("01/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("02/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("03/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("04/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("05/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("06/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("07/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("01/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("02/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("03/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("04/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("05/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("06/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("07/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("01/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("02/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("03/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("04/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("05/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("06/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            cargarTabla("07/02/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+
+        } else {
+            if (cedula.equals("1802144091")) {
+                jlbUsuario.setText("AnaM91");
+                jlbCedula.setText("1802144091");
+                jlbNombre.setText("Ana Martinez");
+                jlbAsistencias.setText(String.valueOf(21));
+                jlbInasistencias.setText(String.valueOf(0));
+                cargarTabla("01/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("02/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("03/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("04/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("05/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("06/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("07/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("01/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("02/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("03/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("04/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("05/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("06/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("07/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("01/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("02/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("03/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("04/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("05/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("06/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+                cargarTabla("07/06/2022", "07:01:00", "13:00:01", "14:00:00", "16:00:00", "8");
+            } else {
+                JOptionPane.showMessageDialog(null, "Numero de cedula no encontrado");
+            }
+        }
+    }
+
+    private void cargarTabla(String fecha, String horaEntradaM, String horaSalidaM, String horaEntradaV, String horaSalidaV, String horas) {
+        String[] registro = new String[modeloTabla.getColumnCount()];
+        registro[0] = fecha;
+        registro[1] = horaEntradaM;
+        registro[2] = horaSalidaM;
+        registro[3] = horaEntradaV;
+        registro[4] = horaSalidaV;
+        registro[5] = horas;
+        modeloTabla.addRow(registro);
+        jtblDocentes.setModel(modeloTabla);
+
+    }
+
+    private void datosDocente() {
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Minim;
     private javax.swing.JLabel RegDocen;
     private javax.swing.JLabel X;
     private javax.swing.JLabel imgLogoEncab;
+    private javax.swing.JLabel imgLogoEncab1;
+    private javax.swing.JLabel imgLogoEncab2;
     private javax.swing.JLabel imgLogoFisei;
     private javax.swing.JLabel imgLogoUta;
+    private javax.swing.JLabel imgUsuario;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlbAsistencias;
+    private javax.swing.JLabel jlbCedula;
+    private javax.swing.JLabel jlbInasistencias;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbUsuario;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpMinim;
     private javax.swing.JPanel jpOpBar;
+    private javax.swing.JTable jtblDocentes;
+    private javax.swing.JTextField jtxtBuscar;
     // End of variables declaration//GEN-END:variables
 }
