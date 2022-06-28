@@ -15,9 +15,10 @@ public class Control_Ingreso {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Registro reg = new Registro();
+        /*Registro reg = new Registro();
         String[] datos = {"mh1234","9874","Maria","Hidalgo","1803"};
-        reg.almacenarDatos(datos);
+        reg.almacenarDatos(datos);*/
+        new vistas.CRUD().setVisible(true);
     }
     
 }
