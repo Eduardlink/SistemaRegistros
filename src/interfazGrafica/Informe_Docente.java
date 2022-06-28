@@ -266,6 +266,7 @@ public class Informe_Docente extends javax.swing.JFrame {
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 370, -1));
 
         jlbCedula.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlbCedula.setText("l");
         jPanel2.add(jlbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 210, -1));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -322,12 +323,15 @@ public class Informe_Docente extends javax.swing.JFrame {
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 110, 200));
 
         jlbInasistencias.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlbInasistencias.setText("l");
         jPanel2.add(jlbInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 210, -1));
 
         jlbAsistencias.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlbAsistencias.setText("l");
         jPanel2.add(jlbAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 210, -1));
 
         jlbNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlbNombre.setText("l");
         jPanel2.add(jlbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 210, -1));
 
         imgLogoEncab1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -338,6 +342,7 @@ public class Informe_Docente extends javax.swing.JFrame {
         jPanel2.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 70, 60));
 
         jlbUsuario.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jlbUsuario.setText("l");
         jPanel2.add(jlbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 120, -1));
 
         jLabel3.setText("Nota: Datos de prueba cargados con cedula 1802144090 y 1802144091");

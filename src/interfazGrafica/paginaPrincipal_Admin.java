@@ -204,6 +204,11 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jbtnReportes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jbtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
         jbtnReportes.setText("Reportes por Docente");
+        jbtnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReportesActionPerformed(evt);
+            }
+        });
         jpMenuBar.add(jbtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 250, 80));
 
         jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
@@ -327,6 +332,10 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     private void jbtnReportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportes1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnReportes1ActionPerformed
+
+    private void jbtnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesActionPerformed
+       new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
+    }//GEN-LAST:event_jbtnReportesActionPerformed
 
     /**
      * @param args the command line arguments
