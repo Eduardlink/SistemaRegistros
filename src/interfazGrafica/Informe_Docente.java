@@ -5,10 +5,10 @@
  */
 package interfazGrafica;
 
-import control_ingreso.Conexion;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
-import control_ingreso.Loguin;
+
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.BorderFactory;
