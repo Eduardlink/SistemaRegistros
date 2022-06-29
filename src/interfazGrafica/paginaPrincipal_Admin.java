@@ -59,9 +59,9 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         X = new javax.swing.JLabel();
         jpMenuBar = new javax.swing.JPanel();
         jbtnUsuarios = new javax.swing.JButton();
-        jbtnReportes = new javax.swing.JButton();
+        jbtnReportesDocente = new javax.swing.JButton();
         jbtnHome = new javax.swing.JButton();
-        jbtnReportes1 = new javax.swing.JButton();
+        jbtnReportesFecha = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
@@ -193,6 +193,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jbtnUsuarios.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jbtnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user.png"))); // NOI18N
         jbtnUsuarios.setText("Usuarios");
+        jbtnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnUsuariosActionPerformed(evt);
@@ -200,20 +201,22 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
         jpMenuBar.add(jbtnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, 190, 80));
 
-        jbtnReportes.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
-        jbtnReportes.setText("Reportes por Docente");
-        jbtnReportes.addActionListener(new java.awt.event.ActionListener() {
+        jbtnReportesDocente.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnReportesDocente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
+        jbtnReportesDocente.setText("Reportes por Docente");
+        jbtnReportesDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnReportesActionPerformed(evt);
+                jbtnReportesDocenteActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 250, 80));
+        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 250, 80));
 
         jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
         jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
         jbtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
+        jbtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnHomeActionPerformed(evt);
@@ -221,16 +224,17 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
         jpMenuBar.add(jbtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, -5, 120, 70));
 
-        jbtnReportes1.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportes1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
-        jbtnReportes1.setText("Reportes por Fecha");
-        jbtnReportes1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
+        jbtnReportesFecha.setText("Reportes por Fecha");
+        jbtnReportesFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnReportes1ActionPerformed(evt);
+                jbtnReportesFechaActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnReportes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -10, 260, 80));
+        jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -10, 260, 80));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -329,13 +333,13 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
        new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
     }//GEN-LAST:event_jbtnHomeActionPerformed
 
-    private void jbtnReportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportes1ActionPerformed
+    private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnReportes1ActionPerformed
+    }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
-    private void jbtnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesActionPerformed
+    private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
        new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
-    }//GEN-LAST:event_jbtnReportesActionPerformed
+    }//GEN-LAST:event_jbtnReportesDocenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,8 +405,8 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton jbtnHome;
-    private javax.swing.JButton jbtnReportes;
-    private javax.swing.JButton jbtnReportes1;
+    private javax.swing.JButton jbtnReportesDocente;
+    private javax.swing.JButton jbtnReportesFecha;
     private javax.swing.JButton jbtnUsuarios;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;

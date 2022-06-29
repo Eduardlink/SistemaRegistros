@@ -24,7 +24,7 @@ public class crud extends javax.swing.JPanel {
         String[] titulos = {"Cédula", "Nombre", "Apellido", "Contraseña", "Root"};
         modeloTabla.setColumnIdentifiers(titulos);
         jtblCrud.setModel(modeloTabla);
-        this.bloquearTextos();
+        this.bloquearTextosyBusqueda();
     }
 
     /**
@@ -257,6 +257,9 @@ public class crud extends javax.swing.JPanel {
         jpActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpActualizar.setPreferredSize(new java.awt.Dimension(105, 105));
         jpActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpActualizarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jpActualizarMouseEntered(evt);
             }
@@ -592,21 +595,24 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     }//GEN-LAST:event_jpSalirMouseExited
 
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-        this.bloquearTextos();
+        this.bloquearTextosyBusqueda();
     }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     private void jpBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseClicked
+        this.bloquearTextos();
         jtxtBusqueda.setEnabled(true);
     }//GEN-LAST:event_jpBuscar2MouseClicked
-    private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {
+
+    private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextos();
-    }
+    }//GEN-LAST:event_jpActualizarMouseClicked
+ 
 
     private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
     }
 
-    public void bloquearTextos() {
+    public void bloquearTextosyBusqueda() {
         jtxtCedula.setEnabled(false);
         jtxtNombre.setEnabled(false);
         jtxtClave.setEnabled(false);
@@ -616,13 +622,22 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
     }
 
+    public void bloquearTextos() {
+        jtxtCedula.setEnabled(false);
+        jtxtNombre.setEnabled(false);
+        jtxtClave.setEnabled(false);
+        jtxtApellido.setEnabled(false);
+        jchkRoot.setEnabled(false);
+
+    }
+
     public void desbloquearTextos() {
         jtxtCedula.setEnabled(true);
         jtxtNombre.setEnabled(true);
         jtxtClave.setEnabled(true);
         jtxtApellido.setEnabled(true);
         jchkRoot.setEnabled(true);
-        jtxtBusqueda.setEnabled(true);
+
     }
 
     public boolean validadorDeCedula(String cedula) {
