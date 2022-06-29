@@ -94,6 +94,24 @@ public class crud extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setText("Root");
 
+        jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNombreKeyTyped(evt);
+            }
+        });
+
+        jtxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtCedulaKeyTyped(evt);
+            }
+        });
+
         jchkRoot.setBackground(new java.awt.Color(204, 204, 204));
         jchkRoot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -445,6 +463,12 @@ public class crud extends javax.swing.JPanel {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jtxtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtBusquedaKeyTyped(evt);
+            }
+        });
+
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/buscar.png"))); // NOI18N
         jbtnBuscar.setText("Buscar");
 
@@ -606,6 +630,50 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextos();
     }//GEN-LAST:event_jpActualizarMouseClicked
+
+    private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtNombreKeyTyped
+
+    private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtApellidoKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtApellidoKeyTyped
+
+    private void jtxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCedulaKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtCedulaKeyTyped
+
+    private void jtxtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtBusquedaKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtBusquedaKeyTyped
  
 
     private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
@@ -686,50 +754,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         return cedulaCorrecta;
     }
 
-    private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();
+   
 
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
+   
 
-        if (!(minusculas || mayusculas || espacio)) {
-            evt.consume();
-        }
-    }
-
-    private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();
-
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            evt.consume();
-        }
-    }
-
-    private void jtxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();
-
-        boolean numeros = key >= 48 && key <= 57;
-
-        if (!numeros) {
-            evt.consume();
-        }
-
-    }
-
-    private void jtxtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();
-
-        boolean numeros = key >= 48 && key <= 57;
-
-        if (!numeros) {
-            evt.consume();
-        }
-    }
+    
 
     private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {
         this.validadorDeCedula(jtxtCedula.getText());

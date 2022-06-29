@@ -208,10 +208,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtNombre">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtNombreKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtApellido">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtApellidoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtCedula">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtCedulaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtClave">
             </Component>
@@ -717,6 +726,9 @@
               </Layout>
             </Container>
             <Component class="javax.swing.JTextField" name="jtxtBusqueda">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtBusquedaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbtnBuscar">
               <Properties>
