@@ -45,6 +45,11 @@ public class docente extends javax.swing.JPanel {
 
         jtxtuser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jtxtuser.setBorder(null);
+        jtxtuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtuserActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Contraseña");
@@ -107,6 +112,10 @@ public class docente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Espacios invalidos o incompletos");
         }
     }//GEN-LAST:event_jbtnRegistroActionPerformed
+
+    private void jtxtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtuserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtuserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

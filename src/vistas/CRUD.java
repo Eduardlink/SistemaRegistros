@@ -7,6 +7,7 @@ package vistas;
 import controladores.CRUDController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import controladores.LoguinController;
 
 /**
  *
@@ -19,6 +20,21 @@ public class CRUD extends javax.swing.JFrame {
      */
     public CRUD() {
         initComponents();
+    }
+
+    public void buscarDatos() {
+        CRUDController controlador = new CRUDController();
+        if (controlador.ValidarUsuario(jtxtUsuario.getText(), "123")) {
+            ArrayList<Object> datos = controlador.readUsuario(jtxtUsuario.getText());
+            jtxtCedula.setText(datos.get(5).toString());
+            jtxtNombre.setText(datos.get(3).toString());
+            jtxtApellido.setText(datos.get(4).toString());
+            jtxtUser.setText(datos.get(1).toString());
+            jtxtClave.setText(datos.get(2).toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "No existen registros");
+            jtxtUsuario.requestFocus();
+        }
     }
 
     /**
@@ -51,6 +67,8 @@ public class CRUD extends javax.swing.JFrame {
         jtxtUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jbtnCargar = new javax.swing.JButton();
+        jtxtPassword = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,24 +188,26 @@ public class CRUD extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel8.setText("User");
 
-        jbtnCargar.setText("Cargar");
+        jbtnCargar.setText("Verificar");
         jbtnCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnCargarActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,23 +216,27 @@ public class CRUD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jbtnCargar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGap(31, 31, 31)
-                        .addComponent(jtxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jbtnCargar)
+                                .addGap(80, 80, 80))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtPassword)
+                                    .addComponent(jtxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                                .addGap(17, 17, 17)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(jLabel1)
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,9 +252,13 @@ public class CRUD extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
-                        .addGap(38, 38, 38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtnCargar)
-                        .addContainerGap())))
+                        .addGap(32, 32, 32))))
         );
 
         pack();
@@ -245,23 +273,21 @@ public class CRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtSalirActionPerformed
 
     private void jbtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCargarActionPerformed
-        CRUDController controlador = new CRUDController();
-        if(controlador.ValidarUsuario(jtxtUsuario.getText(), "123")){
-            ArrayList<Object> datos = controlador.readUsuario(jtxtUsuario.getText());
-            jtxtCedula.setText(datos.get(5).toString());
-            jtxtNombre.setText(datos.get(3).toString());
-            jtxtApellido.setText(datos.get(4).toString());
-            jtxtUser.setText(datos.get(1).toString());
-            jtxtClave.setText(datos.get(2).toString());
-        }else{
-            JOptionPane.showMessageDialog(null, "No existen registros");
-            jtxtUsuario.requestFocus();
+        //buscarDatos();
+        LoguinController controlador = new LoguinController();
+        boolean[] verificado = controlador.verificar(jtxtUsuario.getText(), jtxtPassword.getText(), "0");
+        if (verificado[0] == false) {
+            JOptionPane.showMessageDialog(null, "No existe el usuario" + jtxtUsuario.getText());
+        } else if (verificado[0] == true && verificado[1] == false) {
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");
+        } else if (verificado[0] == true && verificado[1] == true) {
+            JOptionPane.showMessageDialog(null, "Exito");
         }
     }//GEN-LAST:event_jbtnCargarActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
         CRUDController controlador = new CRUDController();
-        String[] datos ={
+        String[] datos = {
             jtxtUser.getText(),
             jtxtClave.getText(),
             jtxtNombre.getText(),
@@ -316,6 +342,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -326,6 +353,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtCedula;
     private javax.swing.JTextField jtxtClave;
     private javax.swing.JTextField jtxtNombre;
+    private javax.swing.JTextField jtxtPassword;
     private javax.swing.JButton jtxtSalir;
     private javax.swing.JTextField jtxtUser;
     private javax.swing.JTextField jtxtUsuario;

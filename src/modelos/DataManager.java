@@ -79,7 +79,7 @@ public class DataManager extends DataBase {
             this.consulta = this.conexion.createStatement();
             this.resultados = this.consulta.executeQuery(sql);
             if (this.resultados.next()) {
-                for (int i = 1; i < (this.resultados.getMetaData().getColumnCount()); i++) {
+                for (int i = 1; i <= (this.resultados.getMetaData().getColumnCount()); i++) {
                     retorno.add(this.resultados.getObject(i));
                 }
             }
