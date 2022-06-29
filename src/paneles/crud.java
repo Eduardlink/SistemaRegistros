@@ -463,6 +463,11 @@ public class crud extends javax.swing.JPanel {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jtxtBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtBusquedaFocusLost(evt);
+            }
+        });
         jtxtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtBusquedaKeyTyped(evt);
@@ -674,6 +679,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
             evt.consume();
         }
     }//GEN-LAST:event_jtxtBusquedaKeyTyped
+
+    private void jtxtBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtBusquedaFocusLost
+       this.validadorDeCedula(jtxtBusqueda.getText());
+    }//GEN-LAST:event_jtxtBusquedaFocusLost
  
 
     private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
@@ -755,15 +764,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     }
 
    
-
    
 
     
 
-    private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {
-        this.validadorDeCedula(jtxtCedula.getText());
-
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
