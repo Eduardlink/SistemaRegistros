@@ -383,15 +383,6 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
     }
 
-    private void pintarImagen(JLabel lbl, String ruta) {
-        this.imagen = new ImageIcon(ruta);
-        this.icono = new ImageIcon(this.imagen.getImage().getScaledInstance(
-                lbl.getWidth(),
-                lbl.getHeight(),
-                Image.SCALE_DEFAULT));
-        lbl.setIcon(this.icono);
-        this.repaint();
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
