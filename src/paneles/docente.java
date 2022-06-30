@@ -5,6 +5,9 @@
  */
 package paneles;
 
+import controladores.LoguinController;
+import java.awt.Color;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +21,6 @@ public class docente extends javax.swing.JPanel {
      */
     public docente() {
         initComponents();
-        
     }
 
     /**
@@ -36,7 +38,7 @@ public class docente extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jtxtpass = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
-        jbtnRegistro = new javax.swing.JButton();
+        jbtnEntrada = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -54,15 +56,16 @@ public class docente extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Contraseña");
 
+        jtxtpass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jtxtpass.setBorder(null);
 
-        jbtnRegistro.setBackground(new java.awt.Color(102, 102, 102));
-        jbtnRegistro.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jbtnRegistro.setText("Registrar Entrada/Salida");
-        jbtnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnRegistro.addActionListener(new java.awt.event.ActionListener() {
+        jbtnEntrada.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnEntrada.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jbtnEntrada.setText("Registrar Entrada");
+        jbtnEntrada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnRegistroActionPerformed(evt);
+                jbtnEntradaActionPerformed(evt);
             }
         });
 
@@ -71,20 +74,19 @@ public class docente extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(373, Short.MAX_VALUE)
+                .addContainerGap(725, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(155, 155, 155))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbtnRegistro)
-                        .addGap(340, 340, 340))))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(jbtnEntrada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,28 +104,61 @@ public class docente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtnRegistro)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(jbtnEntrada)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbtnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistroActionPerformed
-        if (jtxtuser.getText().trim().isEmpty() || String.valueOf(jtxtpass.getPassword()).trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Espacios invalidos o incompletos");
-        }
-    }//GEN-LAST:event_jbtnRegistroActionPerformed
 
     private void jtxtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtuserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtuserActionPerformed
 
+    private void jbtnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEntradaActionPerformed
+        if (jtxtuser.getText().trim().isEmpty() || String.valueOf(jtxtpass.getPassword()).trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Espacios invalidos o incompletos");
+        }
+        iniciarSesion();
+        validarBoton();
+    }//GEN-LAST:event_jbtnEntradaActionPerformed
+    public void validarBoton() {
+        LocalTime horaActual = LocalTime.now();
+        LocalTime inicio = LocalTime.parse("06:50");
+        LocalTime fin = LocalTime.parse("07:15");
+        LocalTime incioTarde = LocalTime.parse("14:00");
+        LocalTime finTarde = LocalTime.parse("20:00");
 
+        boolean hora1 = horaActual.isAfter(inicio);
+        boolean hora2 = horaActual.isBefore(fin);
+
+        //  JOptionPane.showMessageDialog(null, hora1);
+        // JOptionPane.showMessageDialog(null, hora2);
+        if (jbtnEntrada.isSelected()) {
+            jbtnEntrada.setBackground(new Color(32, 146, 25));
+            jbtnEntrada.setText("Registrar Entrada");
+        } else {
+            jbtnEntrada.setBackground(new Color(180, 35, 35));
+            jbtnEntrada.setText("Registrar Salida");
+        }
+
+    }
+
+    public void iniciarSesion() {
+        LoguinController controlador = new LoguinController();
+        boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "0");
+        if (verificado[0] == false) {
+            JOptionPane.showMessageDialog(null, "No existe el usuario" + " " + jtxtuser.getText());
+        } else if (verificado[0] == true && verificado[1] == false) {
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");
+        } else if (verificado[0] == true && verificado[1] == true) {
+            JOptionPane.showMessageDialog(null, "Exito");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JButton jbtnRegistro;
+    private javax.swing.JToggleButton jbtnEntrada;
     private javax.swing.JPasswordField jtxtpass;
     private javax.swing.JTextField jtxtuser;
     // End of variables declaration//GEN-END:variables
