@@ -11,7 +11,7 @@ import modelos.DataManager;
  *
  * @author Pc
  */
-public class CRUDController {
+public class CRUD_Controller_Base {
     
     private boolean valido;
     
