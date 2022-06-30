@@ -57,9 +57,10 @@ public class InicioPrincipal extends javax.swing.JFrame {
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jbtndocente = new javax.swing.JButton();
-        jbtnadmin = new javax.swing.JButton();
         PanelInicio = new javax.swing.JPanel();
+        jpMenuBar = new javax.swing.JPanel();
+        jbtnadmin = new javax.swing.JButton();
+        jbtndocente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -215,26 +216,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 30, -1, -1));
 
-        jbtndocente.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jbtndocente.setText("Docente");
-        jbtndocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtndocente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtndocenteActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 50));
-
-        jbtnadmin.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jbtnadmin.setText("Administrador");
-        jbtnadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnadminActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, -1, -1));
-
         PanelInicio.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout PanelInicioLayout = new javax.swing.GroupLayout(PanelInicio);
@@ -249,6 +230,39 @@ public class InicioPrincipal extends javax.swing.JFrame {
         );
 
         jPanel3.add(PanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 1130, 480));
+
+        jpMenuBar.setBackground(new java.awt.Color(63, 78, 79));
+        jpMenuBar.setToolTipText("");
+        jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
+        jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbtnadmin.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnadmin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbtnadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/admin.jpg"))); // NOI18N
+        jbtnadmin.setText("Administrador");
+        jbtnadmin.setBorder(null);
+        jbtnadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnadminActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+
+        jbtndocente.setBackground(new java.awt.Color(255, 255, 255));
+        jbtndocente.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbtndocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/docente.png"))); // NOI18N
+        jbtndocente.setText("Docente");
+        jbtndocente.setBorder(null);
+        jbtndocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtndocente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtndocenteActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 170, 50));
+
+        jPanel3.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -391,6 +405,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpHeader;
+    private javax.swing.JPanel jpMenuBar;
     private javax.swing.JPanel jpMinim;
     private javax.swing.JPanel jpOpBar;
     // End of variables declaration//GEN-END:variables
