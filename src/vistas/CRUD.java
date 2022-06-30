@@ -4,7 +4,7 @@
  */
 package vistas;
 
-import controladores.CRUDController;
+import controladores.CRUD_Controller_Base;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import controladores.LoguinController;
@@ -23,7 +23,7 @@ public class CRUD extends javax.swing.JFrame {
     }
 
     public void buscarDatos() {
-        CRUDController controlador = new CRUDController();
+        CRUD_Controller_Base controlador = new CRUD_Controller_Base();
         if (controlador.ValidarUsuario(jtxtUsuario.getText(), "123")) {
             ArrayList<Object> datos = controlador.readUsuario(jtxtUsuario.getText());
             jtxtCedula.setText(datos.get(5).toString());
@@ -286,7 +286,7 @@ public class CRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCargarActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
-        CRUDController controlador = new CRUDController();
+        CRUD_Controller_Base controlador = new CRUD_Controller_Base();
         String[] datos = {
             jtxtUser.getText(),
             jtxtClave.getText(),
