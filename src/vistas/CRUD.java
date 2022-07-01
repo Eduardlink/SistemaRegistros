@@ -8,6 +8,13 @@ import controladores.CRUD_Controller_Base;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import controladores.LoguinController;
+import controladores.crudController;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import modelos.DataManager;
 
 /**
  *
@@ -35,6 +42,11 @@ public class CRUD extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No existen registros");
             jtxtUsuario.requestFocus();
         }
+    }
+
+    public void mostrarUsuarios() {
+        crudController controlador = new crudController();
+        jtblUsuarios.setModel(controlador.cargarTabla());
     }
 
     /**
@@ -69,6 +81,7 @@ public class CRUD extends javax.swing.JFrame {
         jbtnCargar = new javax.swing.JButton();
         jtxtPassword = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,13 +185,13 @@ public class CRUD extends javax.swing.JFrame {
 
         jtblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jtblUsuarios);
@@ -209,6 +222,13 @@ public class CRUD extends javax.swing.JFrame {
 
         jLabel9.setText("Password");
 
+        jButton1.setText("Cargar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,7 +250,10 @@ public class CRUD extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jtxtPassword)
                                     .addComponent(jtxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                                .addGap(17, 17, 17)))))
+                                .addGap(17, 17, 17))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jButton1)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
@@ -241,8 +264,10 @@ public class CRUD extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -298,6 +323,10 @@ public class CRUD extends javax.swing.JFrame {
         controlador.createUsuario2(datos);
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mostrarUsuarios();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +363,7 @@ public class CRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

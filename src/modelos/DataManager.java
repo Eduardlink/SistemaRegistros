@@ -36,31 +36,21 @@ public class DataManager extends DataBase {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void ingresarConsulta(String sql){
-        try {
-            iniciar();
-            this.conexion = super.getConexion();
-            consulta = conexion.createStatement();
-            consulta.execute(sql);
-            terminar();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("->"+ex);
-        }
-    }
 
     public ResultSet obtenerDatos(String sql) {
         try {
             iniciar();
             this.consulta = conexion.createStatement();
             this.resultados = consulta.executeQuery(sql);
-            cerrar();
+            //cerrar();
+            return this.resultados;
         } catch (SQLException ex) {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        return this.resultados;
+
     }
+
 
     private void iniciar() {
         super.conectar();

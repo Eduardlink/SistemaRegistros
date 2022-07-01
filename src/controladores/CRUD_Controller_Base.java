@@ -84,7 +84,7 @@ public class CRUD_Controller_Base {
         DataManager manejador = new DataManager();
         String sql = ("INSERT INTO Registros(entrada_man,salida_man,entrada_tarde,salida_tarde,fecha,usuario) "
                 + "VALUES (" + datos[0] + "," + datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4] + "," + datos[5] + ");");
-        manejador.ingresarConsulta(sql);
+        //manejador.ingresarConsulta(sql);
     }
     
     public ArrayList readRegistro(String usuario) {
