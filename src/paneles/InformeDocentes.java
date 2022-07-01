@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import controladores.inforDocController;
 
 /**
  *
@@ -31,6 +32,10 @@ public class InformeDocentes extends javax.swing.JPanel {
         initComponents();
         //this.pintarImagen(this.imgUsuario, "src/imagenesFrames/usuario.png");
         cargarTitulosTabla();
+        
+        //
+        inforDocController informe = new inforDocController();
+        String[] dat = informe.mostrarDatos("1801");
     }
 
     /**

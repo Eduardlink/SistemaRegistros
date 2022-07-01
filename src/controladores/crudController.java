@@ -53,6 +53,8 @@ public class crudController {
         datos = manejador.resultado("SELECT cedula FROM usuarios WHERE cedula = '" + cedula + "';");
         return datos;
     }
+    
+
 
     //eliminar
     public void eliminarUsuario(String cedula) {
