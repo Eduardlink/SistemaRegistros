@@ -20,5 +20,8 @@ public class Control_Ingreso {
         reg.almacenarDatos(datos);*/
         new vistas.CRUD().setVisible(true);
     }
+    private boolean metodo(){
+        return true;
+    }
     
 }
