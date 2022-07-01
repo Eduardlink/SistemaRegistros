@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelos.DataManager;
@@ -27,13 +28,13 @@ public class inforDocController {
         return info;
     }
 
-    public DefaultTableModel cargarTabla() {
+    public DefaultTableModel cargarTabla(String cedula) {
         DataManager manejador = new DataManager();
-        String[] titulos ={
-           "Fecha","Entrada Matutina","Salida Matutina","Entrada Vespertina","Salida Vespertina","Horas" 
-        } ;
-        DefaultTableModel modeloTabla = new DefaultTableModel(null,titulos);
-        
+        String[] titulos = {
+            "Fecha", "Entrada Matutina", "Salida Matutina", "Entrada Vespertina", "Salida Vespertina", "Horas"
+        };
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
+        ResultSet resultado = manejador.obtenerDatos("SELECT * FROM registros WHERE cedula = '" + cedula + "';");
         return null;
     }
 }
