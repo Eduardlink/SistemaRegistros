@@ -202,7 +202,7 @@ public class BusquedaPorFecha extends javax.swing.JFrame {
             .addGroup(jpCrudLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(crud)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpMenuBar.add(jpCrud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 40));
@@ -240,7 +240,7 @@ public class BusquedaPorFecha extends javax.swing.JFrame {
             .addGroup(jpInformesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(informes)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpMenuBar.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, 40));
@@ -330,7 +330,7 @@ public class BusquedaPorFecha extends javax.swing.JFrame {
 
         crud1.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         crud1.setText("Buscar por fecha");
-        bg.add(crud1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        bg.add(crud1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 20)); // NOI18N
         jLabel6.setText("Busqueda");
@@ -381,14 +381,14 @@ public class BusquedaPorFecha extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(imgSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 160, -1, 40));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 190, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,15 +396,15 @@ public class BusquedaPorFecha extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1231, Short.MAX_VALUE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(39, 39, 39)
                 .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(67, 67, 67))
         );
 
         pack();

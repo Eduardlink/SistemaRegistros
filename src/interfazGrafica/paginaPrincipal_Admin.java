@@ -334,7 +334,8 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnHomeActionPerformed
 
     private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        // TODO add your handling code here:
+        
+        new CambiaPanel(jpPanelUsuarios, new paneles.BusquedaFecha());
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
