@@ -36,8 +36,8 @@ public class crudController {
             cedula.toLowerCase(),
             root
         };
-        String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root) "
-                + "VALUES ('%s','%s','%s','%s','%s','%s');", ingreso);
+        String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root,estado) "
+                + "VALUES ('%s','%s','%s','%s','%s','%s','1');", ingreso);
         manejador.ejecutarConsulta(sql);
     }
 
@@ -125,8 +125,9 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
+                if(datos.getString("estado").equals("1")){
                 modeloTabla.addRow(registro);
-                
+                }
                 num++;
             }
             manejador.cerrar();
