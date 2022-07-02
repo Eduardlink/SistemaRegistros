@@ -24,7 +24,7 @@ public class inforDocController {
             datos.get(0).toString(),
             datos.get(1).toString(),
             datos.get(2).toString(),
-            datos.get(3).toString(),};
+            datos.get(3).toString()};
         return info;
     }
 
