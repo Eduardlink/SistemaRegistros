@@ -5,6 +5,7 @@
  */
 package paneles;
 
+import controladores.LoguinController;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,18 @@ public class admin extends javax.swing.JPanel {
      */
     public admin() {
         initComponents();
+    }
+    
+        public void iniciarSesion(){
+        LoguinController controlador = new LoguinController();
+        boolean[] verificado = controlador.verificar(jtxtuser.getText(),String.valueOf(jtxtpass.getPassword()), "1");
+        if (verificado[0] == false) {
+            JOptionPane.showMessageDialog(null, "No existe el usuario" + " "+ jtxtuser.getText());
+        } else if (verificado[0] == true && verificado[1] == false) {
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");
+        } else if (verificado[0] == true && verificado[1] == true) {
+            JOptionPane.showMessageDialog(null, "Exito");
+        }
     }
 
     /**
@@ -110,6 +123,7 @@ public class admin extends javax.swing.JPanel {
         if (jtxtuser.getText().trim().isEmpty() || String.valueOf(jtxtpass.getPassword()).trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Espacios invalidos o incompletos");
         }
+        iniciarSesion();
     }//GEN-LAST:event_jbtnRegistroActionPerformed
 
 

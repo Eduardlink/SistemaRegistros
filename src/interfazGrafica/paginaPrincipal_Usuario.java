@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author spc
  */
-public class paginaPrincipal_Admin extends javax.swing.JFrame {
+public class paginaPrincipal_Usuario extends javax.swing.JFrame {
 
     private ImageIcon imagen;
     private Icon icono;
@@ -29,11 +29,10 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public paginaPrincipal_Admin() {
+    public paginaPrincipal_Usuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.jbtnUsuarios.setSelected(false);
-        new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
+
 
     }
 
@@ -58,14 +57,14 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpCerrar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         jpMenuBar = new javax.swing.JPanel();
-        jbtnUsuarios = new javax.swing.JButton();
-        jbtnReportesDocente = new javax.swing.JButton();
         jbtnHome = new javax.swing.JButton();
-        jbtnReportesFecha = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
-        jpPanelUsuarios = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -189,30 +188,6 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnUsuarios.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnUsuarios.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user.png"))); // NOI18N
-        jbtnUsuarios.setText("Usuarios");
-        jbtnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnUsuariosActionPerformed(evt);
-            }
-        });
-        jpMenuBar.add(jbtnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, 190, 80));
-
-        jbtnReportesDocente.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesDocente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
-        jbtnReportesDocente.setText("Reportes por Docente");
-        jbtnReportesDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnReportesDocente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnReportesDocenteActionPerformed(evt);
-            }
-        });
-        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 250, 80));
-
         jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
         jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
         jbtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
@@ -223,18 +198,6 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
             }
         });
         jpMenuBar.add(jbtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, -5, 120, 70));
-
-        jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
-        jbtnReportesFecha.setText("Reportes por Fecha");
-        jbtnReportesFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnReportesFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnReportesFechaActionPerformed(evt);
-            }
-        });
-        jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -10, 260, 80));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -263,9 +226,43 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
 
         jPanel2.add(jpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
-        jpPanelUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        jpPanelUsuarios.setLayout(new javax.swing.BoxLayout(jpPanelUsuarios, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel2.add(jpPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1250, 590));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        rSLabelHora1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelHora1.setFont(new java.awt.Font("Roboto Bold", 1, 48)); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 420, 150));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jButton1.setText("Registrar Entrada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jButton2.setText("Registrar Salida");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,23 +321,13 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_XMouseClicked
 
-    private void jbtnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUsuariosActionPerformed
-     
-        new CambiaPanel(jpPanelUsuarios, new paneles.crud());
-    }//GEN-LAST:event_jbtnUsuariosActionPerformed
-
     private void jbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHomeActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
+
     }//GEN-LAST:event_jbtnHomeActionPerformed
 
-    private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        
-        new CambiaPanel(jpPanelUsuarios, new paneles.BusquedaFecha());
-    }//GEN-LAST:event_jbtnReportesFechaActionPerformed
-
-    private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
-    }//GEN-LAST:event_jbtnReportesDocenteActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,14 +346,22 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(paginaPrincipal_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paginaPrincipal_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(paginaPrincipal_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paginaPrincipal_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(paginaPrincipal_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paginaPrincipal_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(paginaPrincipal_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(paginaPrincipal_Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -379,7 +374,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new paginaPrincipal_Admin().setVisible(true);
+                new paginaPrincipal_Usuario().setVisible(true);
             }
         });
     }
@@ -393,19 +388,19 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogoEncab;
     private javax.swing.JLabel imgLogoFisei;
     private javax.swing.JLabel imgLogoUta;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton jbtnHome;
-    private javax.swing.JButton jbtnReportesDocente;
-    private javax.swing.JButton jbtnReportesFecha;
-    private javax.swing.JButton jbtnUsuarios;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpMenuBar;
     private javax.swing.JPanel jpMinim;
     private javax.swing.JPanel jpOpBar;
-    private javax.swing.JPanel jpPanelUsuarios;
+    private rojeru_san.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }

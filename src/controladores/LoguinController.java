@@ -13,6 +13,7 @@ import modelos.DataManager;
  */
 public class LoguinController {
 
+    //[false,false]-> [0]usuario
     public boolean[] verificar(String usuario, String clave, String root) {
         boolean[] valido = {false, false};
         DataManager manejador = new DataManager();
