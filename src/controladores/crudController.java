@@ -61,10 +61,10 @@ public class crudController {
         manejador.ejecutarConsulta("UPDATE usuarios SET estado='0' WHERE cedula='" + cedula + "';");
     }
 
-    public void updateUser(String nombre, String apellido, String cedula, String clave, String root) {
-        clave = new CriptPass().Encriptar(cedula);
+    public void updateUser(String nombre, String apellido, String cedula,  String root) {
+        
         manejador.ejecutarConsulta("UPDATE usuarios SET nombre='" + nombre + "', apellido = '" + apellido + "',"
-                + "cedula = '" + cedula + "', clave ='" + clave + "', root ='" + root + "' WHERE cedula='" + cedula + "';");
+                + "cedula = '" + cedula +  "', root ='" + root + "' WHERE cedula='" + cedula + "';");
     }
 
     public DefaultTableModel cargarTabla() {
@@ -90,7 +90,9 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
+                if(datos.getString("estado").equals("1")){
                 modeloTabla.addRow(registro);
+                }
                 
                 num++;
             }
