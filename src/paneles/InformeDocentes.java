@@ -34,8 +34,6 @@ public class InformeDocentes extends javax.swing.JPanel {
         cargarTitulosTabla();
         
         //
-        inforDocController informe = new inforDocController();
-        String[] dat = informe.mostrarDatos("1801");
     }
 
     /**
@@ -333,7 +331,7 @@ public class InformeDocentes extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (validacionCedula == true) {
-            buscarDocentes(jtxtBuscar.getText());
+            buscarDocentes2(jtxtBuscar.getText());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -341,7 +339,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         boolean cedulaCorrecta = false;
         boolean esNumero = false;
 
-        if (cedula.length() != 10) {
+        if (cedula.length() != 4) {
             JOptionPane.showMessageDialog(null, "La logitud de caracteres debe ser igual a 10");
             return false;
         } else {
@@ -379,8 +377,23 @@ public class InformeDocentes extends javax.swing.JPanel {
             jtblDocentes.getColumnModel().getColumn(i).setResizable(false);
         }
     }
+    
+    
+        private void buscarDocentes2(String cedula) {
+        inforDocController informe = new inforDocController();
+        String[] datos = informe.mostrarDatos(cedula);
+        if(datos[0].isEmpty()){
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            
+        }else{
+        jlbUsuario.setText(datos[0]);
+        jlbCedula.setText(datos[3]);
+        jlbNombre.setText(datos[1] + " " + datos[2]);
+        }
 
-    private void buscarDocentes(String cedula) {
+    }
+
+    /*private void buscarDocentes(String cedula) {
         if (cedula.equals("1802144090")) {
             jlbUsuario.setText("LuisT90");
             jlbCedula.setText("1802144090");
@@ -441,7 +454,7 @@ public class InformeDocentes extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Numero de cedula no encontrado");
             }
         }
-    }
+    }*/
 
     private void cargarTabla(String fecha, String horaEntradaM, String horaSalidaM, String horaEntradaV, String horaSalidaV, String horas) {
         String[] registro = new String[modeloTabla.getColumnCount()];
