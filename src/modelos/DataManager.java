@@ -18,7 +18,6 @@ public class DataManager extends DataBase {
     private Connection conexion;
     private Statement consulta;
     private ResultSet resultados;
-    private PreparedStatement ingresoquery;
 
     public DataManager() {
         super();
@@ -42,8 +41,7 @@ public class DataManager extends DataBase {
         try {
             iniciar();
             this.consulta = conexion.createStatement();
-            this.resultados = consulta.executeQuery(sql);
-            //cerrar();
+            this.resultados = this.consulta.executeQuery(sql);
             return this.resultados;
         } catch (SQLException ex) {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);

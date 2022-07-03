@@ -60,15 +60,13 @@ public class crudController {
     }
 
     public void updateUser(String nombre, String apellido, String cedula, String root) {
-
         manejador.ejecutarConsulta("UPDATE usuarios SET nombre='" + nombre + "', apellido = '" + apellido + "',"
                 + "cedula = '" + cedula + "', root ='" + root + "' WHERE cedula='" + cedula + "';");
     }
 
     public void agregarJornada(String cedula, String entrada_man, String salida_man, String entrada_tarde, String salida_tarde) {
-        DataManager manejador = new DataManager();
         int id = new inforDocController().obtenerID(cedula);
-        String sql ="INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,id_usuario) "
+        String sql = "INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,id_usuario) "
                 + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + id + "');";
         manejador.ejecutarConsulta(sql);
     }
@@ -76,15 +74,15 @@ public class crudController {
     public DefaultTableModel cargarTabla() {
         try {
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario","Jornada Matutina","Jornada Vespertina"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario", "Jornada Matutina", "Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT u.usuario, u.nombre, u.apellido, u.cedula, u.root, j.entrada_man, j.salida_man, j.entrada_tarde, j.salida_tarde "
-                    + "FROM usuarios u, jornadas j ");
-
+            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios;");
+            int id = 0;
             String[] registro = new String[8];
             int num = 1;
+            ArrayList<Object> lista = new ArrayList<>();
             while (datos.next()) {
                 registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
@@ -97,11 +95,14 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
+
+                id = new inforDocController().obtenerID(registro[4]);
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE id_usuario = " + id + ";");
+                registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
+                registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
                 if (datos.getString("estado").equals("1")) {
                     modeloTabla.addRow(registro);
                 }
-                registro[6] = datos.getString("entrada_man")+" - "+datos.getString("salida_man");
-                registro[7] = datos.getString("entrada_tarde")+" - "+datos.getString("salida_tarde");
                 num++;
             }
             manejador.cerrar();
@@ -117,16 +118,14 @@ public class crudController {
         try {
             int id = new inforDocController().obtenerID(cedula);
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario","Jornada Matutina","Jornada Vespertina"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario", "Jornada Matutina", "Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT u.usuario, u.nombre, u.apellido, u.cedula, u.root, j.entrada_man, j.salida_man, j.entrada_tarde, j.salida_tarde "
-                    + "FROM usuarios u, jornadas j "
-                    + "WHERE u.id = "+id+";");
-
+            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios WHERE id="+id+";");
             String[] registro = new String[8];
             int num = 1;
+            ArrayList<Object> lista = new ArrayList<>();
             while (datos.next()) {
                 registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
@@ -139,17 +138,20 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
+
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE id_usuario = " + id + ";");
+                registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
+                registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
                 if (datos.getString("estado").equals("1")) {
                     modeloTabla.addRow(registro);
                 }
-                 registro[6] = datos.getString("entrada_man")+" - "+datos.getString("salida_man");
-                registro[7] = datos.getString("entrada_tarde")+" - "+datos.getString("salida_tarde");
                 num++;
             }
             manejador.cerrar();
             return modeloTabla;
         } catch (SQLException ex) {
             Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error: " + ex);
             return null;
         }
     }

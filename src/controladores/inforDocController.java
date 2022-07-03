@@ -72,15 +72,13 @@ public class inforDocController {
     }
 
     public int obtenerID(String cedula) {
-        try {
-            DataManager manejador = new DataManager();
-            ResultSet resultado = manejador.obtenerDatos("SELECT id FROM usuarios WHERE cedula = '" + cedula + "';");
-            //System.out.println(resultado.getInt("id"));
-            return resultado.getInt("id");
-        } catch (SQLException ex) {
-            Logger.getLogger(inforDocController.class.getName()).log(Level.SEVERE, null, ex);
-            return 0;
-        }
+        DataManager manejador = new DataManager();
+        //ResultSet resultado = manejador.obtenerDatos("SELECT id FROM usuarios WHERE cedula = '" + cedula + "';");
+        //System.out.println(resultado.getInt("id"));
+        ArrayList<Object> datos = new ArrayList<>();
+        datos = manejador.resultado("SELECT id FROM usuarios WHERE cedula = '" + cedula + "';");
+        System.out.println(datos.get(0).toString());
+        return Integer.valueOf(datos.get(0).toString());
     }
 
 }
