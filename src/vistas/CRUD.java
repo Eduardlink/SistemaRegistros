@@ -7,10 +7,10 @@ package vistas;
 import controladores.CRUD_Controller_Base;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import controladores.LoguinController;
-import controladores.crudController;
+import controladores.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -89,6 +89,8 @@ public class CRUD extends javax.swing.JFrame {
         jtxtInTar = new javax.swing.JTextField();
         jtxtOutTar = new javax.swing.JTextField();
         jbtnJornada = new javax.swing.JButton();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        jtxtBuscarFecha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,6 +247,13 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
+        jtxtBuscarFecha.setText("Buscar");
+        jtxtBuscarFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtBuscarFechaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,22 +286,30 @@ public class CRUD extends javax.swing.JFrame {
                         .addContainerGap(1008, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtxtInMan)
-                                    .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtxtOutMan)
-                                    .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jbtnJornada))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jtxtInMan)
+                                                    .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(30, 30, 30)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jtxtOutMan)
+                                                    .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jbtnJornada)))
+                                .addGap(102, 102, 102)
+                                .addComponent(jtxtBuscarFecha)))
                         .addGap(53, 53, 53))))
         );
         layout.setVerticalGroup(
@@ -332,6 +349,10 @@ public class CRUD extends javax.swing.JFrame {
                             .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(jbtnJornada)
+                        .addGap(31, 31, 31)
+                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtBuscarFecha)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -381,6 +402,13 @@ public class CRUD extends javax.swing.JFrame {
         controlador.agregarJornada(jtxtCedula.getText(), jtxtInMan.getText(), jtxtOutMan.getText(), jtxtInTar.getText(), jtxtOutTar.getText());
     }//GEN-LAST:event_jbtnJornadaActionPerformed
 
+    private void jtxtBuscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtBuscarFechaActionPerformed
+        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println(datePicker1.getDate().format(FOMATTER));
+        BusquedaFechaController buscar = new BusquedaFechaController();
+        buscar.cargarTabla(datePicker1.getDate().format(FOMATTER));
+    }//GEN-LAST:event_jtxtBuscarFechaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -417,6 +445,7 @@ public class CRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -437,6 +466,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JButton jbtnJornada;
     private javax.swing.JTable jtblUsuarios;
     private javax.swing.JTextField jtxtApellido;
+    private javax.swing.JButton jtxtBuscarFecha;
     private javax.swing.JTextField jtxtCedula;
     private javax.swing.JTextField jtxtClave;
     private javax.swing.JTextField jtxtInMan;
