@@ -1,4 +1,4 @@
-   /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,6 +28,29 @@ public class InicioPrincipal extends javax.swing.JFrame {
     public InicioPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.loguinDocente();
+    }
+
+    public void loguinDocente() {
+        jbtndocente.setVisible(false);
+        docente d = new docente(this);
+        d.setSize(1130, 480);
+        d.setLocation(0, 0);
+        PanelInicio.removeAll();
+        PanelInicio.add(d, BorderLayout.CENTER);
+        PanelInicio.revalidate();
+        PanelInicio.repaint();
+    }
+
+    public void loginAdmin() {
+        jbtndocente.setVisible(true);
+        admin a = new admin();
+        a.setSize(1130, 480);
+        a.setLocation(0, 0);
+        PanelInicio.removeAll();
+        PanelInicio.add(a, BorderLayout.CENTER);
+        PanelInicio.revalidate();
+        PanelInicio.repaint();
     }
 
     /**
@@ -59,6 +82,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
         jpMenuBar = new javax.swing.JPanel();
         jbtnadmin = new javax.swing.JButton();
         jbtndocente = new javax.swing.JButton();
+        jbtnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -234,7 +258,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnadmin.setBackground(new java.awt.Color(255, 255, 255));
         jbtnadmin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbtnadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/admin.jpg"))); // NOI18N
         jbtnadmin.setText("Administrador");
@@ -245,9 +268,8 @@ public class InicioPrincipal extends javax.swing.JFrame {
                 jbtnadminActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+        jpMenuBar.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1039, 0, 210, 60));
 
-        jbtndocente.setBackground(new java.awt.Color(255, 255, 255));
         jbtndocente.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbtndocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/docente.png"))); // NOI18N
         jbtndocente.setText("Docente");
@@ -258,7 +280,18 @@ public class InicioPrincipal extends javax.swing.JFrame {
                 jbtndocenteActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 170, 50));
+        jpMenuBar.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 180, 60));
+
+        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
+        jbtnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExitActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 120, 60));
 
         jPanel3.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -326,24 +359,18 @@ public class InicioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jbtndocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndocenteActionPerformed
-        docente d = new docente();
-       d.setSize(1130,480);
-       d.setLocation(0,0);
-       PanelInicio.removeAll();
-       PanelInicio.add(d,BorderLayout.CENTER);
-       PanelInicio.revalidate();
-       PanelInicio.repaint();
+        this.loguinDocente();
     }//GEN-LAST:event_jbtndocenteActionPerformed
 
     private void jbtnadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnadminActionPerformed
-         admin a = new admin();
-       a.setSize(1130,480);
-       a.setLocation(0,0);
-       PanelInicio.removeAll();
-       PanelInicio.add(a,BorderLayout.CENTER);
-       PanelInicio.revalidate();
-       PanelInicio.repaint();
+        this.loginAdmin();
     }//GEN-LAST:event_jbtnadminActionPerformed
+
+    private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
+        InicioPrincipal loguin = new InicioPrincipal();
+        loguin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,7 +394,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(InicioPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InicioPrincipal().setVisible(true);
             }
@@ -398,6 +425,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton jbtnExit;
     private javax.swing.JButton jbtnadmin;
     private javax.swing.JButton jbtndocente;
     private javax.swing.JPanel jpCerrar;

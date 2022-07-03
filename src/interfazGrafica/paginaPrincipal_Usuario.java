@@ -57,7 +57,8 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpCerrar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         jpMenuBar = new javax.swing.JPanel();
-        jbtnHome = new javax.swing.JButton();
+        jbtnExit = new javax.swing.JButton();
+        jbtnHome1 = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
@@ -65,6 +66,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         rSLabelHora1 = new rojeru_san.RSLabelHora();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -188,16 +190,27 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
-        jbtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
-        jbtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnHome.addActionListener(new java.awt.event.ActionListener() {
+        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
+        jbtnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnHomeActionPerformed(evt);
+                jbtnExitActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, -5, 120, 70));
+        jpMenuBar.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 120, 60));
+
+        jbtnHome1.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnHome1.setForeground(new java.awt.Color(63, 78, 79));
+        jbtnHome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
+        jbtnHome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnHome1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnHome1ActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -263,6 +276,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jButton2.setText("Registrar Salida");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 260, 80, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,13 +335,19 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_XMouseClicked
 
-    private void jbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHomeActionPerformed
-
-    }//GEN-LAST:event_jbtnHomeActionPerformed
+    private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
+        InicioPrincipal loguin = new InicioPrincipal();
+        loguin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtnExitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbtnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHome1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnHome1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,11 +410,13 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogoUta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JButton jbtnHome;
+    private javax.swing.JButton jbtnExit;
+    private javax.swing.JButton jbtnHome1;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpHeader;

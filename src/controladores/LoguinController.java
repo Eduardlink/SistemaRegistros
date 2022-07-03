@@ -19,7 +19,7 @@ public class LoguinController {
         DataManager manejador = new DataManager();
         CriptPass cripto = new CriptPass();
         String pass;
-        String sql = "SELECT id,clave FROM usuarios WHERE usuario = '" + usuario + "' AND root='" + root + "';";
+        String sql = "SELECT cedula,clave FROM usuarios WHERE usuario = '" + usuario + "' AND root='" + root + "';";
         ArrayList<Object> datos = new ArrayList<>();
         datos = manejador.resultado(sql);
         if (datos.size() < 1) {

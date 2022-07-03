@@ -28,6 +28,9 @@ public class BusquedaFechaController {
             DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
             System.out.println(fecha);
             ResultSet resultado = manejador.obtenerDatos("SELECT * FROM registros WHERE fecha = '"+fecha+"';");
+            if(!resultado.next()){
+                return null;
+            }
             System.out.println(resultado.getString("fecha"));
             String[] registro = new String[8];
             int horas_man, horas_tarde;
