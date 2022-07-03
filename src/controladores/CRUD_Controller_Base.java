@@ -122,4 +122,10 @@ public class CRUD_Controller_Base {
         String sql = ("DELETE FROM registros WHERE usuario=" + usuario + ";");
         manejador.ejecutarConsulta(sql);
     }
+    
+    public void agregarRegistro(){
+        DataManager manejador = new DataManager();
+        manejador.ejecutarConsulta("INSERT INTO registros(entrada_man,salida_man,entrada_tarde,salida_tarde) "
+                + "VALUES (");
+    }
 }

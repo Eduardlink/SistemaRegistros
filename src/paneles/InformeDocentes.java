@@ -53,7 +53,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtblDocentes = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jbtnBuscar = new javax.swing.JButton();
         jlbCedula = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -96,48 +96,19 @@ public class InformeDocentes extends javax.swing.JPanel {
         jtblDocentes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jtblDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+
             }
         ));
         jtblDocentes.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jtblDocentes);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnBuscarActionPerformed(evt);
             }
         });
 
@@ -195,7 +166,6 @@ public class InformeDocentes extends javax.swing.JPanel {
 
         jlbUsuario.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
 
-        jbtnReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbtnReportes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jbtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/generarReporte.png"))); // NOI18N
         jbtnReportes.setText("Generar Reporte");
@@ -216,7 +186,7 @@ public class InformeDocentes extends javax.swing.JPanel {
                         .addGap(30, 30, 30)
                         .addComponent(jtxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(imgUsuario)
@@ -253,7 +223,7 @@ public class InformeDocentes extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jtxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
@@ -306,7 +276,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -328,12 +298,13 @@ public class InformeDocentes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jtxtBuscarFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        if (validacionCedula == true) {
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        jtblDocentes.setModel(new inforDocController().cargarTabla(jtxtBuscar.getText()));
+        /*if (validacionCedula == true) {
             buscarDocentes2(jtxtBuscar.getText());
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+            
+        }*/
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private boolean validarCedula(String cedula) {
         boolean cedulaCorrecta = false;
@@ -471,7 +442,6 @@ public class InformeDocentes extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -484,6 +454,7 @@ public class InformeDocentes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnBuscar;
     private javax.swing.JButton jbtnReportes;
     private javax.swing.JLabel jlbAsistencias;
     private javax.swing.JLabel jlbCedula;

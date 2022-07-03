@@ -53,33 +53,40 @@ public class crudController {
         datos = manejador.resultado("SELECT cedula FROM usuarios WHERE cedula = '" + cedula + "';");
         return datos;
     }
-    
-
 
     //eliminar
     public void eliminarUsuario(String cedula) {
         manejador.ejecutarConsulta("UPDATE usuarios SET estado='0' WHERE cedula='" + cedula + "';");
     }
 
-    public void updateUser(String nombre, String apellido, String cedula,  String root) {
-        
+    public void updateUser(String nombre, String apellido, String cedula, String root) {
+
         manejador.ejecutarConsulta("UPDATE usuarios SET nombre='" + nombre + "', apellido = '" + apellido + "',"
-                + "cedula = '" + cedula +  "', root ='" + root + "' WHERE cedula='" + cedula + "';");
+                + "cedula = '" + cedula + "', root ='" + root + "' WHERE cedula='" + cedula + "';");
+    }
+
+    public void agregarJornada(String cedula, String entrada_man, String salida_man, String entrada_tarde, String salida_tarde) {
+        DataManager manejador = new DataManager();
+        int id = new inforDocController().obtenerID(cedula);
+        String sql ="INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,id_usuario) "
+                + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + id + "');";
+        manejador.ejecutarConsulta(sql);
     }
 
     public DefaultTableModel cargarTabla() {
         try {
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario","Jornada Matutina","Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT * FROM usuarios;");
+            ResultSet datos = manejador.obtenerDatos("SELECT u.usuario, u.nombre, u.apellido, u.cedula, u.root, j.entrada_man, j.salida_man, j.entrada_tarde, j.salida_tarde "
+                    + "FROM usuarios u, jornadas j ");
 
-            String[] registro = new String[6];
-            int num =1;
+            String[] registro = new String[8];
+            int num = 1;
             while (datos.next()) {
-                registro[0]=String.valueOf(num);
+                registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
                 registro[2] = datos.getString("nombre");
                 registro[3] = datos.getString("apellido");
@@ -90,10 +97,11 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
-                if(datos.getString("estado").equals("1")){
-                modeloTabla.addRow(registro);
+                if (datos.getString("estado").equals("1")) {
+                    modeloTabla.addRow(registro);
                 }
-                
+                registro[6] = datos.getString("entrada_man")+" - "+datos.getString("salida_man");
+                registro[7] = datos.getString("entrada_tarde")+" - "+datos.getString("salida_tarde");
                 num++;
             }
             manejador.cerrar();
@@ -107,16 +115,20 @@ public class crudController {
 
     public DefaultTableModel cargarTabla(String cedula) {
         try {
+            int id = new inforDocController().obtenerID(cedula);
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario","Jornada Matutina","Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT * FROM usuarios WHERE cedula='" + cedula + "';");
-            String[] registro = new String[6];
-            int num =1;
+            ResultSet datos = manejador.obtenerDatos("SELECT u.usuario, u.nombre, u.apellido, u.cedula, u.root, j.entrada_man, j.salida_man, j.entrada_tarde, j.salida_tarde "
+                    + "FROM usuarios u, jornadas j "
+                    + "WHERE u.id = "+id+";");
+
+            String[] registro = new String[8];
+            int num = 1;
             while (datos.next()) {
-                registro[0]=String.valueOf(num);
+                registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
                 registro[2] = datos.getString("nombre");
                 registro[3] = datos.getString("apellido");
@@ -127,9 +139,11 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
-                if(datos.getString("estado").equals("1")){
-                modeloTabla.addRow(registro);
+                if (datos.getString("estado").equals("1")) {
+                    modeloTabla.addRow(registro);
                 }
+                 registro[6] = datos.getString("entrada_man")+" - "+datos.getString("salida_man");
+                registro[7] = datos.getString("entrada_tarde")+" - "+datos.getString("salida_tarde");
                 num++;
             }
             manejador.cerrar();
@@ -139,6 +153,5 @@ public class crudController {
             return null;
         }
     }
-
 
 }

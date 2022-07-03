@@ -34,6 +34,7 @@ public class DataManager extends DataBase {
             terminar();
         } catch (SQLException ex) {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
     }
 
@@ -46,6 +47,7 @@ public class DataManager extends DataBase {
             return this.resultados;
         } catch (SQLException ex) {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
             return null;
         }
 
