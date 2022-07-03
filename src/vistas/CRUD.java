@@ -93,6 +93,7 @@ public class CRUD extends javax.swing.JFrame {
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jtxtBuscarFecha = new javax.swing.JButton();
         jbtnCargarRegistros = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,6 +265,13 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,6 +325,8 @@ public class CRUD extends javax.swing.JFrame {
                         .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtxtBuscarFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -328,7 +338,8 @@ public class CRUD extends javax.swing.JFrame {
                     .addComponent(jbtnCargarUsuarios)
                     .addComponent(jbtnCargarRegistros)
                     .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtBuscarFecha))
+                    .addComponent(jtxtBuscarFecha)
+                    .addComponent(jToggleButton1))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -413,6 +424,11 @@ public class CRUD extends javax.swing.JFrame {
         jtblUsuarios.setModel(controlador.cargarTabla("1802"));
     }//GEN-LAST:event_jbtnCargarRegistrosActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        InformeDiarioController controlador = new InformeDiarioController();
+        jtblUsuarios.setModel(controlador.cargarTabla("1801"));
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,6 +480,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnCargar;
     private javax.swing.JButton jbtnCargarRegistros;

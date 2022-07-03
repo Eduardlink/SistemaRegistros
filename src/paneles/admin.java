@@ -6,6 +6,7 @@
 package paneles;
 
 import controladores.LoguinController;
+import interfazGrafica.InicioPrincipal;
 import interfazGrafica.paginaPrincipal_Admin;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -16,16 +17,19 @@ import javax.swing.JOptionPane;
  */
 public class admin extends javax.swing.JPanel {
 
+    InicioPrincipal home;
+
     /**
      * Creates new form admin
      */
-    public admin() {
+    public admin(InicioPrincipal home) {
         initComponents();
+        this.home = home;
     }
 
-     public void iniciarSesion() {
+    public void iniciarSesion() {
         LoguinController controlador = new LoguinController();
-        boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "0");
+        boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "1");
         if (verificado[0] == false && verificado[1] == false) {
             JOptionPane.showMessageDialog(null, "No existe el usuario" + " " + jtxtuser.getText());
         }
@@ -35,6 +39,7 @@ public class admin extends javax.swing.JPanel {
         if (verificado[0] == true && verificado[1] == true) {
             paginaPrincipal_Admin adm = new paginaPrincipal_Admin();
             adm.setVisible(true);
+            this.home.setVisible(false);
         }
     }
 

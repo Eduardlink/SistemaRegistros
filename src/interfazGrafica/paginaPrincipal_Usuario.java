@@ -5,7 +5,6 @@
  */
 package interfazGrafica;
 
-
 import java.sql.*;
 import javax.swing.JOptionPane;
 import paneles.CambiaPanel;
@@ -32,7 +31,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     public paginaPrincipal_Usuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia());
 
     }
 
@@ -57,16 +56,14 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpCerrar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         jpMenuBar = new javax.swing.JPanel();
-        jbtnExit = new javax.swing.JButton();
         jbtnHome1 = new javax.swing.JButton();
+        jbtnExit1 = new javax.swing.JButton();
+        jbtnReportesFecha = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        rSLabelHora1 = new rojeru_san.RSLabelHora();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jpanPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -190,17 +187,6 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
-        jbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
-        jbtnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnExitActionPerformed(evt);
-            }
-        });
-        jpMenuBar.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 120, 60));
-
         jbtnHome1.setBackground(new java.awt.Color(63, 78, 79));
         jbtnHome1.setForeground(new java.awt.Color(63, 78, 79));
         jbtnHome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
@@ -210,7 +196,31 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
                 jbtnHome1ActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
+        jpMenuBar.add(jbtnHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 120, 80));
+
+        jbtnExit1.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnExit1.setForeground(new java.awt.Color(63, 78, 79));
+        jbtnExit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
+        jbtnExit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExit1ActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, -20, 120, 100));
+
+        jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
+        jbtnReportesFecha.setText("Reporte diario");
+        jbtnReportesFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReportesFechaActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, -20, 260, 100));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -238,45 +248,22 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpHeader.add(imgLogoEncab, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 13, 93, 74));
 
         jPanel2.add(jpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        rSLabelHora1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
-        rSLabelHora1.setFont(new java.awt.Font("Roboto Bold", 1, 48)); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 420, 150));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jButton1.setText("Registrar Entrada");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jButton2.setText("Registrar Salida");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, -1, -1));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 260, 80, 40));
+
+        jpanPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jpanPrincipalLayout = new javax.swing.GroupLayout(jpanPrincipal);
+        jpanPrincipal.setLayout(jpanPrincipalLayout);
+        jpanPrincipalLayout.setHorizontalGroup(
+            jpanPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1250, Short.MAX_VALUE)
+        );
+        jpanPrincipalLayout.setVerticalGroup(
+            jpanPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jpanPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1250, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,19 +322,18 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_XMouseClicked
 
-    private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
-        InicioPrincipal loguin = new InicioPrincipal();
-        loguin.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jbtnExitActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jbtnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHome1ActionPerformed
-        // TODO add your handling code here:
+        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia());
     }//GEN-LAST:event_jbtnHome1ActionPerformed
+
+    private void jbtnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExit1ActionPerformed
+        new InicioPrincipal().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtnExit1ActionPerformed
+
+    private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
+        new CambiaPanel(jpanPrincipal, new paneles.InformeDiario());
+    }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,7 +386,6 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Minim;
     private javax.swing.JLabel RegDocen;
@@ -408,21 +393,19 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogoEncab;
     private javax.swing.JLabel imgLogoFisei;
     private javax.swing.JLabel imgLogoUta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JButton jbtnExit;
+    private javax.swing.JButton jbtnExit1;
     private javax.swing.JButton jbtnHome1;
+    private javax.swing.JButton jbtnReportesFecha;
     private javax.swing.JPanel jpCerrar;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpMenuBar;
     private javax.swing.JPanel jpMinim;
     private javax.swing.JPanel jpOpBar;
-    private rojeru_san.RSLabelHora rSLabelHora1;
+    private javax.swing.JPanel jpanPrincipal;
     // End of variables declaration//GEN-END:variables
 }

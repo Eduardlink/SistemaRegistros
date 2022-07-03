@@ -44,7 +44,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
 
     public void loginAdmin() {
         jbtndocente.setVisible(true);
-        admin a = new admin();
+        admin a = new admin(this);
         a.setSize(1130, 480);
         a.setLocation(0, 0);
         PanelInicio.removeAll();
@@ -77,7 +77,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         PanelInicio = new javax.swing.JPanel();
         jpMenuBar = new javax.swing.JPanel();
         jbtnadmin = new javax.swing.JButton();
@@ -228,16 +227,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
 
         jPanel3.add(jpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
-        jButton1.setText("Admin");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 30, -1, -1));
-
         PanelInicio.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout PanelInicioLayout = new javax.swing.GroupLayout(PanelInicio);
@@ -354,10 +343,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
         this.yMouse = evt.getY();
     }//GEN-LAST:event_jpHeaderMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jbtndocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndocenteActionPerformed
         this.loguinDocente();
     }//GEN-LAST:event_jbtndocenteActionPerformed
@@ -420,7 +405,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogoEncab;
     private javax.swing.JLabel imgLogoFisei;
     private javax.swing.JLabel imgLogoUta;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
