@@ -33,7 +33,7 @@ public class crudController {
             cripto.Encriptar(clave),
             nombre.toLowerCase(),
             apellido.toLowerCase(),
-            cedula.toLowerCase(),
+            cedula,
             root
         };
         String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root,estado) "
@@ -65,9 +65,8 @@ public class crudController {
     }
 
     public void agregarJornada(String cedula, String entrada_man, String salida_man, String entrada_tarde, String salida_tarde) {
-        int id = new inforDocController().obtenerID(cedula);
-        String sql = "INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,id_usuario) "
-                + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + id + "');";
+        String sql = "INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,ced_usuario) "
+                + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + cedula+ "');";
         manejador.ejecutarConsulta(sql);
     }
 
@@ -79,7 +78,6 @@ public class crudController {
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
             ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios;");
-            int id = 0;
             String[] registro = new String[8];
             int num = 1;
             ArrayList<Object> lista = new ArrayList<>();
@@ -96,8 +94,7 @@ public class crudController {
                     registro[5] = "Administrador";
                 }
 
-                id = new inforDocController().obtenerID(registro[4]);
-                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE id_usuario = " + id + ";");
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE ced_usuario = '" + registro[4] + "';");
                 registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
                 registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
                 if (datos.getString("estado").equals("1")) {
@@ -116,13 +113,12 @@ public class crudController {
 
     public DefaultTableModel cargarTabla(String cedula) {
         try {
-            int id = new inforDocController().obtenerID(cedula);
             String[] columnas = {
                 "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario", "Jornada Matutina", "Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios WHERE id="+id+";");
+            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios WHERE cedula='"+cedula+"';");
             String[] registro = new String[8];
             int num = 1;
             ArrayList<Object> lista = new ArrayList<>();
@@ -139,7 +135,7 @@ public class crudController {
                     registro[5] = "Administrador";
                 }
 
-                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE id_usuario = " + id + ";");
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE ced_usuario = '" + cedula + "';");
                 registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
                 registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
                 if (datos.getString("estado").equals("1")) {

@@ -33,13 +33,12 @@ public class inforDocController {
 
     public DefaultTableModel cargarTabla(String cedula) {
         try {
-            int id = this.obtenerID(cedula);
             DataManager manejador = new DataManager();
             String[] titulos = {
                 "Fecha", "Entrada Matutina", "Salida Matutina", "Entrada Vespertina", "Salida Vespertina", "Horas"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
-            ResultSet resultado = manejador.obtenerDatos("SELECT fecha,entrada_man,salida_man,entrada_tarde,salida_tarde FROM registros WHERE usuario = " + id + ";");
+            ResultSet resultado = manejador.obtenerDatos("SELECT fecha,entrada_man,salida_man,entrada_tarde,salida_tarde FROM registros WHERE ced_usuario = '" + cedula + "';");
             String[] registro = new String[6];
             int horas_man, horas_tarde;
             while (resultado.next()) {
@@ -53,32 +52,23 @@ public class inforDocController {
 
                 ArrayList<Object> datos = new ArrayList<>();
                 if (registro[1] != null && registro[2] != null) {
-                    datos = manejador.resultado("SELECT (salida_man-entrada_man) horas FROM registros WHERE usuario = " + id + ";");
+                    datos = manejador.resultado("SELECT (salida_man-entrada_man) horas FROM registros WHERE ced_usuario = '" + cedula + "';");
                     horas_man = Integer.valueOf(datos.get(0).toString());
                 }
                 if (registro[3] != null && registro[4] != null) {
-                    datos = manejador.resultado("SELECT (salida_tarde-entrada_tarde) horas FROM registros WHERE usuario = " + id + ";");
+                    datos = manejador.resultado("SELECT (salida_tarde-entrada_tarde) horas FROM registros WHERE ced_usuario = '" + cedula + "';");
                     horas_tarde = Integer.valueOf(datos.get(0).toString());
                 }
                 registro[5] = String.valueOf(horas_man + horas_tarde);
                 modeloTabla.addRow(registro);
             }
+            manejador.cerrar();
             return modeloTabla;
         } catch (SQLException ex) {
             Logger.getLogger(inforDocController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             return null;
         }
-    }
-
-    public int obtenerID(String cedula) {
-        DataManager manejador = new DataManager();
-        //ResultSet resultado = manejador.obtenerDatos("SELECT id FROM usuarios WHERE cedula = '" + cedula + "';");
-        //System.out.println(resultado.getInt("id"));
-        ArrayList<Object> datos = new ArrayList<>();
-        datos = manejador.resultado("SELECT id FROM usuarios WHERE cedula = '" + cedula + "';");
-        System.out.println(datos.get(0).toString());
-        return Integer.valueOf(datos.get(0).toString());
     }
 
 }
