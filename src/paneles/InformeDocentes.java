@@ -300,10 +300,10 @@ public class InformeDocentes extends javax.swing.JPanel {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         jtblDocentes.setModel(new inforDocController().cargarTabla(jtxtBuscar.getText()));
-        /*if (validacionCedula == true) {
+        if (validacionCedula == true) {
             buscarDocentes2(jtxtBuscar.getText());
             
-        }*/
+        }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private boolean validarCedula(String cedula) {
