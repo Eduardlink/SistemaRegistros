@@ -5,6 +5,7 @@
  */
 package interfazGrafica;
 
+import java.awt.BorderLayout;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import paneles.CambiaPanel;
@@ -14,6 +15,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import paneles.InformeDiario;
+import paneles.RegistroAsistencia;
+import paneles.docente;
 
 /**
  *
@@ -32,15 +36,37 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     public paginaPrincipal_Usuario(String usuario) {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         user = usuario;
         new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(usuario));
+        registroAsistencia();
     }
 
     public paginaPrincipal_Usuario() {
         initComponents();
         this.setLocationRelativeTo(null);
         new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(this.user));
+        registroAsistencia();
+    }
+
+    public void registroAsistencia() {
+        RegistroAsistencia d = new RegistroAsistencia(user);
+        d.setSize(1250, 590);
+        d.setLocation(0, 0);
+        jpanPrincipal.removeAll();
+        jpanPrincipal.add(d, BorderLayout.CENTER);
+        jpanPrincipal.revalidate();
+        jpanPrincipal.repaint();
+    }
+
+    public void informeDiario() {
+        InformeDiario d = new InformeDiario(user);
+        d.setSize(1250, 590);
+        d.setLocation(0, 0);
+        jpanPrincipal.removeAll();
+        jpanPrincipal.add(d, BorderLayout.CENTER);
+        jpanPrincipal.revalidate();
+        jpanPrincipal.repaint();
     }
 
     /**
@@ -331,7 +357,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void jbtnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHome1ActionPerformed
-        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(this.user));
+        registroAsistencia();
     }//GEN-LAST:event_jbtnHome1ActionPerformed
 
     private void jbtnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExit1ActionPerformed
@@ -340,7 +366,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnExit1ActionPerformed
 
     private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        new CambiaPanel(jpanPrincipal, new paneles.InformeDiario(this.user));
+        informeDiario();
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     /**

@@ -132,11 +132,11 @@ public class InicioPrincipal extends javax.swing.JFrame {
             }
         });
 
-        Minim.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
-        Minim.setForeground(new java.awt.Color(255, 255, 255));
         Minim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Minim.setText("_");
         Minim.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Minim.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        Minim.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpMinimLayout = new javax.swing.GroupLayout(jpMinim);
         jpMinim.setLayout(jpMinimLayout);
@@ -233,14 +233,14 @@ public class InicioPrincipal extends javax.swing.JFrame {
         PanelInicio.setLayout(PanelInicioLayout);
         PanelInicioLayout.setHorizontalGroup(
             PanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 1250, Short.MAX_VALUE)
         );
         PanelInicioLayout.setVerticalGroup(
             PanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
-        jPanel3.add(PanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 1130, 480));
+        jPanel3.add(PanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1250, 590));
 
         jpMenuBar.setBackground(new java.awt.Color(63, 78, 79));
         jpMenuBar.setToolTipText("");
