@@ -11,9 +11,11 @@ import controladores.*;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.converter.LocalTimeStringConverter;
 import javax.swing.table.DefaultTableModel;
 import modelos.DataManager;
 
@@ -28,6 +30,19 @@ public class CRUD extends javax.swing.JFrame {
      */
     public CRUD() {
         initComponents();
+        TestAsistencia();
+    }
+    
+    public void TestAsistencia(){
+        LocalTime horaActual = LocalTime.now();
+        AsistenciaController controlador = new AsistenciaController();
+        String[] jornada = controlador.buscarJornada("1801");
+        for (int i = 0; i < jornada.length; i++) {
+            System.out.println(jornada[i]);
+        }
+        System.out.println(horaActual.plusMinutes(15));
+        System.out.println(new AsistenciaController().obtenerFecha());
+        System.out.println(new AsistenciaController().obtenerHora());
     }
 
     public void buscarDatos() {
@@ -426,7 +441,8 @@ public class CRUD extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         InformeDiarioController controlador = new InformeDiarioController();
-        jtblUsuarios.setModel(controlador.cargarTabla("1801"));
+        System.out.println(controlador.buscarUsuario(jtxtUsuario.getText()));
+        jtblUsuarios.setModel(controlador.cargarTablaVespertina("1801"));
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**

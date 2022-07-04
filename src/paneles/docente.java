@@ -150,12 +150,12 @@ public class docente extends javax.swing.JPanel {
     private void jbtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnInicioMouseExited
         jbtnInicio.setBackground(new Color(236, 71, 71));
     }//GEN-LAST:event_jbtnInicioMouseExited
-
+/*
     public void validarBoton() {
         LocalTime horaActual = LocalTime.now();
         LocalTime inicio = LocalTime.parse("06:50");
         LocalTime fin = LocalTime.parse("07:15");
-        LocalTime incioTarde = LocalTime.parse("14:00");
+        LocalTime incioTarde = LocalTime..parse("14:00");
         LocalTime finTarde = LocalTime.parse("20:00");
 
         boolean hora1 = horaActual.isAfter(inicio);
@@ -172,7 +172,7 @@ public class docente extends javax.swing.JPanel {
         }
 
     }
-
+*/
     public void iniciarSesion() {
         LoguinController controlador = new LoguinController();
         boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "0");
@@ -183,7 +183,7 @@ public class docente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");
         }
         if (verificado[0] == true && verificado[1] == true) {
-            paginaPrincipal_Usuario u = new paginaPrincipal_Usuario();
+            paginaPrincipal_Usuario u = new paginaPrincipal_Usuario(jtxtuser.getText());
             this.loguin.setVisible(false);
             u.setVisible(true);
         }

@@ -24,15 +24,23 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     private ImageIcon imagen;
     private Icon icono;
     int xMouse, yMouse;
+    private String user;
 
     /**
      * Creates new form Login
      */
+    public paginaPrincipal_Usuario(String usuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        user = usuario;
+        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(usuario));
+    }
+
     public paginaPrincipal_Usuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia());
-
+        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(this.user));
     }
 
     /**
@@ -323,7 +331,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void jbtnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHome1ActionPerformed
-        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia());
+        new CambiaPanel(jpanPrincipal, new paneles.RegistroAsistencia(this.user));
     }//GEN-LAST:event_jbtnHome1ActionPerformed
 
     private void jbtnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExit1ActionPerformed
@@ -332,7 +340,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnExit1ActionPerformed
 
     private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        new CambiaPanel(jpanPrincipal, new paneles.InformeDiario());
+        new CambiaPanel(jpanPrincipal, new paneles.InformeDiario(this.user));
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     /**
