@@ -9,10 +9,12 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.crudController;
+import java.awt.Font;
 import javax.sound.midi.ControllerEventListener;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -26,8 +28,9 @@ public class crud extends javax.swing.JPanel {
     public crud() {
         initComponents();
         DefaultTableModel modeloTabla = new DefaultTableModel();
-//       
+        jtblCrud.setRowHeight(30);
         jtblCrud.setModel(new crudController().cargarTabla());
+        formatoTitulos();
         this.bloquearTextosyBusqueda();
         jtblCrud.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -55,6 +58,13 @@ public class crud extends javax.swing.JPanel {
             }
 
         });
+    }
+
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblCrud.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 14);
+        th.setFont(fuente);
     }
 
     /**
@@ -743,7 +753,7 @@ public class crud extends javax.swing.JPanel {
 
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextosActualizar();
-        
+
         this.jbtnGuardar.setEnabled(false);
         jbtnActualizar.setEnabled(true);
 
@@ -825,6 +835,8 @@ public class crud extends javax.swing.JPanel {
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        jtblCrud.setRowHeight(30);
+        formatoTitulos();
         if (new crudController().buscarCedula(jtxtBusqueda.getText()).size() == 0) {
             JOptionPane.showMessageDialog(null, "No existe un usuario con la cédula especificada");
         } else {
@@ -850,6 +862,7 @@ public class crud extends javax.swing.JPanel {
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
         jtblCrud.setRowHeight(30);
         jtblCrud.setModel(new crudController().cargarTabla());
+        formatoTitulos();
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     public void limpiarTextos() {
@@ -1015,7 +1028,7 @@ public class crud extends javax.swing.JPanel {
             System.out.println(horavespS);
 
         }
-        int horasmanana = horamanS- horamanE;
+        int horasmanana = horamanS - horamanE;
         int horastarde = horavespS - horavespE;
 
         if (horasmanana + horastarde == 8) {

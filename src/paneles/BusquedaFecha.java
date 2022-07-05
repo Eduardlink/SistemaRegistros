@@ -9,6 +9,8 @@ import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.BusquedaFechaController;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -28,24 +30,34 @@ public class BusquedaFecha extends javax.swing.JPanel {
         String[] titulos = {
             "Cédula", "Nombre", "Apellido", "Entrada Mañana", "Salida Mañana", "Entrada Tarde", "Salida Tarde", "Cant. Horas"
         };
+        formatoTitulos();
         DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
         jtblRegistros.setModel(modeloTabla);
+        jtblRegistros.setRowHeight(30);
     }
 
-    public void buscar(){
-        if(datePicker1.getDate()==null){
+    public void buscar() {
+        if (datePicker1.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Ingrese una fecha");
-        }else{
+        } else {
             BusquedaFechaController search = new BusquedaFechaController();
             String fecha = Date.valueOf(datePicker1.getDate()).toString();
             DefaultTableModel modeloTabla = search.cargarTabla(fecha);
-            if(modeloTabla == null){
+            if (modeloTabla == null) {
                 JOptionPane.showMessageDialog(null, "No existen registros de la fecha seleccionada");
-            }else{
+            } else {
                 jtblRegistros.setModel(modeloTabla);
             }
         }
     }
+
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblRegistros.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 14);
+        th.setFont(fuente);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +83,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
         jpanBackground.setPreferredSize(new java.awt.Dimension(1250,590));
 
         jLabel2.setText("Busqueda por fecha");
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
 
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
         jbtnBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -82,8 +94,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
             }
         });
 
-        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlNombre.setText("Busqueda");
+        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         datePicker1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -98,6 +110,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
 
             }
         ));
+        jtblRegistros.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jScrollPane1.setViewportView(jtblRegistros);
 
         javax.swing.GroupLayout jpanBackgroundLayout = new javax.swing.GroupLayout(jpanBackground);
@@ -153,6 +166,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         buscar();
+        formatoTitulos();
+        jtblRegistros.setRowHeight(30);
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
 
