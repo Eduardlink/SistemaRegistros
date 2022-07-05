@@ -9,6 +9,8 @@ import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.BusquedaFechaController;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -30,6 +32,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
         };
         DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
         jtblRegistros.setModel(modeloTabla);
+        formatoTitulos();
     }
 
     public void buscar(){
@@ -45,6 +48,14 @@ public class BusquedaFecha extends javax.swing.JPanel {
                 jtblRegistros.setModel(modeloTabla);
             }
         }
+    }
+    
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblRegistros.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 18);
+        th.setFont(fuente);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,8 +81,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
         jpanBackground.setBackground(new java.awt.Color(255,255,255));
         jpanBackground.setPreferredSize(new java.awt.Dimension(1250,590));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setText("Busqueda por Docente");
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
 
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
         jbtnBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -82,8 +93,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
             }
         });
 
-        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlNombre.setText("Busqueda");
+        jlNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         datePicker1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -136,7 +147,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
                     .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

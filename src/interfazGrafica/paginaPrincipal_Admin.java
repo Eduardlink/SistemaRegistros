@@ -79,7 +79,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpFooter.setPreferredSize(new java.awt.Dimension(1230, 70));
         jpFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
         jLabel2.setText("Universidad Técnica de Ambato - FISEI");
         jpFooter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -190,7 +190,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbtnUsuarios.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnUsuarios.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnUsuarios.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jbtnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         jbtnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user.png"))); // NOI18N
         jbtnUsuarios.setText("Usuarios");
@@ -203,7 +203,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpMenuBar.add(jbtnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, 190, 80));
 
         jbtnReportesDocente.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesDocente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesDocente.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jbtnReportesDocente.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
         jbtnReportesDocente.setText("Reportes por Docente");
@@ -227,7 +227,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jpMenuBar.add(jbtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, -5, 120, 70));
 
         jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesFecha.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
         jbtnReportesFecha.setText("Reportes por Fecha");
