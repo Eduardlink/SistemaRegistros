@@ -109,6 +109,7 @@ public class CRUD extends javax.swing.JFrame {
         jtxtBuscarFecha = new javax.swing.JButton();
         jbtnCargarRegistros = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,6 +288,13 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Test Desactivar Boton");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -315,22 +323,27 @@ public class CRUD extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jbtnJornada))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jbtnJornada))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtxtInMan)
+                                            .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtxtOutMan)
+                                            .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtxtInMan)
-                                    .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtxtOutMan)
-                                    .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(62, 62, 62)
+                                .addComponent(jButton1)))
                         .addGap(53, 53, 53))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbtnCargarUsuarios)
@@ -385,6 +398,8 @@ public class CRUD extends javax.swing.JFrame {
                             .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(jbtnJornada)
+                        .addGap(74, 74, 74)
+                        .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -430,7 +445,7 @@ public class CRUD extends javax.swing.JFrame {
         DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         //System.out.println(datePicker1.getDate().format(FOMATTER));
         BusquedaFechaController buscar = new BusquedaFechaController();
-        jtblUsuarios.setModel(buscar.cargarTabla(Date.valueOf(datePicker1.getDate())));
+        //jtblUsuarios.setModel(buscar.cargarTabla(Date.valueOf(datePicker1.getDate().toString())));
         
     }//GEN-LAST:event_jtxtBuscarFechaActionPerformed
 
@@ -444,6 +459,10 @@ public class CRUD extends javax.swing.JFrame {
         System.out.println(controlador.buscarUsuario(jtxtUsuario.getText()));
         jtblUsuarios.setModel(controlador.cargarTablaVespertina("1801"));
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       jButton1.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -482,6 +501,7 @@ public class CRUD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
