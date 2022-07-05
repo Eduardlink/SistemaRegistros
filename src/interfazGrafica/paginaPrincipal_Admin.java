@@ -266,7 +266,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
         jpHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegDocen.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        RegDocen.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 32)); // NOI18N
         RegDocen.setForeground(new java.awt.Color(255, 255, 255));
         RegDocen.setText("REGISTRO DE DOCENTES");
         jpHeader.add(RegDocen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
