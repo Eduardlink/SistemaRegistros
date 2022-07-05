@@ -7,12 +7,15 @@ package vistas;
 import controladores.CRUD_Controller_Base;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import controladores.LoguinController;
-import controladores.crudController;
+import controladores.*;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.converter.LocalTimeStringConverter;
 import javax.swing.table.DefaultTableModel;
 import modelos.DataManager;
 
@@ -27,6 +30,19 @@ public class CRUD extends javax.swing.JFrame {
      */
     public CRUD() {
         initComponents();
+        TestAsistencia();
+    }
+    
+    public void TestAsistencia(){
+        LocalTime horaActual = LocalTime.now();
+        AsistenciaController controlador = new AsistenciaController();
+        String[] jornada = controlador.buscarJornada("1801");
+        for (int i = 0; i < jornada.length; i++) {
+            System.out.println(jornada[i]);
+        }
+        System.out.println(horaActual.plusMinutes(15));
+        System.out.println(new AsistenciaController().obtenerFecha());
+        System.out.println(new AsistenciaController().obtenerHora());
     }
 
     public void buscarDatos() {
@@ -81,11 +97,24 @@ public class CRUD extends javax.swing.JFrame {
         jbtnCargar = new javax.swing.JButton();
         jtxtPassword = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jbtnCargarUsuarios = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jtxtInMan = new javax.swing.JTextField();
+        jtxtOutMan = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jtxtInTar = new javax.swing.JTextField();
+        jtxtOutTar = new javax.swing.JTextField();
+        jbtnJornada = new javax.swing.JButton();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        jtxtBuscarFecha = new javax.swing.JButton();
+        jbtnCargarRegistros = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("C.R.U.D");
+        jLabel1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
 
         jLabel2.setText("Datos");
 
@@ -200,9 +229,7 @@ public class CRUD extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,10 +249,49 @@ public class CRUD extends javax.swing.JFrame {
 
         jLabel9.setText("Password");
 
-        jButton1.setText("Cargar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCargarUsuarios.setText("Cargar usuarios");
+        jbtnCargarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnCargarUsuariosActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Mañana");
+
+        jLabel12.setText("jLabel12");
+
+        jbtnJornada.setText("Agregar Jornada");
+        jbtnJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnJornadaActionPerformed(evt);
+            }
+        });
+
+        jtxtBuscarFecha.setText("Buscar");
+        jtxtBuscarFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtBuscarFechaActionPerformed(evt);
+            }
+        });
+
+        jbtnCargarRegistros.setText("Cargar registros");
+        jbtnCargarRegistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCargarRegistrosActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Test Desactivar Boton");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -252,23 +318,57 @@ public class CRUD extends javax.swing.JFrame {
                                     .addComponent(jtxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                                 .addGap(17, 17, 17))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jButton1)))
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel1)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1)
-                        .addContainerGap())
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jbtnJornada))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtxtInMan)
+                                            .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtxtOutMan)
+                                            .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jButton1)))
+                        .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtnCargarUsuarios)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnCargarRegistros)
+                        .addGap(18, 18, 18)
+                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtxtBuscarFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                    .addComponent(jbtnCargarUsuarios)
+                    .addComponent(jbtnCargarRegistros)
+                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtBuscarFecha)
+                    .addComponent(jToggleButton1))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -283,7 +383,24 @@ public class CRUD extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtnCargar)
-                        .addGap(32, 32, 32))))
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtxtInMan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtOutMan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtxtInTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtOutTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(jbtnJornada)
+                        .addGap(74, 74, 74)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -311,21 +428,41 @@ public class CRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCargarActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
-        CRUD_Controller_Base controlador = new CRUD_Controller_Base();
-        String[] datos = {
-            jtxtUser.getText(),
-            jtxtClave.getText(),
-            jtxtNombre.getText(),
-            jtxtApellido.getText(),
-            jtxtCedula.getText(),
-            "0"
-        };
-        controlador.createUsuario2(datos);
+        crudController controlador = new crudController();
+        controlador.agregarUsuario(jtxtNombre.getText(), jtxtApellido.getText(), jtxtCedula.getText(), jtxtClave.getText(), "0");
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtnCargarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCargarUsuariosActionPerformed
         mostrarUsuarios();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtnCargarUsuariosActionPerformed
+
+    private void jbtnJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJornadaActionPerformed
+        crudController controlador = new crudController();
+        controlador.agregarJornada(jtxtCedula.getText(), jtxtInMan.getText(), jtxtOutMan.getText(), jtxtInTar.getText(), jtxtOutTar.getText());
+    }//GEN-LAST:event_jbtnJornadaActionPerformed
+
+    private void jtxtBuscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtBuscarFechaActionPerformed
+        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        //System.out.println(datePicker1.getDate().format(FOMATTER));
+        BusquedaFechaController buscar = new BusquedaFechaController();
+        //jtblUsuarios.setModel(buscar.cargarTabla(Date.valueOf(datePicker1.getDate().toString())));
+        
+    }//GEN-LAST:event_jtxtBuscarFechaActionPerformed
+
+    private void jbtnCargarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCargarRegistrosActionPerformed
+        inforDocController controlador = new inforDocController();
+        jtblUsuarios.setModel(controlador.cargarTabla("1802"));
+    }//GEN-LAST:event_jbtnCargarRegistrosActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        InformeDiarioController controlador = new InformeDiarioController();
+        System.out.println(controlador.buscarUsuario(jtxtUsuario.getText()));
+        //jtblUsuarios.setModel(controlador.cargarTablaVespertina("1801"));
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       jButton1.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -363,8 +500,11 @@ public class CRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -376,13 +516,22 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnCargar;
+    private javax.swing.JButton jbtnCargarRegistros;
+    private javax.swing.JButton jbtnCargarUsuarios;
+    private javax.swing.JButton jbtnJornada;
     private javax.swing.JTable jtblUsuarios;
     private javax.swing.JTextField jtxtApellido;
+    private javax.swing.JButton jtxtBuscarFecha;
     private javax.swing.JTextField jtxtCedula;
     private javax.swing.JTextField jtxtClave;
+    private javax.swing.JTextField jtxtInMan;
+    private javax.swing.JTextField jtxtInTar;
     private javax.swing.JTextField jtxtNombre;
+    private javax.swing.JTextField jtxtOutMan;
+    private javax.swing.JTextField jtxtOutTar;
     private javax.swing.JTextField jtxtPassword;
     private javax.swing.JButton jtxtSalir;
     private javax.swing.JTextField jtxtUser;

@@ -9,7 +9,10 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.crudController;
+import javax.sound.midi.ControllerEventListener;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -23,10 +26,35 @@ public class crud extends javax.swing.JPanel {
     public crud() {
         initComponents();
         DefaultTableModel modeloTabla = new DefaultTableModel();
-        String[] titulos = {"Usuario", "Clave", "Nombre", "Apellido", "Cédula", "Root"};
-        modeloTabla.setColumnIdentifiers(titulos);
-        jtblCrud.setModel(modeloTabla);
+//       
+        jtblCrud.setModel(new crudController().cargarTabla());
         this.bloquearTextosyBusqueda();
+        jtblCrud.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                if (jtblCrud.getSelectedRow() != -1) {
+                    Integer fila = jtblCrud.getSelectedRow();
+                    jtxtNombre.setText(jtblCrud.getValueAt(fila, 2).toString());
+                    jtxtApellido.setText(jtblCrud.getValueAt(fila, 3).toString());
+                    jtxtCedula.setText(jtblCrud.getValueAt(fila, 4).toString());
+                    String jornadaMatutina = jtblCrud.getValueAt(fila, 6).toString();
+                    String[] matutina = jornadaMatutina.split("-");
+                    Mat_man.setText(matutina[0]);
+                    Mat_tar.setText(matutina[1]);
+                    String jornadaVespertina = jtblCrud.getValueAt(fila, 7).toString();
+                    String[] vespertina = jornadaVespertina.split("-");
+                    Vesp_man.setText(vespertina[0]);
+                    Vesp_tar.setText(vespertina[1]);
+
+                    if (jtblCrud.getValueAt(fila, 5).toString().equals("Administrador")) {
+                        jchkRoot.setSelected(true);
+                    } else {
+                        jchkRoot.setSelected(false);
+                    }
+                }
+            }
+
+        });
     }
 
     /**
@@ -57,13 +85,14 @@ public class crud extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jtxtEntrada_Man = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jtxtSalida_man = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jtxtEntrada_tarde = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jtxtSalida_Tarde = new javax.swing.JTextField();
+        jbtnActualizar = new javax.swing.JButton();
+        Mat_man = new com.github.lgooddatepicker.components.TimePicker();
+        Mat_tar = new com.github.lgooddatepicker.components.TimePicker();
+        Vesp_man = new com.github.lgooddatepicker.components.TimePicker();
+        Vesp_tar = new com.github.lgooddatepicker.components.TimePicker();
         jpPanelOpciones = new javax.swing.JPanel();
         jpAniadir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,9 +103,6 @@ public class crud extends javax.swing.JPanel {
         jpActualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jpSalir = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jpBuscar2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -86,39 +112,43 @@ public class crud extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jtxtBusqueda = new javax.swing.JTextField();
         jbtnBuscar = new javax.swing.JButton();
+        jbtnUpdate = new javax.swing.JButton();
 
         jpCrud.setBackground(new java.awt.Color(255, 255, 255));
         jpCrud.setPreferredSize(new java.awt.Dimension(1250, 590));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlNombre.setText("Nombre");
+        jlNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
-        jlApellido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlApellido.setText("Apellido");
+        jlApellido.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setText("Cédula");
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setText("Contraseña");
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setText("Root");
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
+        jtxtNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtNombreKeyTyped(evt);
             }
         });
 
+        jtxtApellido.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtApellidoKeyTyped(evt);
             }
         });
 
+        jtxtCedula.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
         jtxtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtxtCedulaFocusLost(evt);
@@ -130,9 +160,13 @@ public class crud extends javax.swing.JPanel {
             }
         });
 
+        jtxtClave.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+
         jchkRoot.setBackground(new java.awt.Color(204, 204, 204));
+        jchkRoot.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jchkRoot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jbtnGuardar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jbtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/floppy-disk.png"))); // NOI18N
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -142,35 +176,42 @@ public class crud extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel6.setText("Datos Personales");
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel7.setText("Jornada");
+        jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
 
-        jLabel17.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel17.setText("Mañana");
+        jLabel17.setFont(new java.awt.Font("Microsoft JhengHei UI", 2, 18)); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel18.setText("Tarde");
+        jLabel18.setFont(new java.awt.Font("Microsoft JhengHei UI", 2, 18)); // NOI18N
 
-        jLabel19.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel19.setText("Desde:");
+        jLabel19.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel20.setText("Hasta:");
+        jLabel20.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
-        jtxtSalida_man.addActionListener(new java.awt.event.ActionListener() {
+        jLabel21.setText("Desde:");
+        jLabel21.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+
+        jLabel22.setText("Hasta:");
+        jLabel22.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+
+        jbtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/updateUser.png"))); // NOI18N
+        jbtnActualizar.setText("Actualizar");
+        jbtnActualizar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
+        jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtSalida_manActionPerformed(evt);
+                jbtnActualizarActionPerformed(evt);
             }
         });
 
-        jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel21.setText("Desde:");
+        Mat_man.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
 
-        jLabel22.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel22.setText("Hasta:");
+        Mat_tar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,13 +220,34 @@ public class crud extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
                                 .addGap(101, 101, 101)
-                                .addComponent(jchkRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Vesp_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbtnActualizar)))))
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -197,50 +259,29 @@ public class crud extends javax.swing.JPanel {
                                     .addComponent(jtxtNombre)
                                     .addComponent(jtxtCedula)
                                     .addComponent(jtxtClave)
-                                    .addComponent(jtxtApellido)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxtApellido)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
                                 .addGap(101, 101, 101)
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtxtEntrada_tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel22)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtxtSalida_Tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel17)
-                                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                                .addComponent(jLabel19)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jtxtEntrada_Man, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGap(6, 6, 6))
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addComponent(jLabel18)
-                                                        .addGap(81, 81, 81)))
-                                                .addComponent(jLabel20)))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtxtSalida_man, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 50, Short.MAX_VALUE)))
+                                .addComponent(jchkRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Mat_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Mat_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -274,25 +315,27 @@ public class crud extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(10, 10, 10)
+                .addGap(7, 7, 7)
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jtxtEntrada_Man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(jtxtSalida_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Mat_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Mat_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jtxtEntrada_tarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
-                    .addComponent(jtxtSalida_Tarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(jbtnGuardar)
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addComponent(Vesp_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnGuardar))
+                .addGap(111, 111, 111))
         );
 
         jpPanelOpciones.setBackground(new java.awt.Color(204, 204, 204));
@@ -318,15 +361,15 @@ public class crud extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/agregar.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel2.setText("Añadir");
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpAniadirLayout = new javax.swing.GroupLayout(jpAniadir);
         jpAniadir.setLayout(jpAniadirLayout);
         jpAniadirLayout.setHorizontalGroup(
             jpAniadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAniadirLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jpAniadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
@@ -345,6 +388,9 @@ public class crud extends javax.swing.JPanel {
         jpEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpEliminar.setPreferredSize(new java.awt.Dimension(105, 105));
         jpEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpEliminarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jpEliminarMouseEntered(evt);
             }
@@ -357,16 +403,16 @@ public class crud extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/eliminar.png"))); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(105, 105));
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Eliminar");
+        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpEliminarLayout = new javax.swing.GroupLayout(jpEliminar);
         jpEliminar.setLayout(jpEliminarLayout);
         jpEliminarLayout.setHorizontalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -398,16 +444,16 @@ public class crud extends javax.swing.JPanel {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/hacia-adelante.png"))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Actualizar");
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpActualizarLayout = new javax.swing.GroupLayout(jpActualizar);
         jpActualizar.setLayout(jpActualizarLayout);
         jpActualizarLayout.setHorizontalGroup(
             jpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpActualizarLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpActualizarLayout.createSequentialGroup()
                         .addComponent(jLabel10)
@@ -423,46 +469,6 @@ public class crud extends javax.swing.JPanel {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11))
-        );
-
-        jpSalir.setBackground(new java.awt.Color(204, 204, 204));
-        jpSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jpSalir.setPreferredSize(new java.awt.Dimension(105, 105));
-        jpSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpSalirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpSalirMouseExited(evt);
-            }
-        });
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/cerrar-sesion.png"))); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Salir");
-
-        javax.swing.GroupLayout jpSalirLayout = new javax.swing.GroupLayout(jpSalir);
-        jpSalir.setLayout(jpSalirLayout);
-        jpSalirLayout.setHorizontalGroup(
-            jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSalirLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpSalirLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel14))
-                    .addComponent(jLabel13))
-                .addGap(29, 29, 29))
-        );
-        jpSalirLayout.setVerticalGroup(
-            jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpSalirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14))
         );
 
         jpBuscar2.setBackground(new java.awt.Color(204, 204, 204));
@@ -482,9 +488,9 @@ public class crud extends javax.swing.JPanel {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reclutamiento.png"))); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Buscar");
+        jLabel16.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpBuscar2Layout = new javax.swing.GroupLayout(jpBuscar2);
         jpBuscar2.setLayout(jpBuscar2Layout);
@@ -514,17 +520,15 @@ public class crud extends javax.swing.JPanel {
         jpPanelOpcionesLayout.setHorizontalGroup(
             jpPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPanelOpcionesLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(82, 82, 82)
                 .addComponent(jpAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(55, 55, 55)
                 .addComponent(jpBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(74, 74, 74)
                 .addComponent(jpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(121, 121, 121))
         );
         jpPanelOpcionesLayout.setVerticalGroup(
             jpPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -532,7 +536,6 @@ public class crud extends javax.swing.JPanel {
             .addComponent(jpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jpBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -550,11 +553,13 @@ public class crud extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtblCrud.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jtblCrud);
 
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel12.setText("Buscar por cédula: ");
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
+        jtxtBusqueda.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtxtBusquedaFocusLost(evt);
@@ -568,33 +573,51 @@ public class crud extends javax.swing.JPanel {
 
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/buscar.png"))); // NOI18N
         jbtnBuscar.setText("Buscar");
+        jbtnBuscar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
+
+        jbtnUpdate.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
+        jbtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/actualizar.png"))); // NOI18N
+        jbtnUpdate.setText("Actualizar tabla");
+        jbtnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnBuscar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtnUpdate)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnBuscar))
-                .addGap(31, 31, 31)
+                    .addComponent(jbtnBuscar)
+                    .addComponent(jbtnUpdate))
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
@@ -655,18 +678,10 @@ public class crud extends javax.swing.JPanel {
 
     private void jpAniadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMouseClicked
 //              jpAniadir.setBackground(Color.white);
+        this.limpiarTextos();
         this.desbloquearTextos();
         this.jbtnGuardar.setEnabled(true);
-
-
     }//GEN-LAST:event_jpAniadirMouseClicked
-
-    private void jpEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseEntered
-jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEntered
-
-    private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
-        jpEliminar.setBackground(new Color(204, 204, 204));
-    }//GEN-LAST:event_jpEliminarMouseExited
 
     private void jpBuscar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseEntered
         jpBuscar2.setBackground(Color.white);
@@ -676,10 +691,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jpActualizar.setBackground(Color.white);
     }//GEN-LAST:event_jpActualizarMouseEntered
 
-    private void jpSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseEntered
-        jpSalir.setBackground(Color.white);
-    }//GEN-LAST:event_jpSalirMouseEntered
-
     private void jpBuscar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseExited
         jpBuscar2.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpBuscar2MouseExited
@@ -688,40 +699,54 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jpActualizar.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpActualizarMouseExited
 
-    private void jpSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseExited
-        jpSalir.setBackground(new Color(204, 204, 204));
-    }//GEN-LAST:event_jpSalirMouseExited
-
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-       int checkSeleccion;
-        if (jchkRoot.isSelected()) {
-            checkSeleccion = 1;
-        } else {
-            checkSeleccion = 0;
-        }
-        if (new crudController().buscarCedula(jtxtCedula.getText()).size() == 0) {
-             
-            new crudController().agregarUsuario(jtxtNombre.getText(),
-                    jtxtApellido.getText(),
-                    jtxtCedula.getText(),
-                    jtxtClave.getText(),
-                    String.valueOf(checkSeleccion));
-            this.limpiarTextos();
-            this.bloquearTextosyBusqueda();
-        } else {
-            JOptionPane.showMessageDialog(null, "El usuario ya existe");
-        }
 
+        if (!(jtxtNombre.getText().isEmpty() || jtxtApellido.getText().isEmpty()
+                || jtxtCedula.getText().isEmpty() || jtxtCedula.getText().isEmpty()
+                || Mat_man.getText().isEmpty() || Mat_tar.getText().isEmpty()
+                || Vesp_man.getText().isEmpty() || Vesp_tar.getText().isEmpty())) {
+
+            int checkSeleccion;
+            if (jchkRoot.isSelected()) {
+                checkSeleccion = 1;
+            } else {
+                checkSeleccion = 0;
+            }
+
+            if (new crudController().buscarCedula(jtxtCedula.getText()).isEmpty()) {
+                if (this.validarHorasTrabajo()) {
+                    new crudController().agregarUsuario(jtxtNombre.getText(),
+                            jtxtApellido.getText(),
+                            jtxtCedula.getText(),
+                            jtxtClave.getText(),
+                            String.valueOf(checkSeleccion));
+
+                    this.limpiarTextos();
+                    this.bloquearTextosyBusqueda();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario ya existe");
+            }
+
+            jtblCrud.setModel(new crudController().cargarTabla());
+        }
 
     }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     private void jpBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseClicked
         this.bloquearTextos();
+        jbtnActualizar.setEnabled(false);
         jtxtBusqueda.setEnabled(true);
+        jbtnBuscar.setEnabled(true);
+
     }//GEN-LAST:event_jpBuscar2MouseClicked
 
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
-        this.desbloquearTextos();
+        this.desbloquearTextosActualizar();
+        
+        this.jbtnGuardar.setEnabled(false);
+        jbtnActualizar.setEnabled(true);
+
     }//GEN-LAST:event_jpActualizarMouseClicked
 
     private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
@@ -741,7 +766,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
         boolean mayusculas = key >= 65 && key <= 90;
         boolean minusculas = key >= 97 && key <= 122;
+//        boolean tildes = key <= 160 && key <= 163;
+//        boolean tildes2 = key == 130;
         boolean espacio = key == 32;
+//        boolean acento = key == 239;
+//        boolean enie = key ==164 && key ==165; 
 
         if (!(minusculas || mayusculas || espacio)) {
             evt.consume();
@@ -774,23 +803,54 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
             jtxtBusqueda.setText("");
         }
 
-
     }//GEN-LAST:event_jtxtBusquedaFocusLost
 
     private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtCedulaFocusLost
-//        if (!this.validadorDeCedula(jtxtCedula.getText())) {
-//            jtxtCedula.setText("");
-//        }
+        if (!this.validadorDeCedula(jtxtCedula.getText())) {
+            jtxtCedula.setText("");
+        }
 
     }//GEN-LAST:event_jtxtCedulaFocusLost
 
-    private void jtxtSalida_manActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtSalida_manActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtSalida_manActionPerformed
+    private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
+        int checkSeleccion;
+        if (jchkRoot.isSelected()) {
+            checkSeleccion = 1;
+        } else {
+            checkSeleccion = 0;
+        }
+        new crudController().updateUser(jtxtNombre.getText(), jtxtApellido.getText(), jtxtCedula.getText(), String.valueOf(checkSeleccion));
+        jtblCrud.setModel(new crudController().cargarTabla());
+        this.bloquearTextosyBusqueda();
+    }//GEN-LAST:event_jbtnActualizarActionPerformed
 
-    private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
-    }
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        if (new crudController().buscarCedula(jtxtBusqueda.getText()).size() == 0) {
+            JOptionPane.showMessageDialog(null, "No existe un usuario con la cédula especificada");
+        } else {
+            jtblCrud.setModel(new crudController().cargarTabla(jtxtBusqueda.getText()));
+
+        }
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
+        jpEliminar.setBackground(new Color(204, 204, 204));
+    }//GEN-LAST:event_jpEliminarMouseExited
+
+    private void jpEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseEntered
+
+    }//GEN-LAST:event_jpEliminarMouseEntered
+
+    private void jpEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseClicked
+        new crudController().eliminarUsuario(jtxtCedula.getText());
+
+        jtblCrud.setModel(new crudController().cargarTabla());
+    }//GEN-LAST:event_jpEliminarMouseClicked
+
+    private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
+        jtblCrud.setRowHeight(30);
+        jtblCrud.setModel(new crudController().cargarTabla());
+    }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     public void limpiarTextos() {
         //Datos personales
@@ -800,10 +860,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtCedula.setText("");
         jchkRoot.setSelected(false);
         //Jornada
-        jtxtEntrada_Man.setText("");
-        jtxtSalida_man.setText("");
-        jtxtEntrada_tarde.setText("");
-        jtxtSalida_Tarde.setText("");
+        Mat_man.setText("");
+        Mat_tar.setText("");
+        Vesp_man.setText("");
+        Vesp_tar.setText("");
+
     }
 
     public void bloquearTextosyBusqueda() {
@@ -816,13 +877,14 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         //Busqueda
         jtxtBusqueda.setEnabled(false);
         //Jornada
-        jtxtEntrada_Man.setEnabled(false);
-        jtxtSalida_man.setEnabled(false);
-        jtxtEntrada_tarde.setEnabled(false);
-        jtxtSalida_Tarde.setEnabled(false);
+        Mat_man.setEnabled(false);
+        Mat_tar.setEnabled(false);
+        Vesp_man.setEnabled(false);
+        Vesp_tar.setEnabled(false);
         //Botones
         jbtnBuscar.setEnabled(false);
         jbtnGuardar.setEnabled(false);
+        jbtnActualizar.setEnabled(false);
     }
 
     public void bloquearTextos() {
@@ -833,10 +895,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtApellido.setEnabled(false);
         jchkRoot.setEnabled(false);
         //Jornada
-        jtxtEntrada_Man.setEnabled(false);
-        jtxtSalida_man.setEnabled(false);
-        jtxtEntrada_tarde.setEnabled(false);
-        jtxtSalida_Tarde.setEnabled(false);
+        Mat_man.setEnabled(false);
+        Mat_tar.setEnabled(false);
+        Vesp_man.setEnabled(false);
+        Vesp_tar.setEnabled(false);
 
     }
 
@@ -848,10 +910,24 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtApellido.setEnabled(true);
         jchkRoot.setEnabled(true);
         //Jornada
-        jtxtEntrada_Man.setEnabled(true);
-        jtxtSalida_man.setEnabled(true);
-        jtxtEntrada_tarde.setEnabled(true);
-        jtxtSalida_Tarde.setEnabled(true);
+        Mat_man.setEnabled(true);
+        Mat_tar.setEnabled(true);
+        Vesp_man.setEnabled(true);
+        Vesp_tar.setEnabled(true);
+    }
+
+    public void desbloquearTextosActualizar() {
+        //Datos
+        jtxtCedula.setEnabled(true);
+        jtxtNombre.setEnabled(true);
+        jtxtClave.setEnabled(false);
+        jtxtApellido.setEnabled(true);
+        jchkRoot.setEnabled(true);
+        //Jornada
+        Mat_man.setEnabled(true);
+        Mat_tar.setEnabled(true);
+        Vesp_man.setEnabled(true);
+        Vesp_tar.setEnabled(true);
     }
 
     public boolean validadorDeCedula(String cedula) {
@@ -901,14 +977,67 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         return cedulaCorrecta;
     }
 
+    public boolean validarHorasTrabajo() {
+
+        String AEntrMan = Mat_man.getText();
+        String[] horasManE = AEntrMan.split(":");
+        System.out.println(horasManE[0]);
+        int horamanE = Integer.valueOf(horasManE[0]);
+        if (horasManE[1].equals("00 pm")) {
+            horamanE = horamanE + 12;
+            System.out.println(horamanE);
+
+        }
+
+        String ASalMan = Mat_tar.getText();
+        String[] horasSalMan = ASalMan.split(":");
+        int horamanS = Integer.valueOf(horasSalMan[0]);
+        if (horasSalMan[1].equals("00 pm")) {
+            horamanS = horamanS + 12;
+            System.out.println(horamanS);
+
+        }
+
+        String AEntrVesp = Vesp_man.getText();
+        String[] horasVesE = AEntrVesp.split(":");
+        int horavespE = Integer.valueOf(horasVesE[0]);
+        if (horasVesE[1].equals("00 pm")) {
+            horavespE = horavespE + 12;
+            System.out.println(horavespE);
+
+        }
+
+        String ASalVesp = Vesp_tar.getText();
+        String[] horasVespS = ASalVesp.split(":");
+        int horavespS = Integer.valueOf(horasVespS[0]);
+        if (horasVespS[1].equals("00 pm")) {
+            horavespS = horavespS + 12;
+            System.out.println(horavespS);
+
+        }
+        int horasmanana = horamanS- horamanE;
+        int horastarde = horavespS - horavespE;
+
+        if (horasmanana + horastarde == 8) {
+            new crudController().agregarJornada(jtxtCedula.getText(), Mat_man.getText(), Mat_tar.getText(), Vesp_man.getText(), Vesp_tar.getText());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "La jornada laboral debe ser de 8 horas");
+            return false;
+        }
+        return true;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.TimePicker Mat_man;
+    private com.github.lgooddatepicker.components.TimePicker Mat_tar;
+    private com.github.lgooddatepicker.components.TimePicker Vesp_man;
+    private com.github.lgooddatepicker.components.TimePicker Vesp_tar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -929,8 +1058,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbtnActualizar;
     private javax.swing.JButton jbtnBuscar;
     private javax.swing.JButton jbtnGuardar;
+    private javax.swing.JButton jbtnUpdate;
     private javax.swing.JCheckBox jchkRoot;
     private javax.swing.JLabel jlApellido;
     private javax.swing.JLabel jlNombre;
@@ -940,16 +1071,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private javax.swing.JPanel jpCrud;
     private javax.swing.JPanel jpEliminar;
     private javax.swing.JPanel jpPanelOpciones;
-    private javax.swing.JPanel jpSalir;
     private javax.swing.JTable jtblCrud;
     private javax.swing.JTextField jtxtApellido;
     private javax.swing.JTextField jtxtBusqueda;
     private javax.swing.JTextField jtxtCedula;
     private javax.swing.JTextField jtxtClave;
-    private javax.swing.JTextField jtxtEntrada_Man;
-    private javax.swing.JTextField jtxtEntrada_tarde;
     private javax.swing.JTextField jtxtNombre;
-    private javax.swing.JTextField jtxtSalida_Tarde;
-    private javax.swing.JTextField jtxtSalida_man;
     // End of variables declaration//GEN-END:variables
 }

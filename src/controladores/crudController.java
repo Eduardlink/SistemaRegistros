@@ -33,7 +33,7 @@ public class crudController {
             cripto.Encriptar(clave),
             nombre.toLowerCase(),
             apellido.toLowerCase(),
-            cedula.toLowerCase(),
+            cedula,
             root
         };
         String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root,estado) "
@@ -53,33 +53,36 @@ public class crudController {
         datos = manejador.resultado("SELECT cedula FROM usuarios WHERE cedula = '" + cedula + "';");
         return datos;
     }
-    
-
 
     //eliminar
     public void eliminarUsuario(String cedula) {
         manejador.ejecutarConsulta("UPDATE usuarios SET estado='0' WHERE cedula='" + cedula + "';");
     }
 
-    public void updateUser(String nombre, String apellido, String cedula, String clave, String root) {
-        clave = new CriptPass().Encriptar(cedula);
+    public void updateUser(String nombre, String apellido, String cedula, String root) {
         manejador.ejecutarConsulta("UPDATE usuarios SET nombre='" + nombre + "', apellido = '" + apellido + "',"
-                + "cedula = '" + cedula + "', clave ='" + clave + "', root ='" + root + "' WHERE cedula='" + cedula + "';");
+                + "cedula = '" + cedula + "', root ='" + root + "' WHERE cedula='" + cedula + "';");
+    }
+
+    public void agregarJornada(String cedula, String entrada_man, String salida_man, String entrada_tarde, String salida_tarde) {
+        String sql = "INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,ced_usuario) "
+                + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + cedula+ "');";
+        manejador.ejecutarConsulta(sql);
     }
 
     public DefaultTableModel cargarTabla() {
         try {
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario", "Jornada Matutina", "Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT * FROM usuarios;");
-
-            String[] registro = new String[6];
-            int num =1;
+            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios;");
+            String[] registro = new String[8];
+            int num = 1;
+            ArrayList<Object> lista = new ArrayList<>();
             while (datos.next()) {
-                registro[0]=String.valueOf(num);
+                registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
                 registro[2] = datos.getString("nombre");
                 registro[3] = datos.getString("apellido");
@@ -90,8 +93,13 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
-                modeloTabla.addRow(registro);
-                
+
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE ced_usuario = '" + registro[4] + "';");
+                registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
+                registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
+                if (datos.getString("estado").equals("1")) {
+                    modeloTabla.addRow(registro);
+                }
                 num++;
             }
             manejador.cerrar();
@@ -106,15 +114,16 @@ public class crudController {
     public DefaultTableModel cargarTabla(String cedula) {
         try {
             String[] columnas = {
-                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario"
+                "N.", "Usuario", "Nombre", "Apellido", "Cedula", "Tipo Usuario", "Jornada Matutina", "Jornada Vespertina"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
             DataManager manejador = new DataManager();
-            ResultSet datos = manejador.obtenerDatos("SELECT * FROM usuarios WHERE cedula='" + cedula + "';");
-            String[] registro = new String[6];
-            int num =1;
+            ResultSet datos = manejador.obtenerDatos("SELECT usuario, nombre, apellido, cedula, root, estado FROM usuarios WHERE cedula='"+cedula+"';");
+            String[] registro = new String[8];
+            int num = 1;
+            ArrayList<Object> lista = new ArrayList<>();
             while (datos.next()) {
-                registro[0]=String.valueOf(num);
+                registro[0] = String.valueOf(num);
                 registro[1] = datos.getString("usuario");
                 registro[2] = datos.getString("nombre");
                 registro[3] = datos.getString("apellido");
@@ -125,8 +134,12 @@ public class crudController {
                 } else if (registro[5].equals("1")) {
                     registro[5] = "Administrador";
                 }
-                if(datos.getString("estado").equals("1")){
-                modeloTabla.addRow(registro);
+
+                lista = manejador.resultado("SELECT entrada_man,salida_man,entrada_tarde,salida_tarde FROM jornadas WHERE ced_usuario = '" + cedula + "';");
+                registro[6] = lista.get(0).toString() + " - " + lista.get(1).toString();
+                registro[7] = lista.get(2).toString() + " - " + lista.get(3).toString();
+                if (datos.getString("estado").equals("1")) {
+                    modeloTabla.addRow(registro);
                 }
                 num++;
             }
@@ -134,9 +147,9 @@ public class crudController {
             return modeloTabla;
         } catch (SQLException ex) {
             Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error: " + ex);
             return null;
         }
     }
-
 
 }

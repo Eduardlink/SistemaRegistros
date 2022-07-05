@@ -5,7 +5,6 @@
  */
 package interfazGrafica;
 
-
 import java.sql.*;
 import javax.swing.JOptionPane;
 import paneles.CambiaPanel;
@@ -62,6 +61,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jbtnReportesDocente = new javax.swing.JButton();
         jbtnHome = new javax.swing.JButton();
         jbtnReportesFecha = new javax.swing.JButton();
+        jbtnExit = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
@@ -191,6 +191,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
 
         jbtnUsuarios.setBackground(new java.awt.Color(63, 78, 79));
         jbtnUsuarios.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         jbtnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user.png"))); // NOI18N
         jbtnUsuarios.setText("Usuarios");
         jbtnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -203,6 +204,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
 
         jbtnReportesDocente.setBackground(new java.awt.Color(63, 78, 79));
         jbtnReportesDocente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesDocente.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
         jbtnReportesDocente.setText("Reportes por Docente");
         jbtnReportesDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -211,7 +213,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
                 jbtnReportesDocenteActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 250, 80));
+        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 280, 80));
 
         jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
         jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
@@ -226,6 +228,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
 
         jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
         jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
         jbtnReportesFecha.setText("Reportes por Fecha");
         jbtnReportesFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -235,6 +238,17 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
             }
         });
         jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -10, 260, 80));
+
+        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
+        jbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
+        jbtnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExitActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, -20, 120, 100));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -252,7 +266,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
         jpHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegDocen.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        RegDocen.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 32)); // NOI18N
         RegDocen.setForeground(new java.awt.Color(255, 255, 255));
         RegDocen.setText("REGISTRO DE DOCENTES");
         jpHeader.add(RegDocen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
@@ -325,22 +339,28 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void jbtnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUsuariosActionPerformed
-     
+
         new CambiaPanel(jpPanelUsuarios, new paneles.crud());
     }//GEN-LAST:event_jbtnUsuariosActionPerformed
 
     private void jbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHomeActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
+        new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
     }//GEN-LAST:event_jbtnHomeActionPerformed
 
     private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        
+
         new CambiaPanel(jpPanelUsuarios, new paneles.BusquedaFecha());
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
+        new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
     }//GEN-LAST:event_jbtnReportesDocenteActionPerformed
+
+    private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
+        InicioPrincipal loguin = new InicioPrincipal();
+        loguin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +405,6 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Minim;
     private javax.swing.JLabel RegDocen;
@@ -396,6 +415,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton jbtnExit;
     private javax.swing.JButton jbtnHome;
     private javax.swing.JButton jbtnReportesDocente;
     private javax.swing.JButton jbtnReportesFecha;

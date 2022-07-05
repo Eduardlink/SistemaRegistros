@@ -6,6 +6,7 @@
 package paneles;
 
 import controladores.LoguinController;
+import interfazGrafica.InicioPrincipal;
 import interfazGrafica.paginaPrincipal_Usuario;
 import java.awt.Color;
 import java.time.LocalTime;
@@ -16,12 +17,13 @@ import javax.swing.JOptionPane;
  * @author spc
  */
 public class docente extends javax.swing.JPanel {
-
+    private InicioPrincipal loguin;
     /**
      * Creates new form docente
      */
-    public docente() {
+    public docente(InicioPrincipal loguin) {
         initComponents();
+        this.loguin =loguin;
     }
 
     /**
@@ -40,13 +42,16 @@ public class docente extends javax.swing.JPanel {
         jtxtpass = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
         jbtnInicio = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1250, 590));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 30)); // NOI18N
         jLabel3.setText("Usuario");
 
-        jtxtuser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtxtuser.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
         jtxtuser.setBorder(null);
         jtxtuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,58 +59,83 @@ public class docente extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 30)); // NOI18N
         jLabel1.setText("Contraseña");
 
-        jtxtpass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtxtpass.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
         jtxtpass.setBorder(null);
 
+        jbtnInicio.setBackground(new java.awt.Color(236, 71, 71));
         jbtnInicio.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jbtnInicio.setForeground(new java.awt.Color(255, 255, 255));
         jbtnInicio.setText("Iniciar sesion");
+        jbtnInicio.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbtnInicio.setBorderPainted(false);
+        jbtnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbtnInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnInicioMouseExited(evt);
+            }
+        });
         jbtnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnInicioActionPerformed(evt);
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 40)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Docente");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/Loguin_Docente.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(485, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(155, 155, 155))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbtnInicio)
-                        .addGap(404, 404, 404))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel4)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel3)
+                .addGap(2, 2, 2)
                 .addComponent(jtxtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jbtnInicio)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbtnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,18 +146,25 @@ public class docente extends javax.swing.JPanel {
     private void jbtnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnInicioActionPerformed
         if (jtxtuser.getText().trim().isEmpty() || String.valueOf(jtxtpass.getPassword()).trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Espacios invalidos o incompletos");
+        } else {
+            iniciarSesion();
         }
-        iniciarSesion();
-        paginaPrincipal_Usuario u = new paginaPrincipal_Usuario();
-        u.setVisible(true);
-        
+
     }//GEN-LAST:event_jbtnInicioActionPerformed
 
+    private void jbtnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnInicioMouseEntered
+        jbtnInicio.setBackground(Color.BLACK);
+    }//GEN-LAST:event_jbtnInicioMouseEntered
+
+    private void jbtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnInicioMouseExited
+        jbtnInicio.setBackground(new Color(236, 71, 71));
+    }//GEN-LAST:event_jbtnInicioMouseExited
+/*
     public void validarBoton() {
         LocalTime horaActual = LocalTime.now();
         LocalTime inicio = LocalTime.parse("06:50");
         LocalTime fin = LocalTime.parse("07:15");
-        LocalTime incioTarde = LocalTime.parse("14:00");
+        LocalTime incioTarde = LocalTime..parse("14:00");
         LocalTime finTarde = LocalTime.parse("20:00");
 
         boolean hora1 = horaActual.isAfter(inicio);
@@ -144,21 +181,27 @@ public class docente extends javax.swing.JPanel {
         }
 
     }
-
+*/
     public void iniciarSesion() {
         LoguinController controlador = new LoguinController();
         boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "0");
-        if (verificado[0] == false) {
+        if (verificado[0] == false && verificado[1] == false) {
             JOptionPane.showMessageDialog(null, "No existe el usuario" + " " + jtxtuser.getText());
-        } else if (verificado[0] == true && verificado[1] == false) {
+        }
+        if (verificado[0] == true && verificado[1] == false) {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");
-        } else if (verificado[0] == true && verificado[1] == true) {
-            JOptionPane.showMessageDialog(null, "Exito");
+        }
+        if (verificado[0] == true && verificado[1] == true) {
+            paginaPrincipal_Usuario u = new paginaPrincipal_Usuario(jtxtuser.getText());
+            this.loguin.setVisible(false);
+            u.setVisible(true);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbtnInicio;

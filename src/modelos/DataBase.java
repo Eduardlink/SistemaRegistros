@@ -46,7 +46,7 @@ public class DataBase {
         }
     }
 
-    public Connection getConexion() {
+    protected Connection getConexion() {
         return conexion;
     }
     

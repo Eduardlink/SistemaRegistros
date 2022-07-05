@@ -55,7 +55,7 @@
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Component id="jtxtBuscar" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="jbtnBuscar" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="jtxtBuscar" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jbtnBuscar" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -151,7 +151,7 @@
                       </Group>
                       <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Component id="jbtnReportes" min="-2" pref="70" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               </Group>
@@ -226,14 +226,7 @@
                   <Font name="Calibri" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="30">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 5" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 6" type="java.lang.Object"/>
-                  </Table>
+                  <Table columnCount="0" rowCount="0"/>
                 </Property>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -242,14 +235,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jbtnBuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenesFrames/lupa.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnBuscarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlbCedula">

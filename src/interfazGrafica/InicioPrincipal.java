@@ -1,4 +1,4 @@
-   /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,6 +28,29 @@ public class InicioPrincipal extends javax.swing.JFrame {
     public InicioPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.loguinDocente();
+    }
+
+    public void loguinDocente() {
+        jbtndocente.setVisible(false);
+        docente d = new docente(this);
+        d.setSize(1250, 590);
+        d.setLocation(0, 0);
+        PanelInicio.removeAll();
+        PanelInicio.add(d, BorderLayout.CENTER);
+        PanelInicio.revalidate();
+        PanelInicio.repaint();
+    }
+
+    public void loginAdmin() {
+        jbtndocente.setVisible(true);
+        admin a = new admin(this);
+        a.setSize(1250, 590);
+        a.setLocation(0, 0);
+        PanelInicio.removeAll();
+        PanelInicio.add(a, BorderLayout.CENTER);
+        PanelInicio.revalidate();
+        PanelInicio.repaint();
     }
 
     /**
@@ -54,7 +77,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         PanelInicio = new javax.swing.JPanel();
         jpMenuBar = new javax.swing.JPanel();
         jbtnadmin = new javax.swing.JButton();
@@ -75,7 +97,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
         jpFooter.setPreferredSize(new java.awt.Dimension(1230, 70));
         jpFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
         jLabel2.setText("Universidad Técnica de Ambato - FISEI");
         jpFooter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -193,7 +215,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
         });
         jpHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegDocen.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        RegDocen.setFont(new java.awt.Font("Microsoft YaHei", 1, 32)); // NOI18N
         RegDocen.setForeground(new java.awt.Color(255, 255, 255));
         RegDocen.setText("REGISTRO DE DOCENTES");
         jpHeader.add(RegDocen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
@@ -204,61 +226,61 @@ public class InicioPrincipal extends javax.swing.JFrame {
 
         jPanel3.add(jpHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
-        jButton1.setText("Admin");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 30, -1, -1));
-
         PanelInicio.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout PanelInicioLayout = new javax.swing.GroupLayout(PanelInicio);
         PanelInicio.setLayout(PanelInicioLayout);
         PanelInicioLayout.setHorizontalGroup(
             PanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 1250, Short.MAX_VALUE)
         );
         PanelInicioLayout.setVerticalGroup(
             PanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
-        jPanel3.add(PanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 1130, 480));
+        jPanel3.add(PanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1250, 590));
 
         jpMenuBar.setBackground(new java.awt.Color(63, 78, 79));
         jpMenuBar.setToolTipText("");
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnadmin.setBackground(new java.awt.Color(255, 255, 255));
-        jbtnadmin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jbtnadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/admin.jpg"))); // NOI18N
-        jbtnadmin.setText("Administrador");
-        jbtnadmin.setBorder(null);
+        jbtnadmin.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnadmin.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
+        jbtnadmin.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/admin_icon.png"))); // NOI18N
+        jbtnadmin.setText("Acceder como administrador");
+        jbtnadmin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbtnadmin.setBorderPainted(false);
+        jbtnadmin.setContentAreaFilled(false);
         jbtnadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnadmin.setDefaultCapable(false);
+        jbtnadmin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jbtnadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnadminActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+        jpMenuBar.add(jbtnadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, -20, 400, 100));
 
-        jbtndocente.setBackground(new java.awt.Color(255, 255, 255));
-        jbtndocente.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jbtndocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/docente.png"))); // NOI18N
-        jbtndocente.setText("Docente");
+        jbtndocente.setBackground(new java.awt.Color(63, 78, 79));
+        jbtndocente.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
+        jbtndocente.setForeground(new java.awt.Color(255, 255, 255));
+        jbtndocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user_icon.png"))); // NOI18N
+        jbtndocente.setText("Acceder como docente");
         jbtndocente.setBorder(null);
+        jbtndocente.setBorderPainted(false);
+        jbtndocente.setContentAreaFilled(false);
         jbtndocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtndocente.setDefaultCapable(false);
+        jbtndocente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jbtndocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtndocenteActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 170, 50));
+        jpMenuBar.add(jbtndocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, -20, 330, 100));
 
         jPanel3.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -321,28 +343,14 @@ public class InicioPrincipal extends javax.swing.JFrame {
         this.yMouse = evt.getY();
     }//GEN-LAST:event_jpHeaderMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jbtndocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndocenteActionPerformed
-        docente d = new docente();
-       d.setSize(1130,480);
-       d.setLocation(0,0);
-       PanelInicio.removeAll();
-       PanelInicio.add(d,BorderLayout.CENTER);
-       PanelInicio.revalidate();
-       PanelInicio.repaint();
+        jbtnadmin.setVisible(true);
+        this.loguinDocente();
     }//GEN-LAST:event_jbtndocenteActionPerformed
 
     private void jbtnadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnadminActionPerformed
-         admin a = new admin();
-       a.setSize(1130,480);
-       a.setLocation(0,0);
-       PanelInicio.removeAll();
-       PanelInicio.add(a,BorderLayout.CENTER);
-       PanelInicio.revalidate();
-       PanelInicio.repaint();
+        jbtnadmin.setVisible(false);
+        this.loginAdmin();
     }//GEN-LAST:event_jbtnadminActionPerformed
 
     /**
@@ -367,7 +375,7 @@ public class InicioPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(InicioPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InicioPrincipal().setVisible(true);
             }
@@ -393,7 +401,6 @@ public class InicioPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogoEncab;
     private javax.swing.JLabel imgLogoFisei;
     private javax.swing.JLabel imgLogoUta;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
