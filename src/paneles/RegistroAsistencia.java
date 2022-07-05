@@ -39,6 +39,7 @@ public class RegistroAsistencia extends javax.swing.JPanel {
         jbtnEntrada.setVisible(false);
         jbtnSalida.setVisible(false);
         activarBoton();
+        inicializarAsistencia();
     }
 
     public void activarBoton() {
@@ -91,7 +92,7 @@ public class RegistroAsistencia extends javax.swing.JPanel {
         }
         if (horaActual.isAfter(LocalTime.parse(entrada_tarde).minusMinutes(10)) && horaActual.isBefore(LocalTime.parse(entrada_tarde).plusMinutes(15))) {
             System.out.println("entra_tard");
-            inicializarAsistencia();
+            //inicializarAsistencia();
             if (controlador.entradaVespertina(cedula, controlador.obtenerFecha()) == null) {
                 controlador.registrarEntradaTarde(controlador.obtenerHora(), controlador.obtenerFecha(), cedula);
             } else {
@@ -104,7 +105,7 @@ public class RegistroAsistencia extends javax.swing.JPanel {
     public void registrarSalida() {
         String cedula = new InformeDiarioController().buscarUsuario(user);
         LocalTime horaActual = LocalTime.now();
-        inicializarAsistencia();
+        //inicializarAsistencia();
         if (horaActual.isAfter(LocalTime.parse(salida_man).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_man).plusMinutes(10))) {
             if (controlador.salidaMatutina(cedula, controlador.obtenerFecha()) == null) {
                 controlador.registrarSalidaMatutina(controlador.obtenerHora(), controlador.obtenerFecha(), cedula);
