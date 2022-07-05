@@ -107,14 +107,16 @@
                                           </Group>
                                           <Component id="jbtnGuardar" min="-2" pref="119" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jbtnActualizar" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="Vesp_tar" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jbtnActualizar" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -161,8 +163,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="Mat_man" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
@@ -244,7 +246,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -252,7 +254,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Apellido"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -260,7 +262,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="C&#xe9;dula"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -268,7 +270,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -276,38 +278,64 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Root"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtNombre">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtNombreKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtApellido">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtApellidoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtCedula">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei" size="13" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtxtCedulaFocusLost"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtCedulaKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtClave">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei" size="13" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jchkRoot">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbtnGuardar">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagenesFrames/floppy-disk.png"/>
                 </Property>
@@ -324,7 +352,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Datos Personales"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="1"/>
+                  <Font name="Microsoft YaHei" size="18" style="1"/>
                 </Property>
               </Properties>
             </Component>
@@ -334,7 +362,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Jornada"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="1"/>
+                  <Font name="Microsoft YaHei" size="18" style="1"/>
                 </Property>
               </Properties>
             </Component>
@@ -342,7 +370,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ma&#xf1;ana"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="2"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="2"/>
                 </Property>
               </Properties>
             </Component>
@@ -350,7 +378,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tarde"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="2"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="2"/>
                 </Property>
               </Properties>
             </Component>
@@ -358,7 +386,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desde:"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="14" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -366,7 +394,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hasta:"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="14" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -374,7 +402,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Desde:"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="14" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -382,21 +410,37 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hasta:"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="14" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbtnActualizar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenesFrames/updateUser.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnActualizarActionPerformed"/>
               </Events>
             </Component>
             <Component class="com.github.lgooddatepicker.components.TimePicker" name="Mat_man">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="com.github.lgooddatepicker.components.TimePicker" name="Mat_tar">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="com.github.lgooddatepicker.components.TimePicker" name="Vesp_man">
             </Component>
@@ -460,7 +504,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -495,7 +539,7 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="18" style="0"/>
+                      <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -523,7 +567,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
@@ -560,7 +604,7 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="18" style="0"/>
+                      <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -588,7 +632,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -626,7 +670,7 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="18" style="0"/>
+                      <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -692,7 +736,7 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Calibri" size="18" style="0"/>
+                      <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -710,32 +754,36 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="156" max="32767" attributes="0"/>
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jtxtBusqueda" min="-2" pref="260" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jbtnBuscar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="157" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="778" max="-2" attributes="0"/>
-                      <EmptySpace pref="66" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="778" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jtxtBusqueda" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jbtnBuscar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jbtnUpdate" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="56" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtxtBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbtnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="209" max="-2" attributes="0"/>
                       <EmptySpace pref="179" max="32767" attributes="0"/>
                   </Group>
@@ -765,6 +813,9 @@
                         <Column editable="true" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Microsoft JhengHei UI" size="14" style="0"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -773,11 +824,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar por c&#xe9;dula: "/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="18" style="0"/>
+                  <Font name="Microsoft JhengHei UI" size="18" style="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtxtBusqueda">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtxtBusquedaFocusLost"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtBusquedaKeyTyped"/>
@@ -789,9 +845,26 @@
                   <Image iconType="3" name="/imagenesFrames/buscar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnBuscarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbtnUpdate">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft JhengHei UI" size="13" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenesFrames/actualizar.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Actualizar tabla"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnUpdateActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

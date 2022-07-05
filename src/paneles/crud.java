@@ -112,6 +112,7 @@ public class crud extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jtxtBusqueda = new javax.swing.JTextField();
         jbtnBuscar = new javax.swing.JButton();
+        jbtnUpdate = new javax.swing.JButton();
 
         jpCrud.setBackground(new java.awt.Color(255, 255, 255));
         jpCrud.setPreferredSize(new java.awt.Dimension(1250, 590));
@@ -119,32 +120,35 @@ public class crud extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         jlNombre.setText("Nombre");
-        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         jlApellido.setText("Apellido");
-        jlApellido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlApellido.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         jLabel3.setText("Cédula");
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         jLabel4.setText("Contraseña");
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         jLabel5.setText("Root");
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
+        jtxtNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtNombreKeyTyped(evt);
             }
         });
 
+        jtxtApellido.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtApellidoKeyTyped(evt);
             }
         });
 
+        jtxtCedula.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
         jtxtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtxtCedulaFocusLost(evt);
@@ -156,9 +160,13 @@ public class crud extends javax.swing.JPanel {
             }
         });
 
+        jtxtClave.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+
         jchkRoot.setBackground(new java.awt.Color(204, 204, 204));
+        jchkRoot.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jchkRoot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jbtnGuardar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jbtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/floppy-disk.png"))); // NOI18N
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,35 +177,41 @@ public class crud extends javax.swing.JPanel {
         });
 
         jLabel6.setText("Datos Personales");
-        jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
 
         jLabel7.setText("Jornada");
-        jLabel7.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
 
         jLabel17.setText("Mañana");
-        jLabel17.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Microsoft JhengHei UI", 2, 18)); // NOI18N
 
         jLabel18.setText("Tarde");
-        jLabel18.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Microsoft JhengHei UI", 2, 18)); // NOI18N
 
         jLabel19.setText("Desde:");
-        jLabel19.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
         jLabel20.setText("Hasta:");
-        jLabel20.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
         jLabel21.setText("Desde:");
-        jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
         jLabel22.setText("Hasta:");
-        jLabel22.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
+        jbtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/updateUser.png"))); // NOI18N
         jbtnActualizar.setText("Actualizar");
+        jbtnActualizar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnActualizarActionPerformed(evt);
             }
         });
+
+        Mat_man.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
+
+        Mat_tar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -221,14 +235,15 @@ public class crud extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(Vesp_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(7, 7, 7)
+                                        .addGap(14, 14, 14)
                                         .addComponent(jLabel22)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbtnActualizar)))))
                         .addGap(0, 35, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -261,8 +276,8 @@ public class crud extends javax.swing.JPanel {
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Mat_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -347,14 +362,14 @@ public class crud extends javax.swing.JPanel {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel2.setText("Añadir");
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpAniadirLayout = new javax.swing.GroupLayout(jpAniadir);
         jpAniadir.setLayout(jpAniadirLayout);
         jpAniadirLayout.setHorizontalGroup(
             jpAniadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAniadirLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jpAniadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
@@ -390,14 +405,14 @@ public class crud extends javax.swing.JPanel {
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Eliminar");
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpEliminarLayout = new javax.swing.GroupLayout(jpEliminar);
         jpEliminar.setLayout(jpEliminarLayout);
         jpEliminarLayout.setHorizontalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -431,14 +446,14 @@ public class crud extends javax.swing.JPanel {
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Actualizar");
-        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpActualizarLayout = new javax.swing.GroupLayout(jpActualizar);
         jpActualizar.setLayout(jpActualizarLayout);
         jpActualizarLayout.setHorizontalGroup(
             jpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpActualizarLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpActualizarLayout.createSequentialGroup()
                         .addComponent(jLabel10)
@@ -475,7 +490,7 @@ public class crud extends javax.swing.JPanel {
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Buscar");
-        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpBuscar2Layout = new javax.swing.GroupLayout(jpBuscar2);
         jpBuscar2.setLayout(jpBuscar2Layout);
@@ -538,11 +553,13 @@ public class crud extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtblCrud.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jtblCrud);
 
         jLabel12.setText("Buscar por cédula: ");
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
+        jtxtBusqueda.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jtxtBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtxtBusquedaFocusLost(evt);
@@ -556,9 +573,19 @@ public class crud extends javax.swing.JPanel {
 
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/buscar.png"))); // NOI18N
         jbtnBuscar.setText("Buscar");
+        jbtnBuscar.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
         jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnBuscarActionPerformed(evt);
+            }
+        });
+
+        jbtnUpdate.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 13)); // NOI18N
+        jbtnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/actualizar.png"))); // NOI18N
+        jbtnUpdate.setText("Actualizar tabla");
+        jbtnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnUpdateActionPerformed(evt);
             }
         });
 
@@ -567,27 +594,30 @@ public class crud extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 156, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnBuscar)
-                .addGap(0, 157, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtnUpdate)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnBuscar))
-                .addGap(31, 31, 31)
+                    .addComponent(jbtnBuscar)
+                    .addComponent(jbtnUpdate))
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
@@ -817,6 +847,11 @@ public class crud extends javax.swing.JPanel {
         jtblCrud.setModel(new crudController().cargarTabla());
     }//GEN-LAST:event_jpEliminarMouseClicked
 
+    private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
+        jtblCrud.setRowHeight(30);
+        jtblCrud.setModel(new crudController().cargarTabla());
+    }//GEN-LAST:event_jbtnUpdateActionPerformed
+
     public void limpiarTextos() {
         //Datos personales
         jtxtNombre.setText("");
@@ -1026,6 +1061,7 @@ public class crud extends javax.swing.JPanel {
     private javax.swing.JButton jbtnActualizar;
     private javax.swing.JButton jbtnBuscar;
     private javax.swing.JButton jbtnGuardar;
+    private javax.swing.JButton jbtnUpdate;
     private javax.swing.JCheckBox jchkRoot;
     private javax.swing.JLabel jlApellido;
     private javax.swing.JLabel jlNombre;
