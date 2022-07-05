@@ -651,8 +651,6 @@ public class crud extends javax.swing.JPanel {
         this.limpiarTextos();
         this.desbloquearTextos();
         this.jbtnGuardar.setEnabled(true);
-
-
     }//GEN-LAST:event_jpAniadirMouseClicked
 
     private void jpBuscar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseEntered
