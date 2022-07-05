@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.inforDocController;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -25,6 +27,7 @@ public class InformeDocentes extends javax.swing.JPanel {
     private Icon icono;
     private DefaultTableModel modeloTabla;
     boolean validacionCedula = false;
+
     /**
      * Creates new form Bienvenida
      */
@@ -32,7 +35,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         initComponents();
         //this.pintarImagen(this.imgUsuario, "src/imagenesFrames/usuario.png");
         cargarTitulosTabla();
-        
+
         //
     }
 
@@ -85,7 +88,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         jLabel15.setText("_____________________________");
 
         jtblDocentes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jtblDocentes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jtblDocentes.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jtblDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -257,7 +260,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         jtblDocentes.setModel(new inforDocController().cargarTabla(jtxtBuscar.getText()));
         if (validacionCedula == true) {
             buscarDocentes2(jtxtBuscar.getText());
-            
+
         }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
@@ -296,25 +299,39 @@ public class InformeDocentes extends javax.swing.JPanel {
     }
 
     private void cargarTitulosTabla() {
+
         String[] titulos = {"Fecha", "Entrada Matutina", "Salida Matutina", "Entrada Vespertina", "Salida Vespertina", "Horas"};
         this.modeloTabla = new DefaultTableModel(null, titulos);
         jtblDocentes.setModel(modeloTabla);
+        formatoTitulos();
+        jtblDocentes.setRowHeight(30);
         for (int i = 0; i < titulos.length; i++) {
             jtblDocentes.getColumnModel().getColumn(i).setResizable(false);
         }
     }
-    
-    
-        private void buscarDocentes2(String cedula) {
+
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblDocentes.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 14);
+        th.setFont(fuente);
+    }
+
+    private void buscarDocentes2(String cedula) {
         inforDocController informe = new inforDocController();
-        String[] datos = informe.mostrarDatos(cedula);
-        if(datos[0].isEmpty()){
+        if(informe.mostrarDatos(cedula)== null){
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");
-            
-        }else{
-        jlbUsuario.setText(datos[0]);
-        jlbCedula.setText(datos[3]);
-        jlbNombre.setText(datos[1] + " " + datos[2]);
+            return;
+        }
+        String[] datos = informe.mostrarDatos(cedula);
+        
+        if (datos[0].isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+
+        } else {
+            jlbUsuario.setText(datos[0]);
+            jlbCedula.setText(datos[3]);
+            jlbNombre.setText(datos[1] + " " + datos[2]);
         }
 
     }
@@ -381,7 +398,6 @@ public class InformeDocentes extends javax.swing.JPanel {
             }
         }
     }*/
-
     private void cargarTabla(String fecha, String horaEntradaM, String horaSalidaM, String horaEntradaV, String horaSalidaV, String horas) {
         String[] registro = new String[modeloTabla.getColumnCount()];
         registro[0] = fecha;
