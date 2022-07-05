@@ -29,7 +29,7 @@ public class RegistroAsistencia extends javax.swing.JPanel {
      */
     public RegistroAsistencia(String usuario) {
         initComponents();
-        this.controlador=new AsistenciaController();
+        this.controlador = new AsistenciaController();
         this.user = usuario;
         String[] registro = this.controlador.buscarJornada(new InformeDiarioController().buscarUsuario(usuario));
         entrada_man = registro[0];
@@ -45,29 +45,35 @@ public class RegistroAsistencia extends javax.swing.JPanel {
         LocalTime horaActual = LocalTime.now();
         if (horaActual.isAfter(LocalTime.parse(entrada_man).minusMinutes(10)) && horaActual.isBefore(LocalTime.parse(entrada_man).plusMinutes(15))) {
             jbtnEntrada.setVisible(true);
+            return;
         } else {
-            jbtnEntrada.setVisible(false);
+            jbtnSalida.setVisible(false);
         }
         if (horaActual.isAfter(LocalTime.parse(salida_man).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_man).plusMinutes(10))) {
             jbtnSalida.setVisible(true);
+            return;
         } else {
             jbtnSalida.setVisible(false);
         }
         if (horaActual.isAfter(LocalTime.parse(entrada_tarde).minusMinutes(10)) && horaActual.isBefore(LocalTime.parse(entrada_tarde).plusMinutes(15))) {
             jbtnEntrada.setVisible(true);
+            return;
         } else {
             jbtnEntrada.setVisible(false);
         }
+        System.out.println(horaActual.isAfter(LocalTime.parse(salida_tarde).minusMinutes(5)));
+        System.out.println(horaActual.isBefore(LocalTime.parse(salida_tarde).plusMinutes(10)));
         if (horaActual.isAfter(LocalTime.parse(salida_tarde).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_tarde).plusMinutes(10))) {
-            jbtnSalida.setEnabled(true);
+            jbtnSalida.setVisible(true);
+            return;
         } else {
             jbtnSalida.setVisible(false);
         }
     }
-    
-    public void inicializarAsistencia(){
+
+    public void inicializarAsistencia() {
         LocalTime horaActual = LocalTime.now();
-        if(horaActual.isBefore(LocalTime.parse(entrada_man).plusMinutes(15))){
+        if (horaActual.isAfter(LocalTime.parse(entrada_man).plusMinutes(15))) {
             this.controlador.verificarRegistro(this.controlador.obtenerFecha(), new InformeDiarioController().buscarUsuario(user));
         }
     }
@@ -81,30 +87,39 @@ public class RegistroAsistencia extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Ya se ha guardado su registro");
             }
-        }else if(horaActual.isAfter(LocalTime.parse(entrada_tarde).minusMinutes(10)) && horaActual.isBefore(LocalTime.parse(entrada_tarde).plusMinutes(15))){
+            return;
+        }
+        if (horaActual.isAfter(LocalTime.parse(entrada_tarde).minusMinutes(10)) && horaActual.isBefore(LocalTime.parse(entrada_tarde).plusMinutes(15))) {
+            System.out.println("entra_tard");
+            inicializarAsistencia();
             if (controlador.entradaVespertina(cedula, controlador.obtenerFecha()) == null) {
                 controlador.registrarEntradaTarde(controlador.obtenerHora(), controlador.obtenerFecha(), cedula);
             } else {
                 JOptionPane.showMessageDialog(null, "Ya se ha guardado su registro");
             }
+            return;
         }
     }
-    
-    public void registrarSalida(){
+
+    public void registrarSalida() {
         String cedula = new InformeDiarioController().buscarUsuario(user);
         LocalTime horaActual = LocalTime.now();
+        inicializarAsistencia();
         if (horaActual.isAfter(LocalTime.parse(salida_man).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_man).plusMinutes(10))) {
             if (controlador.salidaMatutina(cedula, controlador.obtenerFecha()) == null) {
                 controlador.registrarSalidaMatutina(controlador.obtenerHora(), controlador.obtenerFecha(), cedula);
             } else {
                 JOptionPane.showMessageDialog(null, "Ya se ha guardado su registro");
             }
-        }else if(horaActual.isAfter(LocalTime.parse(salida_tarde).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_tarde).plusMinutes(10))){
+            return;
+        }
+        if (horaActual.isAfter(LocalTime.parse(salida_tarde).minusMinutes(5)) && horaActual.isBefore(LocalTime.parse(salida_tarde).plusMinutes(10))) {
             if (controlador.salidaVespertina(cedula, controlador.obtenerFecha()) == null) {
                 controlador.registrarSalidaTarde(controlador.obtenerHora(), controlador.obtenerFecha(), cedula);
             } else {
                 JOptionPane.showMessageDialog(null, "Ya se ha guardado su registro");
             }
+            return;
         }
     }
 
@@ -124,10 +139,10 @@ public class RegistroAsistencia extends javax.swing.JPanel {
         jbtnadmin = new javax.swing.JButton();
         jbtndocente = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        rSLabelHora1 = new rojeru_san.RSLabelHora();
         jpMenuBar1 = new javax.swing.JPanel();
         jbtnEntrada = new javax.swing.JButton();
         jbtnSalida = new javax.swing.JButton();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
         jLabel2 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
@@ -179,9 +194,6 @@ public class RegistroAsistencia extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
-        rSLabelHora1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 48)); // NOI18N
-
         jpMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jpMenuBar1.setToolTipText("");
         jpMenuBar1.setPreferredSize(new java.awt.Dimension(1250, 37));
@@ -201,7 +213,7 @@ public class RegistroAsistencia extends javax.swing.JPanel {
                 jbtnEntradaActionPerformed(evt);
             }
         });
-        jpMenuBar1.add(jbtnEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 380, 100));
+        jpMenuBar1.add(jbtnEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 380, 100));
 
         jbtnSalida.setBackground(new java.awt.Color(63, 78, 79));
         jbtnSalida.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 36)); // NOI18N
@@ -217,7 +229,11 @@ public class RegistroAsistencia extends javax.swing.JPanel {
                 jbtnSalidaActionPerformed(evt);
             }
         });
-        jpMenuBar1.add(jbtnSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 380, 100));
+        jpMenuBar1.add(jbtnSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 380, 100));
+
+        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelHora1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 48)); // NOI18N
+        jpMenuBar1.add(rSLabelHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 305, 58));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/Asistencias.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -227,25 +243,18 @@ public class RegistroAsistencia extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(113, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jpMenuBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
             .addComponent(jpMenuBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -261,11 +270,11 @@ public class RegistroAsistencia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnadminActionPerformed
-        
+
     }//GEN-LAST:event_jbtnadminActionPerformed
 
     private void jbtndocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndocenteActionPerformed
-        
+
     }//GEN-LAST:event_jbtndocenteActionPerformed
 
     private void jbtnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEntradaActionPerformed

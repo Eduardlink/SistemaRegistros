@@ -457,7 +457,7 @@ public class CRUD extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         InformeDiarioController controlador = new InformeDiarioController();
         System.out.println(controlador.buscarUsuario(jtxtUsuario.getText()));
-        jtblUsuarios.setModel(controlador.cargarTablaVespertina("1801"));
+        //jtblUsuarios.setModel(controlador.cargarTablaVespertina("1801"));
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
