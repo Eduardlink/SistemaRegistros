@@ -114,6 +114,7 @@ public class AsistenciaController {
         if (lista.size() < 1) {
             manejador.ejecutarConsulta("INSERT INTO registros (entrada_man,salida_man,entrada_tarde,salida_tarde,fecha,ced_usuario) "
                     + "VALUES (null,null,null,null,'" + fecha + "','" + cedula + "');");
+            System.out.println("NJ");
         }
     }
 }

@@ -37,7 +37,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ingrese una fecha");
         }else{
             BusquedaFechaController search = new BusquedaFechaController();
-            DefaultTableModel modeloTabla = search.cargarTabla(Date.valueOf(datePicker1.getDate()));
+            String fecha = Date.valueOf(datePicker1.getDate()).toString().replace("-", "/");
+            DefaultTableModel modeloTabla = search.cargarTabla(fecha);
             if(modeloTabla == null){
                 JOptionPane.showMessageDialog(null, "No existen registros de la fecha seleccionada");
             }else{

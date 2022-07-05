@@ -18,42 +18,39 @@ import modelos.DataManager;
  */
 public class InformeDiarioController {
 
-    public DefaultTableModel cargarTablaMatutina(String cedula) {
+    public DefaultTableModel cargarTablaMatutina(String cedula,String fecha) {
         try {
             String[] titulos = {
-                "N.", "Jornada", "Horas de jornada", "Hora entrada", "Hora Salida", "Horas registradas"
+                "Jornada", "Horas de jornada", "Hora entrada", "Hora Salida", "Horas registradas"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
             DataManager manejador = new DataManager();
-            ResultSet registros = manejador.obtenerDatos("SELECT * FROM registros WHERE ced_usuario = '" + cedula + "';");
+            ResultSet registros = manejador.obtenerDatos("SELECT * FROM registros WHERE ced_usuario = '" + cedula + "' AND fecha = '"+fecha+"';");
             ArrayList<Object> jornada = new ArrayList<>();
             jornada = manejador.resultado("SELECT * FROM jornadas WHERE ced_usuario = '" + cedula + "';");
             ArrayList<Object> datosSubcon = new ArrayList<>();
-            String[] datos = new String[6];
-            int contador = 1;
+            String[] datos = new String[5];
             float horas;
             while (registros.next()) {
                 horas = 0;
-                datos[0] = String.valueOf(contador);
-                datos[1] = jornada.get(1).toString() + " - " + jornada.get(2).toString();
-                datos[2] = calcularHorasMan(manejador, cedula, true);
+                datos[0] = jornada.get(1).toString() + " - " + jornada.get(2).toString();
+                datos[1] = calcularHorasMan(manejador, cedula, true);
                 if (registros.getString("entrada_man") == null) {
-                    datos[3] = "Sin registrar";
+                    datos[2] = "Sin registrar";
                 } else {
-                    datos[3] = registros.getString("entrada_man");
+                    datos[2] = registros.getString("entrada_man");
                 }
                 if (registros.getString("salida_man") == null) {
-                    datos[4] = "Sin registrar";
+                    datos[3] = "Sin registrar";
                 } else {
-                    datos[4] = registros.getString("salida_man");
+                    datos[3] = registros.getString("salida_man");
                 }
                 if (registros.getString("entrada_man") != null && registros.getString("salida_man") != null) {
                     datosSubcon = manejador.resultado("SELECT (salida_man-entrada_man) horas FROM registros WHERE ced_usuario = '" + cedula + "';");
                     horas = Float.valueOf(datosSubcon.get(0).toString());
                 }
-                datos[5] = String.valueOf(horas);
+                datos[4] = String.valueOf(horas);
                 modeloTabla.addRow(datos);
-                contador++;
             }
             manejador.cerrar();
             return modeloTabla;
@@ -77,42 +74,39 @@ public class InformeDiarioController {
         }
 
     }
-    public DefaultTableModel cargarTablaVespertina(String cedula) {
+    public DefaultTableModel cargarTablaVespertina(String cedula,String fecha) {
         try {
             String[] titulos = {
-                "N.", "Jornada", "Horas de jornada", "Hora entrada", "Hora Salida", "Horas registradas"
+                "Jornada", "Horas de jornada", "Hora entrada", "Hora Salida", "Horas registradas"
             };
             DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos);
             DataManager manejador = new DataManager();
-            ResultSet registros = manejador.obtenerDatos("SELECT * FROM registros WHERE ced_usuario = '" + cedula + "';");
+            ResultSet registros = manejador.obtenerDatos("SELECT * FROM registros WHERE ced_usuario = '" + cedula + "' AND fecha = '"+fecha+"';");
             ArrayList<Object> jornada = new ArrayList<>();
             jornada = manejador.resultado("SELECT * FROM jornadas WHERE ced_usuario = '" + cedula + "';");
             ArrayList<Object> datosSubcon = new ArrayList<>();
-            String[] datos = new String[6];
-            int contador = 1;
+            String[] datos = new String[5];
             float horas;
             while (registros.next()) {
                 horas = 0;
-                datos[0] = String.valueOf(contador);
-                datos[1] = jornada.get(1).toString() + " - " + jornada.get(2).toString();
-                datos[2] = calcularHorasMan(manejador, cedula, false);
+                datos[0] = jornada.get(1).toString() + " - " + jornada.get(2).toString();
+                datos[1] = calcularHorasMan(manejador, cedula, false);
                 if (registros.getString("entrada_tarde") == null) {
-                    datos[3] = "Sin registrar";
+                    datos[2] = "Sin registrar";
                 } else {
-                    datos[3] = registros.getString("entrada_tarde");
+                    datos[2] = registros.getString("entrada_tarde");
                 }
                 if (registros.getString("salida_tarde") == null) {
-                    datos[4] = "Sin registrar";
+                    datos[3] = "Sin registrar";
                 } else {
-                    datos[4] = registros.getString("salida_tarde");
+                    datos[3] = registros.getString("salida_tarde");
                 }
                 if (registros.getString("entrada_tarde") != null && registros.getString("salida_tarde") != null) {
                     datosSubcon = manejador.resultado("SELECT (salida_tarde-entrada_tarde) horas FROM registros WHERE ced_usuario = '" + cedula + "';");
                     horas = Float.valueOf(datosSubcon.get(0).toString());
                 }
-                datos[5] = String.valueOf(horas);
+                datos[4] = String.valueOf(horas);
                 modeloTabla.addRow(datos);
-                contador++;
             }
             manejador.cerrar();
             return modeloTabla;

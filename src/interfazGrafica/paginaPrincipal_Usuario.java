@@ -111,7 +111,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpFooter.setPreferredSize(new java.awt.Dimension(1230, 70));
         jpFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
         jLabel2.setText("Universidad Técnica de Ambato - FISEI");
         jpFooter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -244,7 +244,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         jpMenuBar.add(jbtnExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, -20, 120, 100));
 
         jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jbtnReportesFecha.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
         jbtnReportesFecha.setText("Reporte diario");
@@ -272,7 +272,7 @@ public class paginaPrincipal_Usuario extends javax.swing.JFrame {
         });
         jpHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegDocen.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        RegDocen.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 32)); // NOI18N
         RegDocen.setForeground(new java.awt.Color(255, 255, 255));
         RegDocen.setText("REGISTRO DE DOCENTES");
         jpHeader.add(RegDocen, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));

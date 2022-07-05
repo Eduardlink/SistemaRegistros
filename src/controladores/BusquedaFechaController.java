@@ -19,7 +19,7 @@ import modelos.DataManager;
  */
 public class BusquedaFechaController {
 
-    public DefaultTableModel cargarTabla(Date fecha) {
+    public DefaultTableModel cargarTabla(String fecha) {
         try {
             DataManager manejador = new DataManager();
             String[] titulos = {
