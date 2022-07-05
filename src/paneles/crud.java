@@ -28,7 +28,7 @@ public class crud extends javax.swing.JPanel {
         DefaultTableModel modeloTabla = new DefaultTableModel();
 //       
         jtblCrud.setModel(new crudController().cargarTabla());
-        new crudController().cargarTabla();
+        
         this.bloquearTextosyBusqueda();
         jtblCrud.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -77,15 +77,14 @@ public class crud extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jtxtEntrada_Man = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jtxtSalida_man = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jtxtEntrada_tarde = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jtxtSalida_Tarde = new javax.swing.JTextField();
         jbtnActualizar = new javax.swing.JButton();
-        timePicker2 = new com.github.lgooddatepicker.components.TimePicker();
+        Mat_man = new com.github.lgooddatepicker.components.TimePicker();
+        Mat_tar = new com.github.lgooddatepicker.components.TimePicker();
+        Vesp_man = new com.github.lgooddatepicker.components.TimePicker();
+        Vesp_tar = new com.github.lgooddatepicker.components.TimePicker();
         jpPanelOpciones = new javax.swing.JPanel();
         jpAniadir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -114,20 +113,20 @@ public class crud extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlNombre.setText("Nombre");
+        jlNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jlApellido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jlApellido.setText("Apellido");
+        jlApellido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setText("Cédula");
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setText("Contraseña");
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setText("Root");
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -164,35 +163,29 @@ public class crud extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel6.setText("Datos Personales");
+        jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel7.setText("Jornada");
+        jLabel7.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
 
-        jLabel17.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel17.setText("Mañana");
+        jLabel17.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel18.setText("Tarde");
+        jLabel18.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
 
-        jLabel19.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel19.setText("Desde:");
+        jLabel19.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel20.setText("Hasta:");
+        jLabel20.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jtxtSalida_man.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtSalida_manActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel21.setText("Desde:");
+        jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jLabel22.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel22.setText("Hasta:");
+        jLabel22.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jbtnActualizar.setText("Actualizar");
         jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -220,17 +213,18 @@ public class crud extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtxtEntrada_tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Vesp_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
                                         .addComponent(jLabel22)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtxtSalida_Tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jbtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 51, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 35, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,26 +252,17 @@ public class crud extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel19)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtxtEntrada_Man, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(6, 6, 6))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(81, 81, 81)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Mat_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jtxtSalida_man, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(timePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Mat_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,26 +294,24 @@ public class crud extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(timePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel7)
                 .addGap(7, 7, 7)
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jtxtEntrada_Man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(jtxtSalida_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Mat_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Mat_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jtxtEntrada_tarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
-                    .addComponent(jtxtSalida_Tarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                    .addComponent(Vesp_man, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Vesp_tar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnGuardar))
@@ -358,8 +341,8 @@ public class crud extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/agregar.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel2.setText("Añadir");
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpAniadirLayout = new javax.swing.GroupLayout(jpAniadir);
         jpAniadir.setLayout(jpAniadirLayout);
@@ -375,7 +358,7 @@ public class crud extends javax.swing.JPanel {
         jpAniadirLayout.setVerticalGroup(
             jpAniadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpAniadirLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2))
@@ -400,9 +383,9 @@ public class crud extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/eliminar.png"))); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(105, 105));
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Eliminar");
+        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpEliminarLayout = new javax.swing.GroupLayout(jpEliminar);
         jpEliminar.setLayout(jpEliminarLayout);
@@ -418,7 +401,7 @@ public class crud extends javax.swing.JPanel {
         jpEliminarLayout.setVerticalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEliminarLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9))
@@ -441,9 +424,9 @@ public class crud extends javax.swing.JPanel {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/hacia-adelante.png"))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Actualizar");
+        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpActualizarLayout = new javax.swing.GroupLayout(jpActualizar);
         jpActualizar.setLayout(jpActualizarLayout);
@@ -462,7 +445,7 @@ public class crud extends javax.swing.JPanel {
         jpActualizarLayout.setVerticalGroup(
             jpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpActualizarLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11))
@@ -482,9 +465,9 @@ public class crud extends javax.swing.JPanel {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/cerrar-sesion.png"))); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Salir");
+        jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpSalirLayout = new javax.swing.GroupLayout(jpSalir);
         jpSalir.setLayout(jpSalirLayout);
@@ -502,7 +485,7 @@ public class crud extends javax.swing.JPanel {
         jpSalirLayout.setVerticalGroup(
             jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSalirLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14))
@@ -525,9 +508,9 @@ public class crud extends javax.swing.JPanel {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reclutamiento.png"))); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Buscar");
+        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpBuscar2Layout = new javax.swing.GroupLayout(jpBuscar2);
         jpBuscar2.setLayout(jpBuscar2Layout);
@@ -546,7 +529,7 @@ public class crud extends javax.swing.JPanel {
         jpBuscar2Layout.setVerticalGroup(
             jpBuscar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBuscar2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16))
@@ -595,8 +578,8 @@ public class crud extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jtblCrud);
 
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel12.setText("Buscar por cédula: ");
+        jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jtxtBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -632,7 +615,7 @@ public class crud extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -754,6 +737,7 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
                     jtxtCedula.getText(),
                     jtxtClave.getText(),
                     String.valueOf(checkSeleccion));
+            new crudController().agregarJornada(jtxtCedula.getText(), Mat_man.getText(),Mat_tar.getText(), Vesp_man.getText(), Vesp_tar.getText());
             this.limpiarTextos();
             this.bloquearTextosyBusqueda();
         } else {
@@ -768,14 +752,15 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jbtnActualizar.setEnabled(false);
         jtxtBusqueda.setEnabled(true);
         jbtnBuscar.setEnabled(true);
-        
+
     }//GEN-LAST:event_jpBuscar2MouseClicked
 
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextosActualizar();
+        this.limpiarTextos();
         this.jbtnGuardar.setEnabled(false);
         jbtnActualizar.setEnabled(true);
-        
+
     }//GEN-LAST:event_jpActualizarMouseClicked
 
     private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
@@ -828,7 +813,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 //            jtxtBusqueda.setText("");
 //        }
 
-
     }//GEN-LAST:event_jtxtBusquedaFocusLost
 
     private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtCedulaFocusLost
@@ -838,10 +822,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
     }//GEN-LAST:event_jtxtCedulaFocusLost
 
-    private void jtxtSalida_manActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtSalida_manActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtSalida_manActionPerformed
-
     private void jpEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseClicked
         new crudController().eliminarUsuario(jtxtCedula.getText());
 
@@ -850,7 +830,7 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     }//GEN-LAST:event_jpEliminarMouseClicked
 
     private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
-       int checkSeleccion;
+        int checkSeleccion;
         if (jchkRoot.isSelected()) {
             checkSeleccion = 1;
         } else {
@@ -862,16 +842,16 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
-       if(new crudController().buscarCedula(jtxtBusqueda.getText()).size()== 0){
+        if (new crudController().buscarCedula(jtxtBusqueda.getText()).size() == 0) {
             JOptionPane.showMessageDialog(null, "No existe un usuario con la cédula especificada");
-       }else{
-           jtblCrud.setModel(new crudController().cargarTabla(jtxtBusqueda.getText()));
-          
-       }
+        } else {
+            jtblCrud.setModel(new crudController().cargarTabla(jtxtBusqueda.getText()));
+
+        }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
-        
+
     }
 
     public void limpiarTextos() {
@@ -882,10 +862,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtCedula.setText("");
         jchkRoot.setSelected(false);
         //Jornada
-        jtxtEntrada_Man.setText("");
-        jtxtSalida_man.setText("");
-        jtxtEntrada_tarde.setText("");
-        jtxtSalida_Tarde.setText("");
+         Mat_man.setText("");
+//        Mat_tar.setEnabled(true);
+//        Vesp_man.setEnabled(true);
+//        Vesp_tar.setEnabled(true);
+      
     }
 
     public void bloquearTextosyBusqueda() {
@@ -898,10 +879,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         //Busqueda
         jtxtBusqueda.setEnabled(false);
         //Jornada
-        jtxtEntrada_Man.setEnabled(false);
-        jtxtSalida_man.setEnabled(false);
-        jtxtEntrada_tarde.setEnabled(false);
-        jtxtSalida_Tarde.setEnabled(false);
+        Mat_man.setEnabled(true);
+        Mat_tar.setEnabled(true);
+        Vesp_man.setEnabled(true);
+        Vesp_tar.setEnabled(true);
         //Botones
         jbtnBuscar.setEnabled(false);
         jbtnGuardar.setEnabled(false);
@@ -916,10 +897,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtApellido.setEnabled(false);
         jchkRoot.setEnabled(false);
         //Jornada
-        jtxtEntrada_Man.setEnabled(false);
-        jtxtSalida_man.setEnabled(false);
-        jtxtEntrada_tarde.setEnabled(false);
-        jtxtSalida_Tarde.setEnabled(false);
+        Mat_man.setEnabled(false);
+        Mat_tar.setEnabled(false);
+        Vesp_man.setEnabled(false);
+        Vesp_tar.setEnabled(false);
 
     }
 
@@ -931,10 +912,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtApellido.setEnabled(true);
         jchkRoot.setEnabled(true);
         //Jornada
-        jtxtEntrada_Man.setEnabled(true);
-        jtxtSalida_man.setEnabled(true);
-        jtxtEntrada_tarde.setEnabled(true);
-        jtxtSalida_Tarde.setEnabled(true);
+        Mat_man.setEnabled(true);
+        Mat_tar.setEnabled(true);
+        Vesp_man.setEnabled(true);
+        Vesp_tar.setEnabled(true);
     }
 
     public void desbloquearTextosActualizar() {
@@ -945,10 +926,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtApellido.setEnabled(true);
         jchkRoot.setEnabled(true);
         //Jornada
-        jtxtEntrada_Man.setEnabled(true);
-        jtxtSalida_man.setEnabled(true);
-        jtxtEntrada_tarde.setEnabled(true);
-        jtxtSalida_Tarde.setEnabled(true);
+        Mat_man.setEnabled(true);
+        Mat_tar.setEnabled(true);
+        Vesp_man.setEnabled(true);
+        Vesp_tar.setEnabled(true);
     }
 
     public boolean validadorDeCedula(String cedula) {
@@ -1000,6 +981,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.TimePicker Mat_man;
+    private com.github.lgooddatepicker.components.TimePicker Mat_tar;
+    private com.github.lgooddatepicker.components.TimePicker Vesp_man;
+    private com.github.lgooddatepicker.components.TimePicker Vesp_tar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1044,11 +1029,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private javax.swing.JTextField jtxtBusqueda;
     private javax.swing.JTextField jtxtCedula;
     private javax.swing.JTextField jtxtClave;
-    private javax.swing.JTextField jtxtEntrada_Man;
-    private javax.swing.JTextField jtxtEntrada_tarde;
     private javax.swing.JTextField jtxtNombre;
-    private javax.swing.JTextField jtxtSalida_Tarde;
-    private javax.swing.JTextField jtxtSalida_man;
-    private com.github.lgooddatepicker.components.TimePicker timePicker2;
     // End of variables declaration//GEN-END:variables
 }
