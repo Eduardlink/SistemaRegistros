@@ -37,7 +37,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ingrese una fecha");
         }else{
             BusquedaFechaController search = new BusquedaFechaController();
-            String fecha = Date.valueOf(datePicker1.getDate()).toString().replace("-", "/");
+            String fecha = Date.valueOf(datePicker1.getDate()).toString();
             DefaultTableModel modeloTabla = search.cargarTabla(fecha);
             if(modeloTabla == null){
                 JOptionPane.showMessageDialog(null, "No existen registros de la fecha seleccionada");
@@ -70,8 +70,8 @@ public class BusquedaFecha extends javax.swing.JPanel {
         jpanBackground.setBackground(new java.awt.Color(255,255,255));
         jpanBackground.setPreferredSize(new java.awt.Dimension(1250,590));
 
+        jLabel2.setText("Busqueda por fecha");
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel2.setText("Busqueda por Docente");
 
         jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/lupa.png"))); // NOI18N
         jbtnBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -136,7 +136,7 @@ public class BusquedaFecha extends javax.swing.JPanel {
                     .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
