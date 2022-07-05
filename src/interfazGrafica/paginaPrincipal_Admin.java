@@ -5,7 +5,6 @@
  */
 package interfazGrafica;
 
-
 import java.sql.*;
 import javax.swing.JOptionPane;
 import paneles.CambiaPanel;
@@ -340,21 +339,21 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void jbtnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUsuariosActionPerformed
-     
+
         new CambiaPanel(jpPanelUsuarios, new paneles.crud());
     }//GEN-LAST:event_jbtnUsuariosActionPerformed
 
     private void jbtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHomeActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
+        new CambiaPanel(jpPanelUsuarios, new paneles.Bienvenida());
     }//GEN-LAST:event_jbtnHomeActionPerformed
 
     private void jbtnReportesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesFechaActionPerformed
-        
+
         new CambiaPanel(jpPanelUsuarios, new paneles.BusquedaFecha());
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
-       new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
+        new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
     }//GEN-LAST:event_jbtnReportesDocenteActionPerformed
 
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
@@ -404,7 +403,6 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
             }
         });
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

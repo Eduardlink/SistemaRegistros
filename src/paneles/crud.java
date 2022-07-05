@@ -28,7 +28,6 @@ public class crud extends javax.swing.JPanel {
         DefaultTableModel modeloTabla = new DefaultTableModel();
 //       
         jtblCrud.setModel(new crudController().cargarTabla());
-        
         this.bloquearTextosyBusqueda();
         jtblCrud.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -38,6 +37,15 @@ public class crud extends javax.swing.JPanel {
                     jtxtNombre.setText(jtblCrud.getValueAt(fila, 2).toString());
                     jtxtApellido.setText(jtblCrud.getValueAt(fila, 3).toString());
                     jtxtCedula.setText(jtblCrud.getValueAt(fila, 4).toString());
+                    String jornadaMatutina = jtblCrud.getValueAt(fila, 6).toString();
+                    String[] matutina = jornadaMatutina.split("-");
+                    Mat_man.setText(matutina[0]);
+                    Mat_tar.setText(matutina[1]);
+                    String jornadaVespertina = jtblCrud.getValueAt(fila, 7).toString();
+                    String[] vespertina = jornadaVespertina.split("-");
+                    Vesp_man.setText(vespertina[0]);
+                    Vesp_tar.setText(vespertina[1]);
+
                     if (jtblCrud.getValueAt(fila, 5).toString().equals("Administrador")) {
                         jchkRoot.setSelected(true);
                     } else {
@@ -95,9 +103,6 @@ public class crud extends javax.swing.JPanel {
         jpActualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jpSalir = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jpBuscar2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -451,46 +456,6 @@ public class crud extends javax.swing.JPanel {
                 .addComponent(jLabel11))
         );
 
-        jpSalir.setBackground(new java.awt.Color(204, 204, 204));
-        jpSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jpSalir.setPreferredSize(new java.awt.Dimension(105, 105));
-        jpSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpSalirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpSalirMouseExited(evt);
-            }
-        });
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/cerrar-sesion.png"))); // NOI18N
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Salir");
-        jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout jpSalirLayout = new javax.swing.GroupLayout(jpSalir);
-        jpSalir.setLayout(jpSalirLayout);
-        jpSalirLayout.setHorizontalGroup(
-            jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSalirLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpSalirLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel14))
-                    .addComponent(jLabel13))
-                .addGap(29, 29, 29))
-        );
-        jpSalirLayout.setVerticalGroup(
-            jpSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpSalirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14))
-        );
-
         jpBuscar2.setBackground(new java.awt.Color(204, 204, 204));
         jpBuscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpBuscar2.setPreferredSize(new java.awt.Dimension(105, 105));
@@ -540,17 +505,15 @@ public class crud extends javax.swing.JPanel {
         jpPanelOpcionesLayout.setHorizontalGroup(
             jpPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPanelOpcionesLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(82, 82, 82)
                 .addComponent(jpAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(55, 55, 55)
                 .addComponent(jpBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(74, 74, 74)
                 .addComponent(jpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(121, 121, 121))
         );
         jpPanelOpcionesLayout.setVerticalGroup(
             jpPanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +521,6 @@ public class crud extends javax.swing.JPanel {
             .addComponent(jpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jpBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jpSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -605,17 +567,17 @@ public class crud extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 156, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbtnBuscar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 157, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -686,18 +648,12 @@ public class crud extends javax.swing.JPanel {
 
     private void jpAniadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAniadirMouseClicked
 //              jpAniadir.setBackground(Color.white);
+        this.limpiarTextos();
         this.desbloquearTextos();
         this.jbtnGuardar.setEnabled(true);
 
 
     }//GEN-LAST:event_jpAniadirMouseClicked
-
-    private void jpEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseEntered
-jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEntered
-
-    private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
-        jpEliminar.setBackground(new Color(204, 204, 204));
-    }//GEN-LAST:event_jpEliminarMouseExited
 
     private void jpBuscar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseEntered
         jpBuscar2.setBackground(Color.white);
@@ -707,10 +663,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jpActualizar.setBackground(Color.white);
     }//GEN-LAST:event_jpActualizarMouseEntered
 
-    private void jpSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseEntered
-        jpSalir.setBackground(Color.white);
-    }//GEN-LAST:event_jpSalirMouseEntered
-
     private void jpBuscar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseExited
         jpBuscar2.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpBuscar2MouseExited
@@ -719,32 +671,38 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jpActualizar.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_jpActualizarMouseExited
 
-    private void jpSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSalirMouseExited
-        jpSalir.setBackground(new Color(204, 204, 204));
-    }//GEN-LAST:event_jpSalirMouseExited
-
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-        int checkSeleccion;
-        if (jchkRoot.isSelected()) {
-            checkSeleccion = 1;
-        } else {
-            checkSeleccion = 0;
-        }
-        if (new crudController().buscarCedula(jtxtCedula.getText()).size() == 0) {
 
-            new crudController().agregarUsuario(jtxtNombre.getText(),
-                    jtxtApellido.getText(),
-                    jtxtCedula.getText(),
-                    jtxtClave.getText(),
-                    String.valueOf(checkSeleccion));
-            new crudController().agregarJornada(jtxtCedula.getText(), Mat_man.getText(),Mat_tar.getText(), Vesp_man.getText(), Vesp_tar.getText());
-            this.limpiarTextos();
-            this.bloquearTextosyBusqueda();
-        } else {
-            JOptionPane.showMessageDialog(null, "El usuario ya existe");
+        if (!(jtxtNombre.getText().isEmpty() || jtxtApellido.getText().isEmpty()
+                || jtxtCedula.getText().isEmpty() || jtxtCedula.getText().isEmpty()
+                || Mat_man.getText().isEmpty() || Mat_tar.getText().isEmpty()
+                || Vesp_man.getText().isEmpty() || Vesp_tar.getText().isEmpty())) {
+
+            int checkSeleccion;
+            if (jchkRoot.isSelected()) {
+                checkSeleccion = 1;
+            } else {
+                checkSeleccion = 0;
+            }
+
+            if (new crudController().buscarCedula(jtxtCedula.getText()).isEmpty()) {
+                if (this.validarHorasTrabajo()) {
+                    new crudController().agregarUsuario(jtxtNombre.getText(),
+                            jtxtApellido.getText(),
+                            jtxtCedula.getText(),
+                            jtxtClave.getText(),
+                            String.valueOf(checkSeleccion));
+
+                    this.limpiarTextos();
+                    this.bloquearTextosyBusqueda();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario ya existe");
+            }
+
+            jtblCrud.setModel(new crudController().cargarTabla());
         }
 
-        jtblCrud.setModel(new crudController().cargarTabla());
     }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     private void jpBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBuscar2MouseClicked
@@ -757,7 +715,7 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextosActualizar();
-        this.limpiarTextos();
+        
         this.jbtnGuardar.setEnabled(false);
         jbtnActualizar.setEnabled(true);
 
@@ -780,7 +738,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
         boolean mayusculas = key >= 65 && key <= 90;
         boolean minusculas = key >= 97 && key <= 122;
+//        boolean tildes = key <= 160 && key <= 163;
+//        boolean tildes2 = key == 130;
         boolean espacio = key == 32;
+//        boolean acento = key == 239;
+//        boolean enie = key ==164 && key ==165; 
 
         if (!(minusculas || mayusculas || espacio)) {
             evt.consume();
@@ -809,25 +771,18 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
 
     private void jtxtBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtBusquedaFocusLost
 
-//        if (!this.validadorDeCedula(jtxtBusqueda.getText())) {
-//            jtxtBusqueda.setText("");
-//        }
+        if (!this.validadorDeCedula(jtxtBusqueda.getText())) {
+            jtxtBusqueda.setText("");
+        }
 
     }//GEN-LAST:event_jtxtBusquedaFocusLost
 
     private void jtxtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtCedulaFocusLost
-//        if (!this.validadorDeCedula(jtxtCedula.getText())) {
-//            jtxtCedula.setText("");
-//        }
+        if (!this.validadorDeCedula(jtxtCedula.getText())) {
+            jtxtCedula.setText("");
+        }
 
     }//GEN-LAST:event_jtxtCedulaFocusLost
-
-    private void jpEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseClicked
-        new crudController().eliminarUsuario(jtxtCedula.getText());
-
-        jtblCrud.setModel(new crudController().cargarTabla());
-
-    }//GEN-LAST:event_jpEliminarMouseClicked
 
     private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
         int checkSeleccion;
@@ -850,9 +805,19 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
-    private void jpSalirMouseClicked(java.awt.event.MouseEvent evt) {
+    private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
+        jpEliminar.setBackground(new Color(204, 204, 204));
+    }//GEN-LAST:event_jpEliminarMouseExited
 
-    }
+    private void jpEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseEntered
+
+    }//GEN-LAST:event_jpEliminarMouseEntered
+
+    private void jpEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseClicked
+        new crudController().eliminarUsuario(jtxtCedula.getText());
+
+        jtblCrud.setModel(new crudController().cargarTabla());
+    }//GEN-LAST:event_jpEliminarMouseClicked
 
     public void limpiarTextos() {
         //Datos personales
@@ -862,11 +827,11 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         jtxtCedula.setText("");
         jchkRoot.setSelected(false);
         //Jornada
-         Mat_man.setText("");
-//        Mat_tar.setEnabled(true);
-//        Vesp_man.setEnabled(true);
-//        Vesp_tar.setEnabled(true);
-      
+        Mat_man.setText("");
+        Mat_tar.setText("");
+        Vesp_man.setText("");
+        Vesp_tar.setText("");
+
     }
 
     public void bloquearTextosyBusqueda() {
@@ -879,10 +844,10 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         //Busqueda
         jtxtBusqueda.setEnabled(false);
         //Jornada
-        Mat_man.setEnabled(true);
-        Mat_tar.setEnabled(true);
-        Vesp_man.setEnabled(true);
-        Vesp_tar.setEnabled(true);
+        Mat_man.setEnabled(false);
+        Mat_tar.setEnabled(false);
+        Vesp_man.setEnabled(false);
+        Vesp_tar.setEnabled(false);
         //Botones
         jbtnBuscar.setEnabled(false);
         jbtnGuardar.setEnabled(false);
@@ -979,6 +944,57 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
         return cedulaCorrecta;
     }
 
+    public boolean validarHorasTrabajo() {
+
+        String AEntrMan = Mat_man.getText();
+        String[] horasManE = AEntrMan.split(":");
+        System.out.println(horasManE[0]);
+        int horamanE = Integer.valueOf(horasManE[0]);
+        if (horasManE[1].equals("00 pm")) {
+            horamanE = horamanE + 12;
+            System.out.println(horamanE);
+
+        }
+
+        String ASalMan = Mat_tar.getText();
+        String[] horasSalMan = ASalMan.split(":");
+        int horamanS = Integer.valueOf(horasSalMan[0]);
+        if (horasSalMan[1].equals("00 pm")) {
+            horamanS = horamanS + 12;
+            System.out.println(horamanS);
+
+        }
+
+        String AEntrVesp = Vesp_man.getText();
+        String[] horasVesE = AEntrVesp.split(":");
+        int horavespE = Integer.valueOf(horasVesE[0]);
+        if (horasVesE[1].equals("00 pm")) {
+            horavespE = horavespE + 12;
+            System.out.println(horavespE);
+
+        }
+
+        String ASalVesp = Vesp_tar.getText();
+        String[] horasVespS = ASalVesp.split(":");
+        int horavespS = Integer.valueOf(horasVespS[0]);
+        if (horasVespS[1].equals("00 pm")) {
+            horavespS = horavespS + 12;
+            System.out.println(horavespS);
+
+        }
+        int horasmanana = horamanS- horamanE;
+        int horastarde = horavespS - horavespE;
+
+        if (horasmanana + horastarde == 8) {
+            new crudController().agregarJornada(jtxtCedula.getText(), Mat_man.getText(), Mat_tar.getText(), Vesp_man.getText(), Vesp_tar.getText());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "La jornada laboral debe ser de 8 horas");
+            return false;
+        }
+        return true;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.TimePicker Mat_man;
@@ -989,8 +1005,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1023,7 +1037,6 @@ jpEliminar.setBackground(Color.white);    }//GEN-LAST:event_jpEliminarMouseEnter
     private javax.swing.JPanel jpCrud;
     private javax.swing.JPanel jpEliminar;
     private javax.swing.JPanel jpPanelOpciones;
-    private javax.swing.JPanel jpSalir;
     private javax.swing.JTable jtblCrud;
     private javax.swing.JTextField jtxtApellido;
     private javax.swing.JTextField jtxtBusqueda;
