@@ -185,8 +185,9 @@ public class docente extends javax.swing.JPanel {
     public void iniciarSesion() {
         LoguinController controlador = new LoguinController();
         boolean[] verificado = controlador.verificar(jtxtuser.getText(), String.valueOf(jtxtpass.getPassword()), "0");
+        System.out.println(verificado[0]+"--"+verificado[1]);
         if (verificado[0] == false && verificado[1] == false) {
-            JOptionPane.showMessageDialog(null, "No existe el usuario" + " " + jtxtuser.getText());
+            JOptionPane.showMessageDialog(this, "No existe el usuario" + " " + jtxtuser.getText());
         }
         if (verificado[0] == true && verificado[1] == false) {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente de nuevo");

@@ -4,7 +4,15 @@
  */
 package controladores;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import modelos.DataManager;
 
 /**
@@ -20,8 +28,21 @@ public class CRUD_Controller_Base {
     }
     
     public boolean ValidarUsuario(String usuario, String clave) {
-        CriptPass cripto = new CriptPass();
-        clave = cripto.Encriptar(clave);
+        try {
+            clave = new EncriptadorAES().encriptar(clave, "SisTech");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        }
         DataManager manejador = new DataManager();
         ArrayList<Object> lista = new ArrayList<>();
         lista = manejador.resultado("SELECT * FROM usuarios WHERE usuario='"+usuario+"' AND clave='"+clave+"';");
@@ -33,8 +54,22 @@ public class CRUD_Controller_Base {
 
     //usuario
     public void createUsuario(Object[] datos) {
-        CriptPass cripto = new CriptPass();
-        datos[1] = cripto.Encriptar(datos[1].toString());
+        try {
+            datos[1] = new EncriptadorAES().encriptar(datos[1].toString(), "SisTech");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //datos[1] = new SecretPass().Encriptar(datos[1].toString());
         DataManager manejador = new DataManager();
         String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root) "
                 + "VALUES ('%s','%s','%s','%s','%s','%s');",datos) ;
@@ -42,8 +77,22 @@ public class CRUD_Controller_Base {
     }
     
     public void createUsuario2(Object[] datos) {
-        CriptPass cripto = new CriptPass();
-        datos[1] = cripto.Encriptar(datos[1].toString());
+        try {
+            datos[1] = new EncriptadorAES().encriptar(datos[1].toString(), "SisTech");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(CRUD_Controller_Base.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //datos[1] = new SecretPass().Encriptar(datos[1].toString());
         DataManager manejador = new DataManager();
         String sql = String.format("INSERT INTO usuarios(usuario,clave,nombre,apellido,cedula,root) "
                 + "VALUES ('" + datos[0] + "','" + datos[1] + "','" + datos[2] + "','" + datos[3] + "','" + datos[4] + "','" + datos[5] + "');");

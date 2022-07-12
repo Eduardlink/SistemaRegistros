@@ -62,6 +62,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jbtnHome = new javax.swing.JButton();
         jbtnReportesFecha = new javax.swing.JButton();
         jbtnExit = new javax.swing.JButton();
+        jbtnReportesDocente1 = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         RegDocen = new javax.swing.JLabel();
         imgLogoEncab = new javax.swing.JLabel();
@@ -114,11 +115,11 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
             }
         });
 
-        Minim.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
-        Minim.setForeground(new java.awt.Color(255, 255, 255));
         Minim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Minim.setText("_");
         Minim.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Minim.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
+        Minim.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpMinimLayout = new javax.swing.GroupLayout(jpMinim);
         jpMinim.setLayout(jpMinimLayout);
@@ -185,40 +186,40 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         jPanel2.add(jpOpBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 30));
 
         jpMenuBar.setBackground(new java.awt.Color(63, 78, 79));
-        jpMenuBar.setToolTipText("");
         jpMenuBar.setPreferredSize(new java.awt.Dimension(1250, 37));
+        jpMenuBar.setToolTipText("");
         jpMenuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnUsuarios.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnUsuarios.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         jbtnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/user.png"))); // NOI18N
         jbtnUsuarios.setText("Usuarios");
+        jbtnUsuarios.setBackground(new java.awt.Color(63, 78, 79));
         jbtnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnUsuarios.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jbtnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         jbtnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnUsuariosActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, 190, 80));
+        jpMenuBar.add(jbtnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, 220, 80));
 
+        jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/inactive_user.png"))); // NOI18N
+        jbtnReportesDocente.setText("Usuarios Inactivos");
         jbtnReportesDocente.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesDocente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportesDocente.setForeground(new java.awt.Color(255, 255, 255));
-        jbtnReportesDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
-        jbtnReportesDocente.setText("Reportes por Docente");
         jbtnReportesDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesDocente.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jbtnReportesDocente.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnReportesDocenteActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -10, 280, 80));
+        jpMenuBar.add(jbtnReportesDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, -10, 290, 80));
 
-        jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
         jbtnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/casa-inteligente.png"))); // NOI18N
+        jbtnHome.setBackground(new java.awt.Color(63, 78, 79));
         jbtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnHome.setForeground(new java.awt.Color(63, 78, 79));
         jbtnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnHomeActionPerformed(evt);
@@ -226,29 +227,42 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         });
         jpMenuBar.add(jbtnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, -5, 120, 70));
 
-        jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnReportesFecha.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/reporte-de-negocios.png"))); // NOI18N
         jbtnReportesFecha.setText("Reportes por Fecha");
+        jbtnReportesFecha.setBackground(new java.awt.Color(63, 78, 79));
         jbtnReportesFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesFecha.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jbtnReportesFecha.setForeground(new java.awt.Color(255, 255, 255));
         jbtnReportesFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnReportesFechaActionPerformed(evt);
             }
         });
-        jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -10, 260, 80));
+        jpMenuBar.add(jbtnReportesFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, -10, 280, 80));
 
-        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
-        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
         jbtnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/salir.png"))); // NOI18N
+        jbtnExit.setBackground(new java.awt.Color(63, 78, 79));
         jbtnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnExit.setForeground(new java.awt.Color(63, 78, 79));
         jbtnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnExitActionPerformed(evt);
             }
         });
         jpMenuBar.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, -20, 120, 100));
+
+        jbtnReportesDocente1.setBackground(new java.awt.Color(63, 78, 79));
+        jbtnReportesDocente1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jbtnReportesDocente1.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnReportesDocente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/dashboard.png"))); // NOI18N
+        jbtnReportesDocente1.setText("Reportes por Docente");
+        jbtnReportesDocente1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportesDocente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReportesDocente1ActionPerformed(evt);
+            }
+        });
+        jpMenuBar.add(jbtnReportesDocente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, -10, 310, 80));
 
         jPanel2.add(jpMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 60));
 
@@ -353,7 +367,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnReportesFechaActionPerformed
 
     private void jbtnReportesDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocenteActionPerformed
-        new CambiaPanel(jpPanelUsuarios, new paneles.InformeDocentes());
+        new CambiaPanel(jpPanelUsuarios, new paneles.usuariosInactivos());
     }//GEN-LAST:event_jbtnReportesDocenteActionPerformed
 
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
@@ -361,6 +375,10 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
         loguin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbtnExitActionPerformed
+
+    private void jbtnReportesDocente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesDocente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnReportesDocente1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,6 +436,7 @@ public class paginaPrincipal_Admin extends javax.swing.JFrame {
     private javax.swing.JButton jbtnExit;
     private javax.swing.JButton jbtnHome;
     private javax.swing.JButton jbtnReportesDocente;
+    private javax.swing.JButton jbtnReportesDocente1;
     private javax.swing.JButton jbtnReportesFecha;
     private javax.swing.JButton jbtnUsuarios;
     private javax.swing.JPanel jpCerrar;
