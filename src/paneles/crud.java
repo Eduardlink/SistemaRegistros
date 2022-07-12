@@ -837,7 +837,6 @@ public class crud extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No existe un usuario con la cédula especificada");
         } else {
             jtblCrud.setModel(new crudController().cargarTabla(jtxtBusqueda.getText()));
-
         }
         jtblCrud.setRowHeight(30);
         formatoTitulos();
@@ -861,7 +860,6 @@ public class crud extends javax.swing.JPanel {
         jtblCrud.setRowHeight(30);
         jtblCrud.setModel(new crudController().cargarTabla());
         formatoTitulos();
-        jtxtBusqueda.setText("");
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     public void limpiarTextos() {
@@ -995,38 +993,19 @@ public class crud extends javax.swing.JPanel {
         String[] horasManE = AEntrMan.split(":");
         System.out.println(horasManE[0]);
         int horamanE = Integer.valueOf(horasManE[0]);
-        if (horasManE[1].equals("00 pm")) {
-            horamanE = horamanE + 12;
-            System.out.println(horamanE);
-
-        }
 
         String ASalMan = Mat_tar.getText();
         String[] horasSalMan = ASalMan.split(":");
         int horamanS = Integer.valueOf(horasSalMan[0]);
-        if (horasSalMan[1].equals("00 pm")) {
-            horamanS = horamanS + 12;
-            System.out.println(horamanS);
-
-        }
 
         String AEntrVesp = Vesp_man.getText();
         String[] horasVesE = AEntrVesp.split(":");
         int horavespE = Integer.valueOf(horasVesE[0]);
-        if (horasVesE[1].equals("00 pm")) {
-            horavespE = horavespE + 12;
-            System.out.println(horavespE);
-
-        }
 
         String ASalVesp = Vesp_tar.getText();
         String[] horasVespS = ASalVesp.split(":");
         int horavespS = Integer.valueOf(horasVespS[0]);
-        if (horasVespS[1].equals("00 pm")) {
-            horavespS = horavespS + 12;
-            System.out.println(horavespS);
 
-        }
         int horasmanana = horamanS - horamanE;
         int horastarde = horavespS - horavespE;
 

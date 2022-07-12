@@ -94,7 +94,7 @@ public class crudController {
         entrada_tarde = verificarHora(entrada_tarde);
         salida_tarde = verificarHora(salida_tarde);
         String sql = "INSERT INTO jornadas(entrada_man,salida_man,entrada_tarde,salida_tarde,ced_usuario) "
-                + "VALUES('" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + cedula + "');";
+                + "VALUES('0" + entrada_man + "','" + salida_man + "','" + entrada_tarde + "','" + salida_tarde + "','" + cedula+ "');";
         manejador.ejecutarConsulta(sql);
     }
 
