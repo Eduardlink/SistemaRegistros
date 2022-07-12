@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.inforDocController;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -25,6 +27,7 @@ public class InformeDocentes extends javax.swing.JPanel {
     private Icon icono;
     private DefaultTableModel modeloTabla;
     boolean validacionCedula = false;
+
     /**
      * Creates new form Bienvenida
      */
@@ -32,7 +35,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         initComponents();
         //this.pintarImagen(this.imgUsuario, "src/imagenesFrames/usuario.png");
         cargarTitulosTabla();
-        
+
         //
     }
 
@@ -46,7 +49,6 @@ public class InformeDocentes extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jtxtBuscar = new javax.swing.JTextField();
@@ -55,34 +57,27 @@ public class InformeDocentes extends javax.swing.JPanel {
         jtblDocentes = new javax.swing.JTable();
         jbtnBuscar = new javax.swing.JButton();
         jlbCedula = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jlbInasistencias = new javax.swing.JLabel();
         jlbAsistencias = new javax.swing.JLabel();
         jlbNombre = new javax.swing.JLabel();
         imgUsuario = new javax.swing.JLabel();
         jlbUsuario = new javax.swing.JLabel();
-        jbtnReportes = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1250, 590));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1250, 590));
 
-        jLabel17.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel17.setText("_____________________________");
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         jLabel1.setText("Busqueda por Docente");
 
         jLabel16.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel16.setText("_____________________________");
 
-        jtxtBuscar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jtxtBuscar.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jtxtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtxtBuscarFocusLost(evt);
@@ -93,7 +88,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         jLabel15.setText("_____________________________");
 
         jtblDocentes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jtblDocentes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jtblDocentes.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jtblDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -112,34 +107,23 @@ public class InformeDocentes extends javax.swing.JPanel {
             }
         });
 
-        jlbCedula.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        jLabel18.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel18.setText("_____________________________");
+        jlbCedula.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(236, 71, 71));
 
-        jLabel13.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel13.setText("      Nombre");
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Nombre");
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel11.setText("    Asistencias");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel14.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel14.setText("           C.I.");
-
-        jLabel10.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel10.setText("  Inasistencias");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel14.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("C.I.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -149,10 +133,6 @@ public class InformeDocentes extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -160,17 +140,11 @@ public class InformeDocentes extends javax.swing.JPanel {
 
         jlbAsistencias.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jlbNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jlbNombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
 
         imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/usuario .png"))); // NOI18N
 
-        jlbUsuario.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-
-        jbtnReportes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jbtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesFrames/generarReporte.png"))); // NOI18N
-        jbtnReportes.setText("Generar Reporte");
-        jbtnReportes.setBorder(null);
-        jbtnReportes.setBorderPainted(false);
+        jlbUsuario.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,12 +154,8 @@ public class InformeDocentes extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addComponent(jtxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(18, 18, 18)
                         .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
@@ -198,18 +168,16 @@ public class InformeDocentes extends javax.swing.JPanel {
                         .addComponent(jlbAsistencias, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jlbInasistencias, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jlbCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jlbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbtnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
@@ -217,55 +185,45 @@ public class InformeDocentes extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jtxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jlbUsuario)
-                        .addGap(40, 40, 40))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jlbAsistencias))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel16))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jlbInasistencias))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jlbCedula))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jlbNombre))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jbtnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jlbUsuario)
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(imgUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(jlbAsistencias))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel16))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19)
+                                .addComponent(jlbInasistencias))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jlbCedula))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jlbNombre))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -302,7 +260,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         jtblDocentes.setModel(new inforDocController().cargarTabla(jtxtBuscar.getText()));
         if (validacionCedula == true) {
             buscarDocentes2(jtxtBuscar.getText());
-            
+
         }
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
@@ -310,7 +268,7 @@ public class InformeDocentes extends javax.swing.JPanel {
         boolean cedulaCorrecta = false;
         boolean esNumero = false;
 
-        if (cedula.length() != 4) {
+        if (cedula.length() != 10) {
             JOptionPane.showMessageDialog(null, "La logitud de caracteres debe ser igual a 10");
             return false;
         } else {
@@ -341,25 +299,39 @@ public class InformeDocentes extends javax.swing.JPanel {
     }
 
     private void cargarTitulosTabla() {
+
         String[] titulos = {"Fecha", "Entrada Matutina", "Salida Matutina", "Entrada Vespertina", "Salida Vespertina", "Horas"};
         this.modeloTabla = new DefaultTableModel(null, titulos);
         jtblDocentes.setModel(modeloTabla);
+        formatoTitulos();
+        jtblDocentes.setRowHeight(30);
         for (int i = 0; i < titulos.length; i++) {
             jtblDocentes.getColumnModel().getColumn(i).setResizable(false);
         }
     }
-    
-    
-        private void buscarDocentes2(String cedula) {
+
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblDocentes.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 14);
+        th.setFont(fuente);
+    }
+
+    private void buscarDocentes2(String cedula) {
         inforDocController informe = new inforDocController();
-        String[] datos = informe.mostrarDatos(cedula);
-        if(datos[0].isEmpty()){
+        if(informe.mostrarDatos(cedula)== null){
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");
-            
-        }else{
-        jlbUsuario.setText(datos[0]);
-        jlbCedula.setText(datos[3]);
-        jlbNombre.setText(datos[1] + " " + datos[2]);
+            return;
+        }
+        String[] datos = informe.mostrarDatos(cedula);
+        
+        if (datos[0].isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+
+        } else {
+            jlbUsuario.setText(datos[0]);
+            jlbCedula.setText(datos[3]);
+            jlbNombre.setText(datos[1] + " " + datos[2]);
         }
 
     }
@@ -426,7 +398,6 @@ public class InformeDocentes extends javax.swing.JPanel {
             }
         }
     }*/
-
     private void cargarTabla(String fecha, String horaEntradaM, String horaSalidaM, String horaEntradaV, String horaSalidaV, String horas) {
         String[] registro = new String[modeloTabla.getColumnCount()];
         registro[0] = fecha;
@@ -443,19 +414,14 @@ public class InformeDocentes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnBuscar;
-    private javax.swing.JButton jbtnReportes;
     private javax.swing.JLabel jlbAsistencias;
     private javax.swing.JLabel jlbCedula;
     private javax.swing.JLabel jlbInasistencias;

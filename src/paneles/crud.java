@@ -9,10 +9,12 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladores.crudController;
+import java.awt.Font;
 import javax.sound.midi.ControllerEventListener;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -26,8 +28,9 @@ public class crud extends javax.swing.JPanel {
     public crud() {
         initComponents();
         DefaultTableModel modeloTabla = new DefaultTableModel();
-//       
+        jtblCrud.setRowHeight(30);
         jtblCrud.setModel(new crudController().cargarTabla());
+        formatoTitulos();
         this.bloquearTextosyBusqueda();
         jtblCrud.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -55,6 +58,13 @@ public class crud extends javax.swing.JPanel {
             }
 
         });
+    }
+
+    public void formatoTitulos() {
+        JTableHeader th;
+        th = jtblCrud.getTableHeader();
+        Font fuente = new Font("Microsoft Yahei", Font.BOLD, 14);
+        th.setFont(fuente);
     }
 
     /**
@@ -743,7 +753,7 @@ public class crud extends javax.swing.JPanel {
 
     private void jpActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpActualizarMouseClicked
         this.desbloquearTextosActualizar();
-        
+
         this.jbtnGuardar.setEnabled(false);
         jbtnActualizar.setEnabled(true);
 
@@ -829,8 +839,9 @@ public class crud extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No existe un usuario con la cédula especificada");
         } else {
             jtblCrud.setModel(new crudController().cargarTabla(jtxtBusqueda.getText()));
-
         }
+        jtblCrud.setRowHeight(30);
+        formatoTitulos();
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     private void jpEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEliminarMouseExited
@@ -850,6 +861,7 @@ public class crud extends javax.swing.JPanel {
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
         jtblCrud.setRowHeight(30);
         jtblCrud.setModel(new crudController().cargarTabla());
+        formatoTitulos();
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     public void limpiarTextos() {
@@ -983,39 +995,20 @@ public class crud extends javax.swing.JPanel {
         String[] horasManE = AEntrMan.split(":");
         System.out.println(horasManE[0]);
         int horamanE = Integer.valueOf(horasManE[0]);
-        if (horasManE[1].equals("00 pm")) {
-            horamanE = horamanE + 12;
-            System.out.println(horamanE);
-
-        }
 
         String ASalMan = Mat_tar.getText();
         String[] horasSalMan = ASalMan.split(":");
         int horamanS = Integer.valueOf(horasSalMan[0]);
-        if (horasSalMan[1].equals("00 pm")) {
-            horamanS = horamanS + 12;
-            System.out.println(horamanS);
-
-        }
 
         String AEntrVesp = Vesp_man.getText();
         String[] horasVesE = AEntrVesp.split(":");
         int horavespE = Integer.valueOf(horasVesE[0]);
-        if (horasVesE[1].equals("00 pm")) {
-            horavespE = horavespE + 12;
-            System.out.println(horavespE);
-
-        }
 
         String ASalVesp = Vesp_tar.getText();
         String[] horasVespS = ASalVesp.split(":");
         int horavespS = Integer.valueOf(horasVespS[0]);
-        if (horasVespS[1].equals("00 pm")) {
-            horavespS = horavespS + 12;
-            System.out.println(horavespS);
 
-        }
-        int horasmanana = horamanS- horamanE;
+        int horasmanana = horamanS - horamanE;
         int horastarde = horavespS - horavespE;
 
         if (horasmanana + horastarde == 8) {
